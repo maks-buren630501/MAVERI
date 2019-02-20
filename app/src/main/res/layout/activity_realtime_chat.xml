@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    tools:context=".RealtimeChat">
+    tools:context=".ActivityChat">
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
