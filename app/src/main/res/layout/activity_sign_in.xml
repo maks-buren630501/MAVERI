@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        tools:context=".SignIn">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Почта:"
+                android:textColorHint="#000000"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewEmail"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:hint="mail@mail.com"
+                android:inputType="textWebEmailAddress"
+                android:textColorHint="#A9A9A9"
+                android:backgroundTint="#000000"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/textViewPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextEmail"
+                android:layout_alignLeft="@+id/editTextPassword"
+                android:hint="Пароль:"
+                android:textColorHint="#000000"
+                android:textSize="18dp"
+
+                />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:hint="**********"
+                android:inputType="textPassword"
+                android:textColorHint="#A9A9A9"
+                android:backgroundTint="#000000"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/textViewNewPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextPassword"
+                android:layout_alignRight="@+id/editTextPassword"
+                android:clickable="true"
+                android:hint="Забыли пароль ?"
+                android:textColorHint="#0d1cbf"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/textViewRegistr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextPassword"
+                android:layout_alignLeft="@+id/editTextPassword"
+                android:clickable="true"
+                android:hint="Зарегистрироваться ?"
+                android:textColorHint="#0d1cbf"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/buttonEnter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNewPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:hint="Войти"
+                android:textColorHint="#000000"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

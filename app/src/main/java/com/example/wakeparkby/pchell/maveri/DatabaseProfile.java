@@ -12,14 +12,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RealtimeProfileDatabase {
+public class DatabaseProfile {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefProfile = database.getReference("Profile");
-    private String userName;
-    private String userLastName;
-    private String userAge;
-    private String userSex;
-    private String userID;
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String age;
+    private String sex;
+    private List<String> listInterests = new ArrayList<String>();
     private String profileUserName;
     private String profileUserLastName;
     private String profileUserAge;
@@ -27,21 +28,23 @@ public class RealtimeProfileDatabase {
 
 
 
-    public RealtimeProfileDatabase(String userName, String userLastName, String userAge, String userSex, String userID) {
-        this.userName = userName;
-        this.userLastName = userLastName;
-        this.userAge = userAge;
-        this.userSex = userSex;
-        this.userID = userID;
+    public DatabaseProfile(List<String> listInterests , String id, String firstName, String lastName, String age, String sex) {
+        this.listInterests = listInterests;
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.sex = sex;
         SetProfileDatabase();
     }
 
     private void SetProfileDatabase() {
-        myRefProfile = database.getReference("/" + userID);
-        myRefProfile.child("First name: ").setValue(userName);
-        myRefProfile.child("Last name: ").setValue(userLastName);
-        myRefProfile.child("Age: ").setValue(userAge);
-        myRefProfile.child("Sex ").setValue(userSex);
+        myRefProfile = database.getReference("/" + id);
+        myRefProfile.child("First name: ").setValue(firstName);
+        myRefProfile.child("Last name: ").setValue(lastName);
+        myRefProfile.child("Age: ").setValue(age);
+        myRefProfile.child("Sex: ").setValue(sex);
+        myRefProfile.child("Interests: ").setValue(listInterests);
     }
 
     private void GetProfileDatabase() {
