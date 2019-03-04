@@ -39,4 +39,7 @@ import java.util.List;
     }
 
 
-}
+     public String getFirstName() {
+         return firstName;
+     }
+ }
