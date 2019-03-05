@@ -17,10 +17,7 @@ public class DatabaseMessage {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
     private static String groupID;
-    private String id;
-    private String name;
-    private String time;
-    private String message;
+
 
 
 
@@ -28,12 +25,8 @@ public class DatabaseMessage {
         this.groupID = groupId;
     }
 
-    public void sendMessage(String id, String name, String time, String message) {
-        this.id = id;
-        this.name = name;
-        this.time = time;
-        this.message = message;
+    public void sendMessage(String name, String time, String message) {
         myRefMeessage = database.getReference("Messages");
-        myRefMeessage.child(groupID).push().setValue("ilya" + "    " +time + System.lineSeparator() + message);
+        myRefMeessage.child(groupID).push().setValue(name + "       " +time + System.lineSeparator() + message);
     }
 }

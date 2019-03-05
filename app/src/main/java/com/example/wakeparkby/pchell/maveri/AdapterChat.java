@@ -1,16 +1,8 @@
 package com.example.wakeparkby.pchell.maveri;
-
-import android.widget.ArrayAdapter;
-
-import com.google.firebase.auth.FirebaseAuth;
+import android.widget.ListAdapter;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-
 public class AdapterChat {
 
     //private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -43,7 +35,7 @@ public class AdapterChat {
         String time = formatForDateNow.format(dateNow);
         Profile profile = new Profile();
         profile.getFirstName();
-        DatabaseMessage databaseMessage = new DatabaseMessage();
-        databaseMessage.sendMessage(userKey, profile.getFirstName(),time ,messageText);
+        ListMessage listMessage = new ListMessage();
+        listMessage.sendMessage(profile.getFirstName(),time ,messageText);
     }
 }

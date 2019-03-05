@@ -38,6 +38,8 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private EditText messageArea;
     private ListView listViewChat;
     private String groupId;
+    private String userKey = "userKey";
+    private String a;
     private List<String> chatList = new ArrayList<>();
     AdapterChat adapterChat = new AdapterChat();
 
@@ -63,8 +65,8 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
                 for (DataSnapshot battle : chatDS.getChildren())
                     chatList.add((String) battle.getValue());
                 ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
-                        android.R.layout.simple_list_item_1,
-                        chatList.toArray(new String[chatList.size()]));
+                    android.R.layout.simple_list_item_1,
+                      chatList.toArray(new String[chatList.size()]));
                 listViewChat.setAdapter(chatAdapter);
             }
 
@@ -73,6 +75,9 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
+
+
+
 
     @Override
     public void onClick(View v) {

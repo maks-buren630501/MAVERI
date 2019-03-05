@@ -9,17 +9,14 @@ public class ListMessage {
     List<String> chatList = new ArrayList<String>();
 
 
-
-
-
     public void setId(String groupId) {
         DatabaseMessage databaseMessage = new DatabaseMessage();
         databaseMessage.setId(groupId);
     }
 
-    public void sendMessage(String id, String name, String time, String message) {
+    public void sendMessage(String name, String time, String message) {
         DatabaseMessage databaseMessage = new DatabaseMessage();
-        databaseMessage.sendMessage(id, name, time, message);
+        databaseMessage.sendMessage(name, time, message);
     }
 
 }
