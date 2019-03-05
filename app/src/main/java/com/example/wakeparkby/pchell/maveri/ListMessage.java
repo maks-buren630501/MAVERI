@@ -6,12 +6,7 @@ import java.util.List;
 
 public class ListMessage {
     private HashMap<String,String> listMessage = new HashMap<>();
-    public void setListMessage(HashMap<String, String> listMessage) {
-        this.listMessage = listMessage;
-        AdapterChat adapterChat = new AdapterChat();
-        adapterChat.setListMessage(listMessage);
-    }
-
+    List<String> chatList = new ArrayList<String>();
 
 
     public void setId(String groupId) {
@@ -19,9 +14,9 @@ public class ListMessage {
         databaseMessage.setId(groupId);
     }
 
-    public void sendMessage(String id, String name, String time, String message) {
+    public void sendMessage(String name, String time, String message) {
         DatabaseMessage databaseMessage = new DatabaseMessage();
-        databaseMessage.sendMessage(id, name, time, message);
+        databaseMessage.sendMessage(name, time, message);
     }
 
 }

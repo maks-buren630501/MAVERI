@@ -1,21 +1,41 @@
 package com.example.wakeparkby.pchell.maveri;
+import android.widget.ListAdapter;
 
-import java.util.HashMap;
-import java.util.List;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class AdapterChat {
-    public String getId(){
-        Profile profile = new Profile();
-        return profile.getUserId();
-    }
 
-    public void setIdListMessage(String groupId) {
+    //private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private String userKey = "userKey";// mAuth.getCurrentUser().getUid();
+    private String userId;
+    private String groupId;
+
+
+    public void getListMessage() {
+        Profile profile = new Profile();
+        this.userId = profile.getUserId();
+        if (userKey.hashCode() > userId.hashCode()) {
+            groupId = userKey.concat(userId);
+        } else if (userId.hashCode() > userKey.hashCode()) {
+            groupId = userId.concat(userKey);
+        } else if (userKey.hashCode() == userId.hashCode()) {
+            groupId = userKey.concat(userId);
+        }
         ListMessage listMessage = new ListMessage();
         listMessage.setId(groupId);
     }
 
-    public void setListMessage(HashMap<String, String> listMessage) {
-        ActivityChat activityChat = new ActivityChat();
-        activityChat.setListMessage(listMessage);
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void sendMessage(String messageText){
+        Date dateNow = new Date();
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.MM.yyyy(E) hh:mm:ss");
+        String time = formatForDateNow.format(dateNow);
+        Profile profile = new Profile();
+        profile.getFirstName();
+        ListMessage listMessage = new ListMessage();
+        listMessage.sendMessage(profile.getFirstName(),time ,messageText);
     }
 }
