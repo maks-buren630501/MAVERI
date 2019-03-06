@@ -1,19 +1,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/UserInformation"
+    android:id="@+id/FriendInformation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
 
 
     <LinearLayout
-        android:id="@+id/luserinfo"
+        android:id="@+id/lfriendinfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <LinearLayout
-            android:id="@+id/puserinfo"
+            android:id="@+id/pfriendinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -34,12 +34,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <Button
-                    android:id="@+id/meetbutuserinfo"
+                    android:id="@+id/meetbutfriendinfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@mipmap/ic_meeting_foreground"/>
                 <TextView
-                    android:id="@+id/timeetuserinfo"
+                    android:id="@+id/timeetfriendinfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10:00"
@@ -52,17 +52,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+
                 <Button
-                    android:id="@+id/monbutuserinfo"
+                    android:id="@+id/monbutfriendinfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background= "@mipmap/ic_wallet_foreground" />
+                    android:background="@mipmap/ic_message_foreground" />
                 <TextView
-                    android:id="@+id/monuserinfo"
+                    android:id="@+id/monfriendinfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100"
-                    android:textSize="30dp"
+                    android:text="25.05.2005"
+                    android:textSize="20dp"
                     android:layout_gravity="center"/>
 
 
@@ -72,12 +74,12 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/lnuserinfo"
+        android:id="@+id/lnfriendinfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/luserinfo">
+        android:layout_below="@+id/lfriendinfo">
         <TextView
-            android:id="@+id/nameuserinfo"
+            android:id="@+id/namefriendinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Slavka Goldbitch"
@@ -87,63 +89,63 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/lnuserinfo"
+        android:layout_below="@+id/lnfriendinfo"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/inuserinfo"
+            android:id="@+id/infriendinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Интересы:"
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/infintuserinfo"
+            android:id="@+id/infintfriendinfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Плавание,конный спорт" />
 
         <TextView
-            android:id="@+id/aboutuserinfo"
+            android:id="@+id/aboutfriendinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="О себе"
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/infaboutuserinfo"
+            android:id="@+id/infaboutfriendinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Люблю проводить время с друзьями, обожаю программировать, общительный, продам картошку!!!" />
 
         <TextView
-            android:id="@+id/telnumuserinfo"
+            android:id="@+id/telnumfriendinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Номер телефона"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/inftelnumuserinfo"
+            android:id="@+id/inftelnumfriendinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="+375291111111" />
 
         <TextView
-            android:id="@+id/emailuserinfo"
+            android:id="@+id/emailfriendinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email"
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/infemailuserinfo"
+            android:id="@+id/infemailfriendinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="example@mail.ru" />
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/iButtonBackuserinfo"
+        android:id="@+id/iButtonBackfriendinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="?attr/actionModeCloseDrawable" />
