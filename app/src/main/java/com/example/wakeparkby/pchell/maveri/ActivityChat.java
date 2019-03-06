@@ -61,6 +61,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         myRefMeessage.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot chatDS) {
+                /// изменить
                 final List<String> chatList = new ArrayList<>();
                 for(DataSnapshot data: chatDS.getChildren())
                     chatList.add(String.valueOf(data.getValue()));
