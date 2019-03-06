@@ -1,8 +1,11 @@
 package com.example.wakeparkby.pchell.maveri;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.wakeparkby.pchell.maveri.Friend.FriendListActivity;
 
 public class Welcome extends AppCompatActivity {
 
@@ -14,6 +17,7 @@ public class Welcome extends AppCompatActivity {
     }
 
     public void on(View view) {
-        setContentView(R.layout.activity_friend_list);
+        Intent intent = new Intent(Welcome.this, FriendListActivity.class);
+        startActivity(intent);
     }
 }

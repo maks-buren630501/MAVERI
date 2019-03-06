@@ -7,11 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wakeparkby.pchell.maveri.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FriendArrayAdapter extends ArrayAdapter<Profile> {
@@ -32,7 +32,7 @@ public class FriendArrayAdapter extends ArrayAdapter<Profile> {
 
         Profile currentProfile= profileList.get(position);
 
-
+        ImageView imageView= listItem.findViewById(R.id.photo_list_friend_row);
         TextView name = (TextView) listItem.findViewById(R.id.name_list_friend_row);
         name.setText(currentProfile.getName());
 
