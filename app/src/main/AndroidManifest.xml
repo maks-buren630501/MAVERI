@@ -8,7 +8,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivitySignIn">
+        <activity android:name=".ActivityChat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +17,7 @@
         </activity>
 
         <activity android:name=".ActivityCreateAccount"/>
-        <activity android:name=".ActivityChat"/>
+        <activity android:name=".ActivitySignIn"/>
 
 
     </application>

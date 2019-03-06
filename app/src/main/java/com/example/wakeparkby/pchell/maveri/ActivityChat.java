@@ -62,13 +62,15 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDataChange(@NonNull DataSnapshot chatDS) {
                 final List<String> chatList = new ArrayList<>();
-                for (DataSnapshot battle : chatDS.getChildren())
-                    chatList.add((String) battle.getValue());
+                for(DataSnapshot data: chatDS.getChildren())
+                    chatList.add(String.valueOf(data.getValue()));
                 ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
-                    android.R.layout.simple_list_item_1,
-                      chatList.toArray(new String[chatList.size()]));
+                        android.R.layout.simple_list_item_1,
+                        chatList.toArray(new String[chatList.size()]));
                 listViewChat.setAdapter(chatAdapter);
             }
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -83,5 +85,6 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         String messageText = messageArea.getText().toString();
         adapterChat.sendMessage(messageText);
+        messageArea.setText("");
     }
 }
