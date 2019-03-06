@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent"
+        android:paddingHorizontal="20dp">
+        android:layout_weight="9"
+
+        <TextView
+            android:layout_weight="7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="@string/friends" />
+
+        <ImageButton
+            android:layout_weight="1"
+            android:id="@+id/search_friend_activity"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:src="@android:drawable/ic_search_category_default"
+            tools:ignore="RtlHardcoded" />
+
+
+    </LinearLayout>
+
+<fragment
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:name="com.example.wakeparkby.pchell.maveri.Friend.FriendListFragment"
+    tools:layout="@android:layout/list_content"
+    android:id="@+id/FriendList">
+
+</fragment>
+</LinearLayout>
