@@ -18,23 +18,24 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
     private TextView name;
     private TextView interest;
 
+    private String profileName;
+    private String listInterests;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
-        //AdapterProfile adapterProfile = new AdapterProfile();
-        //adapterProfile.getUserInfo();
-
         name= (TextView) findViewById(R.id.nameuserinfo);
         interest= (TextView) findViewById(R.id.infintuserinfo);
         imageButtonBack=(ImageButton) findViewById(R.id.iButtonBackuserinfo);
         imageButtonBack.setOnClickListener(this);
-       // String returnName = adapterProfile.getFirstName() + " " + adapterProfile.getLastName();
-       // name.setText(returnName);
-        //interest.setText(adapterProfile.getInterests());
-
-       // ( Spisok.get(Spisok.size() - 1));
+        AdapterProfile adapterProfile = new AdapterProfile();
+        profileName = adapterProfile.getProfileName();
+        name.setText(profileName);
+        listInterests = adapterProfile.getListInterests();
+        interest.setText(listInterests);
+        // ( Spisok.get(Spisok.size() - 1));
     }
-
 
 
     @Override

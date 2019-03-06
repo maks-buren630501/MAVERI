@@ -1,6 +1,7 @@
 package com.example.wakeparkby.pchell.maveri.Friend;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.ListFragment;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
+import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfileFriend;
 import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
@@ -39,8 +42,11 @@ public class FriendListFragment extends ListFragment {
         //обработка нажатия на профиль
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-       Toast.makeText(getActivity(), "Вы выбрали позицию: " + position, Toast.LENGTH_SHORT).show();
+       // super.onListItemClick(l, v, position, id);
+       //Toast.makeText(getActivity(), "Вы выбрали позицию: " + position, Toast.LENGTH_SHORT).show();
+        Intent intent_friendProfile = new Intent(FriendListFragment.this.getActivity(),ActivityProfileFriend.class);
+        startActivity(intent_friendProfile);
+
     }
 
 

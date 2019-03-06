@@ -3,6 +3,7 @@ package com.example.wakeparkby.pchell.maveri.Database;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
+import com.example.wakeparkby.pchell.maveri.Profile.AdapterProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +22,7 @@ public class DatabaseProfile {
     private String lastName;
     private String age;
     private String sex;
-    private List<String> listInterests = new ArrayList<String>();
+    private String listInterests;
     private String profileUserName;
     private String profileUserLastName;
     private String profileUserAge;
@@ -29,7 +30,7 @@ public class DatabaseProfile {
 
 
 
-    public DatabaseProfile(List<String> listInterests , String id, String firstName, String lastName, String age, String sex) {
+    public DatabaseProfile(String listInterests , String id, String firstName, String lastName, String age, String sex) {
         this.listInterests = listInterests;
         this.id = id;
         this.firstName = firstName;
@@ -86,8 +87,12 @@ public class DatabaseProfile {
                 firstName = String.valueOf(giveSeasonTicketDS.child("FirstName").getValue());
                 lastName = String.valueOf(giveSeasonTicketDS.child("LastName").getValue());
                 age = String.valueOf(giveSeasonTicketDS.child("Age").getValue());
-                age = String.valueOf(giveSeasonTicketDS.child("Sex").getValue());
-                listInterests = (List<String>) giveSeasonTicketDS.child("Interests").getValue();
+                sex = String.valueOf(giveSeasonTicketDS.child("Sex").getValue());
+                listInterests = String.valueOf(giveSeasonTicketDS.child("Interests").getValue());
+                String profileName = firstName + " " + lastName;
+                AdapterProfile adapterProfile = new AdapterProfile();
+                adapterProfile.setListInterests(listInterests);
+                adapterProfile.setProfileName(profileName);
                 Profile profile = new Profile(firstName, lastName, age, sex,listInterests);
             }
 

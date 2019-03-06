@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 
 
@@ -48,6 +49,10 @@ public class ActivityMainMenu extends AppCompatActivity
         View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         ImageButton headerButtonView = headerLayout.findViewById(R.id.profile);
         headerButtonView.setOnClickListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        AdapterMainMenu adapterMainMenu = new AdapterMainMenu();
+        adapterMainMenu.getUserInfo();
 
     }
 
@@ -69,7 +74,7 @@ public class ActivityMainMenu extends AppCompatActivity
         return true;
     }
 
-    
+
 
 
     @Override
@@ -109,6 +114,10 @@ public class ActivityMainMenu extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
 
     @Override
     public void onClick(View v) {

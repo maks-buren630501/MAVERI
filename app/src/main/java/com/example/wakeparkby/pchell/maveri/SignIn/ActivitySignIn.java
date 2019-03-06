@@ -48,6 +48,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+
         Intent intent_CreateAccount = new Intent(this, ActivityCreateAccount.class);
         switch (view.getId()) {
             case R.id.buttonEnter:

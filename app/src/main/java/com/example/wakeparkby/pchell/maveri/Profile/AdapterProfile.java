@@ -2,23 +2,29 @@ package com.example.wakeparkby.pchell.maveri.Profile;
 
 public class AdapterProfile {
 
+
+    private static String profileName;
+    private static String listInterests;
     Profile profile = new Profile();
 
-    public void getUserInfo() {
-        profile.getUserInfo();
+    public String getProfileName() {
+        return profileName;
     }
 
+    public String getListInterests() {
+        return listInterests;
+    }
 
-    public String getFirstName() {
-        profile.getFirstName();
-        return null;
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
-    public String getLastName() {
-        profile.getLastName();
-        return null;
+
+    public void setListInterests(String listInterests) {
+        this.listInterests = listInterests;
     }
-    public String getInterests() {
-        profile.getListInterests();
-        return null;
-    }
+
+    /*public void setUserInfo() {
+        ActivityProfile activityProfile = new ActivityProfile();
+        activityProfile.setUserInfo();
+    }*/
 }

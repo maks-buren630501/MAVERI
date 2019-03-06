@@ -58,7 +58,8 @@
                     android:id="@+id/monbutfriendinfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@mipmap/ic_message_foreground" />
+                    android:background="@mipmap/ic_message_foreground"
+                    android:clickable="true"/>
                 <TextView
                     android:id="@+id/monfriendinfo"
                     android:layout_width="wrap_content"

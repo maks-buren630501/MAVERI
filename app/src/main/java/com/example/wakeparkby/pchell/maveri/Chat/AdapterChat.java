@@ -6,8 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 public class AdapterChat {
 
-    //private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private String userKey = "userKey";// mAuth.getCurrentUser().getUid();
+    private String userKey;
     private String userId;
     private String groupId;
 
@@ -15,6 +14,7 @@ public class AdapterChat {
     public void getListMessage() {
         Profile profile = new Profile();
         this.userId = profile.getUserId();
+        this.userKey = profile.getUserKey();
         if (userKey.hashCode() > userId.hashCode()) {
             groupId = userKey.concat(userId);
         } else if (userId.hashCode() > userKey.hashCode()) {
