@@ -1,16 +1,19 @@
-package com.example.wakeparkby.pchell.maveri;
+package com.example.wakeparkby.pchell.maveri.SignIn;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
+import android.widget.ActionMenuView;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
+import com.example.wakeparkby.pchell.maveri.CreateAccount.ActivityCreateAccount;
+import com.example.wakeparkby.pchell.maveri.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -45,7 +48,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        Intent intent_CreateAccount = new Intent(this,ActivityCreateAccount.class);
+        Intent intent_CreateAccount = new Intent(this, ActivityCreateAccount.class);
         switch (view.getId()) {
             case R.id.buttonEnter:
                 if (etEmail.getText().toString().equals("")) {
@@ -80,6 +83,8 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         if (task.isSuccessful()) {
                             if (user.isEmailVerified() == true) {
                                 Toast.makeText(ActivitySignIn.this, "Авторизация успешна", Toast.LENGTH_SHORT).show();
+                                Intent intent_Main_Menu = new Intent(ActivitySignIn.this, ActivityMainMenu.class);
+                                startActivity(intent_Main_Menu);
                             }
                             //Проверка подтверждения аккаунта (почта Gmail)
                             if (user.isEmailVerified() == false) {
@@ -88,7 +93,6 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         } else {
                             Toast.makeText(ActivitySignIn.this, "Авторизация провалена", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
     }

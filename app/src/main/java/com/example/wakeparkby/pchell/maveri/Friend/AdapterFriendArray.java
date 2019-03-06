@@ -14,11 +14,11 @@ import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
 
-public class FriendArrayAdapter extends ArrayAdapter<Profile> {
+public class AdapterFriendArray extends ArrayAdapter<Profile> {
 
     private Context mContext;
     private ArrayList<Profile> profileList= new ArrayList<>();
-    public FriendArrayAdapter(@NonNull Context context, ArrayList<Profile> profileArrayList) {
+    public AdapterFriendArray(@NonNull Context context, ArrayList<Profile> profileArrayList) {
         super(context, 0,profileArrayList);
         mContext=context;
         profileList=profileArrayList;

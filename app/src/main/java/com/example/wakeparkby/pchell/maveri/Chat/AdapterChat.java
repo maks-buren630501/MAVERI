@@ -1,5 +1,6 @@
-package com.example.wakeparkby.pchell.maveri;
-import android.widget.ListAdapter;
+package com.example.wakeparkby.pchell.maveri.Chat;
+
+import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

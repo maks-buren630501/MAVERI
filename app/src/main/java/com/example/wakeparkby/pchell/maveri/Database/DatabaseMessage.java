@@ -1,4 +1,4 @@
-package com.example.wakeparkby.pchell.maveri;
+package com.example.wakeparkby.pchell.maveri.Database;
 
 import android.support.annotation.NonNull;
 import android.widget.ListView;

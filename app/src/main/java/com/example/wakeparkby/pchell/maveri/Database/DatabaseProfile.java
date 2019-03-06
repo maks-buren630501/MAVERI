@@ -1,8 +1,9 @@
-package com.example.wakeparkby.pchell.maveri;
+package com.example.wakeparkby.pchell.maveri.Database;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
 
+import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class DatabaseProfile {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference myRefProfile = database.getReference("Profile");
+    private DatabaseReference myRefProfile;
     private String id;
     private String firstName;
     private String lastName;
@@ -37,14 +38,16 @@ public class DatabaseProfile {
         this.sex = sex;
         SetProfileDatabase();
     }
+    public DatabaseProfile(){}
 
     private void SetProfileDatabase() {
         myRefProfile = database.getReference("/" + id);
-        myRefProfile.child("First name: ").setValue(firstName);
-        myRefProfile.child("Last name: ").setValue(lastName);
-        myRefProfile.child("Age: ").setValue(age);
-        myRefProfile.child("Sex: ").setValue(sex);
-        myRefProfile.child("Interests: ").setValue(listInterests);
+        myRefProfile.child("First name:").setValue(firstName);
+        myRefProfile.child("Last name:").setValue(lastName);
+        myRefProfile.child("Age:").setValue(age);
+        myRefProfile.child("Sex:").setValue(sex);
+        myRefProfile.child("Interests:").setValue(listInterests);
+
     }
 
     private void GetProfileDatabase() {
@@ -71,6 +74,26 @@ public class DatabaseProfile {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    public void getUserInfo(String userId) {
+        myRefProfile = database.getReference("Users"+"/" + userId );
+        myRefProfile.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot giveSeasonTicketDS) {
+                firstName = String.valueOf(giveSeasonTicketDS.child("FirstName").getValue());
+                lastName = String.valueOf(giveSeasonTicketDS.child("LastName").getValue());
+                age = String.valueOf(giveSeasonTicketDS.child("Age").getValue());
+                age = String.valueOf(giveSeasonTicketDS.child("Sex").getValue());
+                listInterests = (List<String>) giveSeasonTicketDS.child("Interests").getValue();
+                Profile profile = new Profile(firstName, lastName, age, sex,listInterests);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }

@@ -11,7 +11,7 @@ import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
 
-public class FriendListActivity extends AppCompatActivity {
+public class ActivityFriendList extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -1,24 +1,15 @@
-package com.example.wakeparkby.pchell.maveri;
+package com.example.wakeparkby.pchell.maveri.Chat;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.recyclerview.extensions.ListAdapter;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.wakeparkby.pchell.maveri.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,9 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ActivityChat extends AppCompatActivity implements View.OnClickListener {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();

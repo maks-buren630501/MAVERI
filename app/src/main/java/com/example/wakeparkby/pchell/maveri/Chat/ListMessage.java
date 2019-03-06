@@ -1,4 +1,6 @@
-package com.example.wakeparkby.pchell.maveri;
+package com.example.wakeparkby.pchell.maveri.Chat;
+
+import com.example.wakeparkby.pchell.maveri.Database.DatabaseMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;

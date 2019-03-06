@@ -1,4 +1,4 @@
-package com.example.wakeparkby.pchell.maveri;
+package com.example.wakeparkby.pchell.maveri.Profile;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
+import com.example.wakeparkby.pchell.maveri.R;
+
 import java.util.ArrayList;
 
-public class FriendActivity extends AppCompatActivity implements View.OnClickListener{
+public class ActivityProfileFriend extends AppCompatActivity implements View.OnClickListener{
 
 
     ImageButton imageButtonBack;
@@ -36,7 +39,7 @@ public class FriendActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iButtonBackfriendinfo:{
-                Intent intent = new Intent(this,MainActivity.class);
+                Intent intent = new Intent(this, ActivityMainMenu.class);
                 startActivity(intent);
                 break;
             }

@@ -1,10 +1,8 @@
 package com.example.wakeparkby.pchell.maveri.Friend;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +16,7 @@ import com.example.wakeparkby.pchell.maveri.R;
 import java.util.ArrayList;
 
 public class FriendListFragment extends ListFragment {
-    private FriendArrayAdapter arrayAdapter;
+    private AdapterFriendArray arrayAdapter;
     private ArrayList<ContactsContract.Profile> profiles;
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -33,7 +31,7 @@ public class FriendListFragment extends ListFragment {
                              Bundle savedInstanceState) {
         ArrayList<Profile> profiles = new ArrayList<>();
         profiles.add(new Profile("Slava GoldFish"));
-        arrayAdapter = new FriendArrayAdapter(getActivity(), profiles);
+        arrayAdapter = new AdapterFriendArray(getActivity(), profiles);
         setListAdapter(arrayAdapter);
         View view = inflater.inflate(R.layout.listfragment, container, false);
         return view;
