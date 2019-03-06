@@ -17,6 +17,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".FriendActivity"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".UserActivity"/>
+        <activity android:name=".SignIn"/>
+
     </application>
 
 </manifest>
