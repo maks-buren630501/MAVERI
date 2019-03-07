@@ -42,7 +42,7 @@
                     android:id="@+id/timeetfriendinfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10:00"
+                    android:text="9:00"
                     android:textSize="30dp"
                     android:layout_gravity="center"/>
 
@@ -64,7 +64,7 @@
                     android:id="@+id/monfriendinfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="25.05.2005"
+                    android:text="5.05.2005"
                     android:textSize="20dp"
                     android:layout_gravity="center"/>
 
