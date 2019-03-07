@@ -1,0 +1,155 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FriendInformation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+
+    <LinearLayout
+        android:id="@+id/lfriendinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/pfriendinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/autor_image"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginTop="40dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/meetbutfriendinfo"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@mipmap/ic_meeting_foreground"/>
+                <TextView
+                    android:id="@+id/timeetfriendinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9:00"
+                    android:textSize="30dp"
+                    android:layout_gravity="center"/>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <Button
+                    android:id="@+id/monbutfriendinfo"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@mipmap/ic_message_foreground"
+                    android:clickable="true"/>
+                <TextView
+                    android:id="@+id/monfriendinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5.05.2005"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"/>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lnfriendinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lfriendinfo">
+        <TextView
+            android:id="@+id/namefriendinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Slavka Goldbitch"
+            android:textSize="30dp"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lnfriendinfo"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/infriendinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Интересы:"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/infintfriendinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Плавание,конный спорт" />
+
+        <TextView
+            android:id="@+id/aboutfriendinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="О себе"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/infaboutfriendinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Example !" />
+
+        <TextView
+            android:id="@+id/telnumfriendinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Номер телефона"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/inftelnumfriendinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+375(29)***-**-**" />
+
+        <TextView
+            android:id="@+id/emailfriendinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/infemailfriendinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="example@mail.ru" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/iButtonBackfriendinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+
+</RelativeLayout>
