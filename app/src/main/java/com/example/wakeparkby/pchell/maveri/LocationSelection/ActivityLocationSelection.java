@@ -12,12 +12,12 @@ import com.example.wakeparkby.pchell.maveri.R;
 public class ActivityLocationSelection extends AppCompatActivity implements View.OnClickListener {
 
     private Button continueButton;
-    @Override
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_selection);
-        continueButton = findViewById(R.id.continueButton);
-        continueButton.setOnClickListener(this);
+        continueButton = (Button) findViewById(R.id.continueButton);
+        continueButton.setOnClickListener((View.OnClickListener) this);
     }
 
     @Override

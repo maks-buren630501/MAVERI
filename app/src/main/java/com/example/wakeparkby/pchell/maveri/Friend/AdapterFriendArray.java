@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class AdapterFriendArray extends ArrayAdapter<Profile> {
 
         ImageView imageView= listItem.findViewById(R.id.photo_list_friend_row);
         TextView name = (TextView) listItem.findViewById(R.id.name_list_friend_row);
-        name.setText(currentProfile.getName());
+        name.setText(String.format("%s %s", currentProfile.getUserFirstName(), currentProfile.getUserLastName()));
 
         return listItem;
     }

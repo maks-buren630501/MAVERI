@@ -21,24 +21,26 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
     Button chat;
     TextView name;
     TextView interest;
-    ArrayList<String> Spisok;
-    private String userKey = "RE1nc7WIxKRS3fDGOOPtnw1PA9b2";
+    //ArrayList<String> Spisok;
+    private String userKey ;//"RE1nc7WIxKRS3fDGOOPtnw1PA9b2";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //int id=savedInstanceState.getInt("Id");
         setContentView(R.layout.activity_friend_info);
         name=findViewById(R.id.namefriendinfo);
         interest=findViewById(R.id.infintfriendinfo);
-        Spisok=new ArrayList<>();
+        //Spisok=new ArrayList<>();
         imageButtonBack=findViewById(R.id.iButtonBackfriendinfo);
         imageButtonBack.setOnClickListener(this);
         chat=findViewById(R.id.monbutfriendinfo);
         chat.setOnClickListener(this);
-
-        Spisok.add("Хоккей");
-
-        name.setText("Alex Rimash");
-        interest.setText( Spisok.get(Spisok.size() - 1));
+        //Spisok.add("Хоккей");
+        Profile profile = new Profile();
+        name.setText(String.format("%s %s", profile.getUserFirstName(), profile.getUserLastName()));
+        interest.setText(profile.getUserListInterests());
+        userKey = profile.getUserKey();
+        //interest.setText( Spisok.get(Spisok.size() - 1));
     }
 
     @Override

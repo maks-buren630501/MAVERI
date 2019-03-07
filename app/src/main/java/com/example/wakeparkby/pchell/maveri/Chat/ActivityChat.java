@@ -79,7 +79,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.messageArea: {
+            case R.id.sendButton: {
                 String messageText = messageArea.getText().toString();
                 adapterChat.sendMessage(messageText);
                 messageArea.setText("");
@@ -88,6 +88,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
 
             case R.id.placeButton: {
                 Intent intent_selectPlace = new Intent(this, ActivityLocationSelection.class);
+                startActivity(intent_selectPlace);
                 break;
             }
         }

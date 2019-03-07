@@ -14,11 +14,36 @@ public class Profile {
     private static String userKey;
 
 
-    private String firstName;
+    private static String firstName;
     private String lastName;
     private String age;
     private String sex;
     private String listInterests;
+
+
+
+    private static String userFirstName;
+    private static String userLastName;
+    private static String userAge;
+    private static String userSex;
+    private static String userListInterests;
+
+
+
+
+    public Profile(String firstName, String lastName) {
+        this.firstName=firstName;
+        this.lastName=lastName;
+    }
+
+    public Profile(String id,String firstName,String lastName,String age,String sex,String listInterests) {
+        this.userFirstName = firstName;
+        this.userLastName = lastName;
+        this.userAge = age;
+        this.userSex = sex;
+        this.userListInterests = listInterests;
+        this.userKey = id;
+    }
 
     public void getUserInfo() {
         DatabaseProfile databaseProfile = new DatabaseProfile();
@@ -71,6 +96,25 @@ public class Profile {
 
     public String getUserKey() {
         return userKey;
+    }
+    public static String getUserFirstName() {
+        return userFirstName;
+    }
+
+    public static String getUserLastName() {
+        return userLastName;
+    }
+
+    public static String getUserAge() {
+        return userAge;
+    }
+
+    public static String getUserSex() {
+        return userSex;
+    }
+
+    public static String getUserListInterests() {
+        return userListInterests;
     }
 
 

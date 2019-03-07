@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class ActivityFriendList extends AppCompatActivity {
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
          Bundle bundle=new Bundle();
@@ -25,6 +26,8 @@ public class ActivityFriendList extends AppCompatActivity {
 
         setContentView(R.layout.activity_friend_list);
     }
+
+
 
 
 

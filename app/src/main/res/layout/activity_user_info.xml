@@ -19,7 +19,7 @@
             android:layout_weight="1">
 
             <ImageView
-                android:layout_width="179dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/autor_image" />
         </LinearLayout>
@@ -36,8 +36,8 @@
                 android:orientation="horizontal">
                 <Button
                     android:id="@+id/meetbutuserinfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@mipmap/ic_meeting_foreground"/>
                 <TextView
                     android:id="@+id/timeetuserinfo"
@@ -55,8 +55,8 @@
                 android:layout_height="wrap_content">
                 <Button
                     android:id="@+id/monbutuserinfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background= "@mipmap/ic_wallet_foreground" />
                 <TextView
                     android:id="@+id/monuserinfo"

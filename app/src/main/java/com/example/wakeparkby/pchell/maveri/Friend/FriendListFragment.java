@@ -12,15 +12,17 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfileFriend;
+import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
 
 public class FriendListFragment extends ListFragment {
     private AdapterFriendArray arrayAdapter;
-    private ArrayList<ContactsContract.Profile> profiles;
+    private ArrayList<Profile> profiles;
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
       //  ArrayList<Profile> profiles=getArguments().getParcelable("ListProfiles");
@@ -33,7 +35,10 @@ public class FriendListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ArrayList<Profile> profiles = new ArrayList<>();
-        profiles.add(new Profile("Slava GoldFish"));
+        //
+        //        profiles.add(new Profile("Slava"," GoldFish"));
+        AdapterFriendList adapterFriendList=new AdapterFriendList();
+        profiles=adapterFriendList.getFriends();
         arrayAdapter = new AdapterFriendArray(getActivity(), profiles);
         setListAdapter(arrayAdapter);
         View view = inflater.inflate(R.layout.listfragment, container, false);
@@ -42,9 +47,14 @@ public class FriendListFragment extends ListFragment {
         //обработка нажатия на профиль
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+
+
+
        // super.onListItemClick(l, v, position, id);
        //Toast.makeText(getActivity(), "Вы выбрали позицию: " + position, Toast.LENGTH_SHORT).show();
+
         Intent intent_friendProfile = new Intent(FriendListFragment.this.getActivity(),ActivityProfileFriend.class);
+        //intent_friendProfile.putExtra("Id",profiles.get(position).getUserId());
         startActivity(intent_friendProfile);
 
     }

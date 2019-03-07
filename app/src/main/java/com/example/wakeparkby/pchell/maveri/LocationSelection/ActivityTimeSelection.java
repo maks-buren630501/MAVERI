@@ -17,8 +17,8 @@ public class ActivityTimeSelection extends AppCompatActivity implements View.OnC
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_selection);
-        continueButton = findViewById(R.id.buttonSelectTime);
-        continueButton.setOnClickListener(this);
+        continueButton = (Button) findViewById(R.id.buttonSelectTime);
+        continueButton.setOnClickListener((View.OnClickListener) this);
     }
 
     @Override
