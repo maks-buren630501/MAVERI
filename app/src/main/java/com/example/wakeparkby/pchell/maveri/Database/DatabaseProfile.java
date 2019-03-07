@@ -117,6 +117,7 @@ public class DatabaseProfile {
                 final List<String> friendsList = new ArrayList<>();
                 for (DataSnapshot data : getListFriendsDS.getChildren())
                     friendsList.add(String.valueOf(data.getKey()));
+                Friends.clear();
 
                 for (int i = 0 ; i< friendsList.size();i++){
                     final String id = friendsList.get(i);
@@ -130,6 +131,7 @@ public class DatabaseProfile {
                             sex = String.valueOf(getInfoFriendsDS.child("Sex").getValue());
                             listInterests = String.valueOf(getInfoFriendsDS.child("Interests").getValue());
                             Profile profile=new Profile(id,firstName,lastName,age,sex,listInterests);
+
                             Friends.add(profile);
 
                         }
@@ -153,5 +155,14 @@ public class DatabaseProfile {
 
     public ArrayList<Profile> getFriends() {
         return Friends;
+    }
+
+    public void newProfile(String userKey, String firstName, String lastName, String age, String interests){
+    myRefProfile = database.getReference("Users"+"/" + userKey );
+        myRefProfile.child("FirstName").setValue(firstName);
+        myRefProfile.child("LastName").setValue(lastName);
+        myRefProfile.child("Age").setValue(age);
+        myRefProfile.child("Interests").setValue(interests);
+        myRefProfile.child("Sex").setValue("M");
     }
 }

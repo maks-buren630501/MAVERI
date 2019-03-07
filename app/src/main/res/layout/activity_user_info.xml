@@ -114,7 +114,7 @@
             android:id="@+id/infaboutuserinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Люблю проводить время с друзьями, обожаю программировать, общительный, продам картошку!!!" />
+            android:text="Example !" />
 
         <TextView
             android:id="@+id/telnumuserinfo"
@@ -127,7 +127,7 @@
             android:id="@+id/inftelnumuserinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="+375291111111" />
+            android:text="+375(29)***-**-**" />
 
         <TextView
             android:id="@+id/emailuserinfo"

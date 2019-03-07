@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.wakeparkby.pchell.maveri.R;
-import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -54,11 +53,14 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(ActivityCreateAccount.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
+
                             //-----Отправка сообщения на Gmail о регистрации
                             mAuth.getCurrentUser().sendEmailVerification();
-                            Intent intent_SignIn = new Intent(ActivityCreateAccount.this, ActivitySignIn.class);
-                            startActivity(intent_SignIn);
+                            String userKey = mAuth.getCurrentUser().getUid();
+                            ActivityCreateProfile activityCreateProfile = new ActivityCreateProfile();
+                            activityCreateProfile.setUserKey(userKey);
+                            Intent intent_CreateAccountInfo= new Intent(ActivityCreateAccount.this, ActivityCreateProfile.class);
+                            startActivity(intent_CreateAccountInfo);
                         } else {
                             Toast.makeText(ActivityCreateAccount.this, "Регистрация провалена", Toast.LENGTH_SHORT).show();
                         }
