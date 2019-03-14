@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -87,8 +88,8 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             }
 
             case R.id.placeButton: {
-                Intent intent_selectPlace = new Intent(this, ActivityLocationSelection.class);
-                startActivity(intent_selectPlace);
+                AdapterChat adapterChat = new AdapterChat();
+                adapterChat.startActivityLocationSelection();
                 break;
             }
         }

@@ -23,7 +23,7 @@ public class ActivityTimeSelection extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        Intent intent_chat = new Intent(this, ActivityChat.class);
-        startActivity(intent_chat);
+        AdapterTimeSelection adapterTimeSelection = new AdapterTimeSelection();
+        adapterTimeSelection.startActivityDateSelection();
     }
 }
