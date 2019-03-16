@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
 import com.example.wakeparkby.pchell.maveri.Profile.AdapterProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
+import com.example.wakeparkby.pchell.maveri.Profile.ProfileFriend;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +31,7 @@ public class DatabaseProfile {
     private String profileUserLastName;
     private String profileUserAge;
     private String profileUserSex;
-    private static ArrayList<Profile> Friends=new ArrayList<>();
+    private static ArrayList<ProfileFriend> Friends=new ArrayList<>();
 
 
     public DatabaseProfile(String listInterests , String id, String firstName, String lastName, String age, String sex) {
@@ -134,7 +135,7 @@ public class DatabaseProfile {
                             age = String.valueOf(getInfoFriendsDS.child("Age").getValue());
                             sex = String.valueOf(getInfoFriendsDS.child("Sex").getValue());
                             listInterests = String.valueOf(getInfoFriendsDS.child("Interests").getValue());
-                            Profile profile=new Profile(id,firstName,lastName,age,sex,listInterests);
+                            ProfileFriend profile=new ProfileFriend(id,firstName,lastName,age,sex,listInterests);
 
                             Friends.add(profile);
 
@@ -157,7 +158,7 @@ public class DatabaseProfile {
         });
     }
 
-    public ArrayList<Profile> getFriends() {
+    public ArrayList<ProfileFriend> getFriends() {
         return Friends;
     }
 
@@ -172,6 +173,6 @@ public class DatabaseProfile {
 
     public Profile getProfile(String userId){
         this.getUserInfo(userId);
-        return new Profile(this.userId,this.firstName,this.lastName,this.age,this.sex,this.listInterests);
+        return Profile.getInstanceWithParam(this.userId,this.firstName,this.lastName,this.age,this.sex,this.listInterests);
     }
 }

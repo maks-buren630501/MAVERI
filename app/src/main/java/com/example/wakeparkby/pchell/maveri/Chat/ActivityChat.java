@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.example.wakeparkby.pchell.maveri.LocationSelection.ActivityLocationSelection;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
+import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityChat extends AppCompatActivity implements View.OnClickListener {
+    Profile profile = Profile.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
     private ImageView sendButton;
@@ -46,7 +48,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         sendButton = findViewById(R.id.sendButton);
         messageArea = findViewById(R.id.messageArea);
         sendButton.setOnClickListener(this);
-        adapterChat.getListMessage();
+        adapterChat.getListMessage(profile.getUserKey(),);
         groupId = adapterChat.getGroupId();
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);

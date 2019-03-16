@@ -2,14 +2,15 @@ package com.example.wakeparkby.pchell.maveri.Friend;
 
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
+import com.example.wakeparkby.pchell.maveri.Profile.ProfileFriend;
 
 import java.util.ArrayList;
 
 public class AdapterFriendList  {
-    private ArrayList<Profile> friends=new ArrayList<>();
+    private ArrayList<ProfileFriend> friends=new ArrayList<>();
 
 
-    ArrayList<Profile> getFriends() {
+    ArrayList<ProfileFriend> getFriends() {
         return friends;
     }
     AdapterFriendList()

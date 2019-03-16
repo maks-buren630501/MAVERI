@@ -13,20 +13,20 @@ import java.util.Date;
 public class AdapterChat {
 
     private String userKey;
-    private String userId;
+    private String friendUserKey;
     private String groupId;
+    private Profile profile = Profile.getInstance();
 
+    public void getListMessage(String userKey, String friendUserKeyd){
 
-    public void getListMessage(){
-        Profile profile = new Profile();
-        this.userId = profile.getUserId();
-        this.userKey = profile.getUserKey();
-        if (userKey.hashCode() > userId.hashCode()) {
-            groupId = userKey.concat(userId);
-        } else if (userId.hashCode() > userKey.hashCode()) {
-            groupId = userId.concat(userKey);
-        } else if (userKey.hashCode() == userId.hashCode()) {
-            groupId = userKey.concat(userId);
+        this.userKey = userKey;
+        this.friendUserKey = friendUserKeyd;
+        if (userKey.hashCode() > friendUserKey.hashCode()) {
+            groupId = userKey.concat(friendUserKey);
+        } else if (friendUserKey.hashCode() > userKey.hashCode()) {
+            groupId = friendUserKey.concat(userKey);
+        } else if (userKey.hashCode() == friendUserKey.hashCode()) {
+            groupId = userKey.concat(friendUserKey);
         }
         ListMessage listMessage = new ListMessage();
         listMessage.setId(groupId);
@@ -40,7 +40,6 @@ public class AdapterChat {
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.MM.yyyy(E) hh:mm:ss");
         String time = formatForDateNow.format(dateNow);
-        Profile profile = new Profile();
         profile.getFirstName();
         ListMessage listMessage = new ListMessage();
         listMessage.sendMessage(profile.getFirstName(),time ,messageText);
