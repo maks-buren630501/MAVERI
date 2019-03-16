@@ -35,7 +35,7 @@ public class AdapterFriendArray extends ArrayAdapter<Profile> {
 
         ImageView imageView= listItem.findViewById(R.id.photo_list_friend_row);
         TextView name = (TextView) listItem.findViewById(R.id.name_list_friend_row);
-        name.setText(String.format("%s %s", currentProfile.getUserFirstName(), currentProfile.getUserLastName()));
+        name.setText(String.format("%s %s", currentProfile.getFirstName(), currentProfile.getLastName()));
 
         return listItem;
     }

@@ -5,7 +5,7 @@ public class AdapterProfile {
 
     private static String profileName;
     private static String listInterests;
-    Profile profile = new Profile();
+
 
     public String getProfileName() {
         return profileName;

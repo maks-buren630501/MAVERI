@@ -10,14 +10,6 @@ import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AdapterMainMenu {
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private String userId = mAuth.getCurrentUser().getUid();
-
-
-    public void getUserInfo() {
-        DatabaseProfile databaseProfile = new DatabaseProfile();
-        databaseProfile.getUserInfo(userId);
-    }
 
     protected static void startActivityFriendList(Context context) {
         Intent intent_friend = new Intent(context, ActivityFriendList.class);
