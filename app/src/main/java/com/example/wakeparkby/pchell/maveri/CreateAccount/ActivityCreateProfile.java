@@ -55,13 +55,7 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
         editTextSecond = (EditText) findViewById(R.id.editTextSecond);
         editTextAge = (EditText) findViewById(R.id.editTextAge);
 
-/*
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        tabLayout.setupWithViewPager(viewPager);
-*/
         getInterestMain();
         adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_multiple_choice,interests );
         listMain = findViewById(R.id.list1);
@@ -85,21 +79,11 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
 
     }
 
-  /*  private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new String(), "People");
-        adapter.addFragment(new String(), "Group");
-        adapter.addFragment(new String(), "Calls");
-        viewPager.setAdapter(adapter);
-    }*/
-
-
 
     private void getInterestMain(){
 
         for( int i = 0; i <= changeToArray.GetStsring(0).length - 1; i++) {
-           // Interest interest = new Interest(changeToArray.GetStsring(0)[i]);
-            interests.add(changeToArray.GetStsring(0)[i]);
+           interests.add(changeToArray.GetStsring(0)[i]);
        }
 
 
@@ -110,9 +94,9 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
         firstName = String.valueOf(editTextName.getText());
         lastName = String.valueOf(editTextSecond.getText());
         age = String.valueOf(editTextAge.getText());
-        DatabaseProfile databaseProfile = new DatabaseProfile();
-        databaseProfile.newProfile(userKey ,firstName,lastName,age,interestString);
         Toast.makeText(ActivityCreateProfile.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
         AdapterCreateProfile.startActivitySignIn(this);
+        AdapterCreateProfile adapterCreateProfile = new AdapterCreateProfile(userKey,firstName,lastName,age,interestString);
+
     }
 }

@@ -15,11 +15,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Delayed;
 
 public class DatabaseProfile {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefProfile;
-    private static String userId;
+    private String userId;
     private String firstName;
     private String lastName;
     private String age;
@@ -82,11 +83,14 @@ public class DatabaseProfile {
     }
 
     public void getUserInfo(String userId) {
+
+
+
         this.userId = userId;
         myRefProfile = database.getReference("Users"+"/" + userId );
         myRefProfile.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot giveSeasonTicketDS) {
+                public void onDataChange(@NonNull DataSnapshot giveSeasonTicketDS) {
                 firstName = String.valueOf(giveSeasonTicketDS.child("FirstName").getValue());
                 lastName = String.valueOf(giveSeasonTicketDS.child("LastName").getValue());
                 age = String.valueOf(giveSeasonTicketDS.child("Age").getValue());
@@ -96,16 +100,16 @@ public class DatabaseProfile {
                 AdapterProfile adapterProfile = new AdapterProfile();
                 adapterProfile.setListInterests(listInterests);
                 adapterProfile.setProfileName(profileName);
-                Profile profile = new Profile(firstName, lastName, age, sex,listInterests);
-                //Friends.add("Ghbdtn");
                 getListFriends();
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
     }
 
     public void getListFriends(){
@@ -164,5 +168,10 @@ public class DatabaseProfile {
         myRefProfile.child("Age").setValue(age);
         myRefProfile.child("Interests").setValue(interests);
         myRefProfile.child("Sex").setValue("M");
+    }
+
+    public Profile getProfile(String userId){
+        this.getUserInfo(userId);
+        return new Profile(this.userId,this.firstName,this.lastName,this.age,this.sex,this.listInterests);
     }
 }
