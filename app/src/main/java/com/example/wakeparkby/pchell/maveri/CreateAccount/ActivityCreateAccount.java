@@ -59,7 +59,7 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
                             String userKey = mAuth.getCurrentUser().getUid();
                             ActivityCreateProfile activityCreateProfile = new ActivityCreateProfile();
                             activityCreateProfile.setUserKey(userKey);
-                            //AdapterCreateAccount.startActivityCreateProfile(this);
+                            startActivityCreateProfile();
                         } else {
                             Toast.makeText(ActivityCreateAccount.this, "Регистрация провалена", Toast.LENGTH_SHORT).show();
                         }
@@ -70,6 +70,10 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
                     }
 
                 });
+    }
+
+    private void startActivityCreateProfile() {
+        AdapterCreateAccount.startActivityCreateProfile(this);
     }
 }
 
