@@ -86,8 +86,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         if (task.isSuccessful()) {
                             if (user.isEmailVerified() == true) {
                                 Toast.makeText(ActivitySignIn.this, "Авторизация успешна", Toast.LENGTH_SHORT).show();
-                                AdapterSignIn adapterSignIn = new AdapterSignIn();
-                                adapterSignIn.startActivityMainMenu();
+                                startActivityMainMenu();
                             }
                             //Проверка подтверждения аккаунта (почта Gmail)
                             if (user.isEmailVerified() == false) {
@@ -98,5 +97,9 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
+    }
+
+    private void startActivityMainMenu() {
+        AdapterSignIn.startActivityMainMenu(this);
     }
 }

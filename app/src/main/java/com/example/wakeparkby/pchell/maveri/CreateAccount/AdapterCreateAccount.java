@@ -1,12 +1,14 @@
 package com.example.wakeparkby.pchell.maveri.CreateAccount;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
-public class AdapterCreateAccount extends Activity {
+import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
 
-    protected void startActivityCreateProfile() {
-        Intent intent_CreateAccountInfo= new Intent(this, ActivityCreateProfile.class);
-        startActivity(intent_CreateAccountInfo);
+public class AdapterCreateAccount {
+    protected static void startActivityCreateProfile(Context context) {
+        Intent intent_CreateAccountInfo = new Intent(context, ActivityCreateProfile.class);
+        context.startActivity(intent_CreateAccountInfo);
     }
 }

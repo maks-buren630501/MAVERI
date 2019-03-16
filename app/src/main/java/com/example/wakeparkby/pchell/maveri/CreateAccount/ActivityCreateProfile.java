@@ -113,7 +113,6 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
         DatabaseProfile databaseProfile = new DatabaseProfile();
         databaseProfile.newProfile(userKey ,firstName,lastName,age,interestString);
         Toast.makeText(ActivityCreateProfile.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
-        AdapterCreateProfile adapterCreateProfile = new AdapterCreateProfile();
-        adapterCreateProfile.startActivitySignIn();
+        AdapterCreateProfile.startActivitySignIn(this);
     }
 }

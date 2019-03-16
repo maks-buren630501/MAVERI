@@ -88,8 +88,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             }
 
             case R.id.placeButton: {
-                AdapterChat adapterChat = new AdapterChat();
-                adapterChat.startActivityLocationSelection();
+                AdapterChat.startActivityLocationSelection(this);
                 break;
             }
         }

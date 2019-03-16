@@ -52,8 +52,7 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
                 break;
             }
             case R.id.monbutfriendinfo:{
-                AdapterProfileFriend adapterProfileFriend = new AdapterProfileFriend(userKey);
-                adapterProfileFriend.startActivityChat();
+                AdapterProfileFriend.startActivityChat(this);
             }
         }
     }

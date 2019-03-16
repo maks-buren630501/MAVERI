@@ -100,8 +100,7 @@ public class ActivityMainMenu extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.friends) {
-            AdapterMainMenu adapterMainMenu = new AdapterMainMenu();
-            adapterMainMenu.startActivityFriendList();
+            AdapterMainMenu.startActivityFriendList(this);
         } else if (id == R.id.calendar) {
 
         } else if (id == R.id.message) {
@@ -124,8 +123,7 @@ public class ActivityMainMenu extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.profile:{
-                Intent intent = new Intent(this, ActivityProfile.class);
-                startActivity(intent);
+                AdapterMainMenu.startActivityProfile(this);
                 break;
             }
         }

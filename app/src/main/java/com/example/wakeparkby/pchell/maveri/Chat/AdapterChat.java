@@ -1,14 +1,16 @@
 package com.example.wakeparkby.pchell.maveri.Chat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.wakeparkby.pchell.maveri.LocationSelection.ActivityLocationSelection;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
+import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-public class AdapterChat extends AppCompatActivity {
+public class AdapterChat {
 
     private String userKey;
     private String userId;
@@ -44,8 +46,8 @@ public class AdapterChat extends AppCompatActivity {
         listMessage.sendMessage(profile.getFirstName(),time ,messageText);
     }
 
-    protected void startActivityLocationSelection() {
-        Intent intent_selectPlace = new Intent(this, ActivityLocationSelection.class);
-        startActivity(intent_selectPlace);
+    protected static void startActivityLocationSelection(Context context) {
+        Intent intent_selectPlace = new Intent(context, ActivityLocationSelection.class);
+        context.startActivity(intent_selectPlace);
     }
 }

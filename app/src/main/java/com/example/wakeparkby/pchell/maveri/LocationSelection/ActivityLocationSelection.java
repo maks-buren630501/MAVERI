@@ -22,7 +22,6 @@ public class ActivityLocationSelection extends AppCompatActivity implements View
 
     @Override
     public void onClick(View v) {
-        AdapterLocationSelection adapterLocationSelection = new AdapterLocationSelection();
-        adapterLocationSelection.startActivityDateSelection();
+        AdapterLocationSelection.startActivityDateSelection(this);
     }
 }

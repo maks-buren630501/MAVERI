@@ -31,7 +31,6 @@ public class ActivityDateSelection extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        AdapterDateSelection adapterDateSelection = new AdapterDateSelection();
-        adapterDateSelection.startActivityTimeSelection();
+        AdapterDateSelection.startActivityTimeSelection(this);
     }
 }
