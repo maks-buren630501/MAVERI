@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
 import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.CreateAccount.ActivityCreateAccount;
 import com.example.wakeparkby.pchell.maveri.R;
@@ -84,8 +86,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         if (task.isSuccessful()) {
                             if (user.isEmailVerified() == true) {
                                 Toast.makeText(ActivitySignIn.this, "Авторизация успешна", Toast.LENGTH_SHORT).show();
-                                Intent intent_Main_Menu = new Intent(ActivitySignIn.this, ActivityMainMenu.class);
-                                startActivity(intent_Main_Menu);
+                                startActivityMainMenu();
                             }
                             //Проверка подтверждения аккаунта (почта Gmail)
                             if (user.isEmailVerified() == false) {
@@ -96,5 +97,9 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
+    }
+
+    private void startActivityMainMenu() {
+        AdapterSignIn.startActivityMainMenu(this);
     }
 }

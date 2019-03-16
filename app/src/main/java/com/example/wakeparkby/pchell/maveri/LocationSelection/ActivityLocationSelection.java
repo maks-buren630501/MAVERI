@@ -22,7 +22,6 @@ public class ActivityLocationSelection extends AppCompatActivity implements View
 
     @Override
     public void onClick(View v) {
-        Intent intent_DataSelection = new Intent(this,ActivityDateSelection.class);
-        startActivity(intent_DataSelection);
+        AdapterLocationSelection.startActivityDateSelection(this);
     }
 }

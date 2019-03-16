@@ -96,11 +96,11 @@ public class ActivityMainMenu extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Intent intent_friend = new Intent(this, ActivityFriendList.class);
+
         int id = item.getItemId();
 
         if (id == R.id.friends) {
-            startActivity(intent_friend);
+            AdapterMainMenu.startActivityFriendList(this);
         } else if (id == R.id.calendar) {
 
         } else if (id == R.id.message) {
@@ -123,8 +123,7 @@ public class ActivityMainMenu extends AppCompatActivity
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.profile:{
-                Intent intent = new Intent(this, ActivityProfile.class);
-                startActivity(intent);
+                AdapterMainMenu.startActivityProfile(this);
                 break;
             }
         }
