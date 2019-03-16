@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ActivitySignIn extends AppCompatActivity implements View.OnClickListener {
+    AdapterSignIn adapterSignIn = new AdapterSignIn();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -86,6 +87,8 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         if (task.isSuccessful()) {
                             if (user.isEmailVerified() == true) {
                                 Toast.makeText(ActivitySignIn.this, "Авторизация успешна", Toast.LENGTH_SHORT).show();
+                                adapterSignIn.getUserInfo(mAuth.getUid());
+
                                 startActivityMainMenu();
                             }
                             //Проверка подтверждения аккаунта (почта Gmail)

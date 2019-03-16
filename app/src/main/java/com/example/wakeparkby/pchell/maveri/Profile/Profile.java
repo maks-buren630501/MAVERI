@@ -11,11 +11,13 @@ import java.util.List;
  * this class for encapsulate info about profile
  */
 public class Profile {
+    /*
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private String userId = mAuth.getCurrentUser().getUid();
+    */
+
+
     private static String userKey;
-
-
     private static String firstName;
     private String lastName;
     private String age;
@@ -57,7 +59,7 @@ public class Profile {
     }
 
     public String getUserId() {
-        return userId;
+        return userKey;
     }
 
     public String getListInterests() {
