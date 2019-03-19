@@ -18,9 +18,9 @@ public class AdapterChat {
 
 
     public void getListMessage(){
-        Profile profile = new Profile();
-        this.userId = profile.getUserId();
-        this.userKey = profile.getUserKey();
+       // Profile profile = new Profile();
+       // this.userId = profile.getUserId();
+      //  this.userKey = profile.getUserKey();
         if (userKey.hashCode() > userId.hashCode()) {
             groupId = userKey.concat(userId);
         } else if (userId.hashCode() > userKey.hashCode()) {
@@ -40,10 +40,10 @@ public class AdapterChat {
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.MM.yyyy(E) hh:mm:ss");
         String time = formatForDateNow.format(dateNow);
-        Profile profile = new Profile();
-        profile.getFirstName();
+      //  Profile profile = new Profile();
+     //   profile.getFirstName();
         ListMessage listMessage = new ListMessage();
-        listMessage.sendMessage(profile.getFirstName(),time ,messageText);
+    //    listMessage.sendMessage(profile.getFirstName(),time ,messageText);
     }
 
     protected static void startActivityLocationSelection(Context context) {

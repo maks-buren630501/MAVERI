@@ -22,7 +22,6 @@
         <activity android:name=".MainMenu.ActivityMainMenu"/>
         <activity android:name=".Profile.ActivityProfileFriend"/>
         <activity android:name=".Profile.ActivityProfile"/>
-        <activity android:name=".Time.DataSelector"/>
         <activity android:name=".LocationSelection.ActivityLocationSelection"/>
         <activity android:name=".LocationSelection.ActivityDateSelection"/>
         <activity android:name=".LocationSelection.ActivityTimeSelection"/>

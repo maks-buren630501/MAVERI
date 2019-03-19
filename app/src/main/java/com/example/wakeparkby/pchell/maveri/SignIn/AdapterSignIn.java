@@ -14,9 +14,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AdapterSignIn {
-    Profile profile;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private String userId = mAuth.getCurrentUser().getUid();
+    Profile profile;
+
 
 
     public void getUserInfo(String userId) {

@@ -23,9 +23,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ActivitySignIn extends AppCompatActivity implements View.OnClickListener {
-    AdapterSignIn adapterSignIn = new AdapterSignIn();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    AdapterSignIn adapterSignIn = new AdapterSignIn();
+
 
     private EditText etEmail;
     private EditText etPassword;
