@@ -1,7 +1,6 @@
 package com.example.wakeparkby.pchell.maveri.Profile;
 
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
-import com.example.wakeparkby.pchell.maveri.Meeting.ListMeeting;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -11,12 +10,11 @@ import java.util.List;
 /**
  * this class for encapsulate info about profile
  */
-public class Profile {
+public class ProfileFriend {
     /*
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private String userId = mAuth.getCurrentUser().getUid();
     */
-    private static Profile instance;
 
     private static String userKey;
     private static String firstName;
@@ -24,31 +22,10 @@ public class Profile {
     private String age;
     private String sex;
     private String listInterests;
-    private ListMeeting listMeeting = new ListMeeting();
-
-
-    public static Profile getInstance(){
-        if(instance == null){		//если объект еще не создан
-            instance = new Profile();	//создать новый пустой объект
-        }
-        return instance;
-    }
-
-    public static Profile getInstanceWithParam(String id,String firstName,String lastName,String age,String sex,String listInterests) {
-        if(instance == null){		//если объект еще не создан
-            instance = new Profile(id,firstName,lastName,age,sex,listInterests);	//создать новый объект
-        }
-        return instance;
-    }
 
 
 
-    private Profile(){
-
-    }
-
-
-   private Profile(String id,String firstName,String lastName,String age,String sex,String listInterests) {
+    public ProfileFriend(String id,String firstName,String lastName,String age,String sex,String listInterests) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -57,7 +34,7 @@ public class Profile {
         this.userKey = id;
     }
 
-    private Profile(String firstName, String lastName, String age, String sex, String listInterests) {
+    public ProfileFriend(String firstName, String lastName, String age, String sex, String listInterests) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -85,12 +62,12 @@ public class Profile {
         return listInterests;
     }
 
-    public String getUserKey() {
-        return userKey;
+    public ProfileFriend(String userKey) {
+        this.userKey = userKey;
     }
 
-    public ListMeeting getListMeeting(){
-        return this.listMeeting;
+    public String getUserKey() {
+        return userKey;
     }
 
 
