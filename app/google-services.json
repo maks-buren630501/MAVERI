@@ -23,14 +23,6 @@
           }
         },
         {
-          "client_id": "1004503642695-jejg7d8l1rpifrc0s2v4766k3gtv98ag.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.wakeparkby.pchell.maveri",
-            "certificate_hash": "efd2157e5873a0e4e9c3ba582acdc9f470951601"
-          }
-        },
-        {
           "client_id": "1004503642695-c31c1lspleisfudhrrdk3j12pghapt7v.apps.googleusercontent.com",
           "client_type": 3
         }
