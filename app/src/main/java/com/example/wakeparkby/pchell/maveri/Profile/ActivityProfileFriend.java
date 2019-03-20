@@ -22,7 +22,7 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
     TextView name;
     TextView interest;
     //ArrayList<String> Spisok;
-    private String userKey ;//"RE1nc7WIxKRS3fDGOOPtnw1PA9b2";
+    private String userKey ;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +36,10 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
         chat=findViewById(R.id.monbutfriendinfo);
         chat.setOnClickListener(this);
         //Spisok.add("Хоккей");
-        Profile profile = new Profile();
-        name.setText(String.format("%s %s", profile.getUserFirstName(), profile.getUserLastName()));
-        interest.setText(profile.getUserListInterests());
-        userKey = profile.getUserKey();
+       // Profile profile = new Profile();
+       // name.setText(String.format("%s %s", profile.getUserFirstName(), profile.getUserLastName()));
+       // interest.setText(profile.getUserListInterests());
+      //  userKey = profile.getUserKey();
         //interest.setText( Spisok.get(Spisok.size() - 1));
     }
 

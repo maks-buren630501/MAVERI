@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.wakeparkby.pchell.maveri.ActivityMaps;
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
@@ -21,4 +22,8 @@ public class AdapterMainMenu {
         context.startActivity(intent_profile);
     }
 
+    public static void startActivityMaps(Context context) {
+        Intent intent_maps = new Intent(context, ActivityMaps.class);
+        context.startActivity(intent_maps);
+    }
 }
