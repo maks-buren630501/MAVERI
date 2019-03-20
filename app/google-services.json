@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1004503642695",
+    "firebase_url": "https://maveri-16ed5.firebaseio.com",
+    "project_id": "maveri-16ed5",
+    "storage_bucket": "maveri-16ed5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004503642695:android:ded6743ad7734936",
+        "android_client_info": {
+          "package_name": "com.example.wakeparkby.pchell.maveri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004503642695-ihgtk93invgfporpt23tbq98t38ba3rm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wakeparkby.pchell.maveri",
+            "certificate_hash": "9eec19bb439eaf98bfeea4c0905102e41530bb1b"
+          }
+        },
+        {
+          "client_id": "1004503642695-c31c1lspleisfudhrrdk3j12pghapt7v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDowcgQsM6A4YhWW6dva70YCIaD8G8LmgU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004503642695-c31c1lspleisfudhrrdk3j12pghapt7v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
