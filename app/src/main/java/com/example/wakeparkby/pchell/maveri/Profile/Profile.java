@@ -1,6 +1,7 @@
 package com.example.wakeparkby.pchell.maveri.Profile;
 
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
+import com.example.wakeparkby.pchell.maveri.Meeting.ListMeeting;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class Profile {
     private String age;
     private String sex;
     private String listInterests;
+    private ListMeeting listMeeting = new ListMeeting();
 
 
     public static Profile getInstance(){
@@ -79,12 +81,16 @@ public class Profile {
         return sex;
     }
 
-   public String getListInterests() {
+    public String getListInterests() {
         return listInterests;
     }
 
     public String getUserKey() {
         return userKey;
+    }
+
+    public ListMeeting getListMeeting(){
+        return this.listMeeting;
     }
 
 
