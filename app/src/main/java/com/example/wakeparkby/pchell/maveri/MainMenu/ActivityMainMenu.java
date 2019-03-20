@@ -83,7 +83,7 @@ public class ActivityMainMenu extends AppCompatActivity
         if (id == R.id.friends) {
             AdapterMainMenu.startActivityFriendList(this);
         } else if (id == R.id.calendar) {
-
+            AdapterMainMenu.startActivityMaps(this);
         } else if (id == R.id.message) {
 
 
