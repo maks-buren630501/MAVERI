@@ -86,14 +86,13 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            if (user.isEmailVerified() == true) {
+                            if (user.isEmailVerified()) {
                                 Toast.makeText(ActivitySignIn.this, "Авторизация успешна", Toast.LENGTH_SHORT).show();
-                                adapterSignIn.getUserInfo(mAuth.getUid());
-
+                                adapterSignIn.loadUserInfo(mAuth.getUid());
                                 startActivityMainMenu();
                             }
                             //Проверка подтверждения аккаунта (почта Gmail)
-                            if (user.isEmailVerified() == false) {
+                            if (!user.isEmailVerified()) {
                                 Toast.makeText(ActivitySignIn.this, "Нет подтверждения", Toast.LENGTH_SHORT).show();
                             }
                         } else {

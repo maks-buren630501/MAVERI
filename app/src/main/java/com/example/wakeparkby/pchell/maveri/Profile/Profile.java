@@ -18,8 +18,8 @@ public class Profile {
     */
     private static Profile instance;
 
-    private static String userKey;
-    private static String firstName;
+    private String userKey;
+    private String firstName;
     private String lastName;
     private String age;
     private String sex;
