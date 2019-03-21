@@ -48,7 +48,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         sendButton = findViewById(R.id.sendButton);
         messageArea = findViewById(R.id.messageArea);
         sendButton.setOnClickListener(this);
-        adapterChat.getListMessage(profile.getUserKey(),);
+        // adapterChat.getListMessage(profile.getUserKey(),);
         groupId = adapterChat.getGroupId();
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);

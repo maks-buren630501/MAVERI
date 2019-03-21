@@ -38,7 +38,7 @@ public class FriendListFragment extends ListFragment {
         //
         //        profiles.add(new Profile("Slava"," GoldFish"));
         AdapterFriendList adapterFriendList=new AdapterFriendList();
-        profiles=adapterFriendList.getFriends();
+     //   profiles=adapterFriendList.getFriends();
         arrayAdapter = new AdapterFriendArray(getActivity(), profiles);
         setListAdapter(arrayAdapter);
         View view = inflater.inflate(R.layout.listfragment, container, false);

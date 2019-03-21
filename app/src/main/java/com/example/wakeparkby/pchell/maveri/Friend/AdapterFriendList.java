@@ -16,7 +16,7 @@ public class AdapterFriendList  {
     AdapterFriendList()
     {
         DatabaseProfile databaseProfile = new DatabaseProfile();
-      //databaseProfile.getListFriends();
+      //databaseProfile.loadListFriends();
         friends = databaseProfile.getFriends();
     }
 

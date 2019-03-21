@@ -14,15 +14,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AdapterSignIn {
-    //private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    //private String userId = mAuth.getCurrentUser().getUid();
     Profile profile;
 
+    public  AdapterSignIn(){};
+    public AdapterSignIn(String userId, String firstName, String lastName, String age, String sex, String listInterests) {
+        profile.getInstanceWithParam(userId, firstName, lastName, age, sex, listInterests);
+    }
 
 
-    public void getUserInfo(String userId) {
+    public void loadUserInfo(String userId) {
         DatabaseProfile databaseProfile = new DatabaseProfile();
-        profile = databaseProfile.getProfile(userId);
+        databaseProfile.loadUserInfo(userId);
     }
 
 

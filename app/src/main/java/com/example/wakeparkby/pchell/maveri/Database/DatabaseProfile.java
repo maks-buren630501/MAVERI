@@ -1,13 +1,11 @@
 package com.example.wakeparkby.pchell.maveri.Database;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
-import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
-import com.example.wakeparkby.pchell.maveri.Profile.AdapterProfile;
-import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.Profile.ProfileFriend;
+import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
+import com.example.wakeparkby.pchell.maveri.SignIn.AdapterSignIn;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -16,7 +14,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Delayed;
 
 public class DatabaseProfile {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -83,25 +80,18 @@ public class DatabaseProfile {
         });
     }
 
-    public void getUserInfo(String userId) {
-
-
-
+    public void loadUserInfo(final String userId) {
         this.userId = userId;
         myRefProfile = database.getReference("Users"+"/" + userId );
         myRefProfile.addValueEventListener(new ValueEventListener() {
             @Override
-                public void onDataChange(@NonNull DataSnapshot giveSeasonTicketDS) {
+                public void onDataChange( DataSnapshot giveSeasonTicketDS) {
                 firstName = String.valueOf(giveSeasonTicketDS.child("FirstName").getValue());
                 lastName = String.valueOf(giveSeasonTicketDS.child("LastName").getValue());
                 age = String.valueOf(giveSeasonTicketDS.child("Age").getValue());
                 sex = String.valueOf(giveSeasonTicketDS.child("Sex").getValue());
                 listInterests = String.valueOf(giveSeasonTicketDS.child("Interests").getValue());
-                String profileName = firstName + " " + lastName;
-                AdapterProfile adapterProfile = new AdapterProfile();
-                adapterProfile.setListInterests(listInterests);
-                adapterProfile.setProfileName(profileName);
-                getListFriends();
+                loadListFriends();
             }
 
 
@@ -110,10 +100,9 @@ public class DatabaseProfile {
 
             }
         });
-
     }
 
-    public void getListFriends(){
+    public void loadListFriends(){
 
         myRefProfile = database.getReference("Users"+"/" + userId + "/Friends");
         myRefProfile.addValueEventListener(new ValueEventListener() {
@@ -135,10 +124,9 @@ public class DatabaseProfile {
                             age = String.valueOf(getInfoFriendsDS.child("Age").getValue());
                             sex = String.valueOf(getInfoFriendsDS.child("Sex").getValue());
                             listInterests = String.valueOf(getInfoFriendsDS.child("Interests").getValue());
-                            ProfileFriend profile=new ProfileFriend(id,firstName,lastName,age,sex,listInterests);
-
-                            Friends.add(profile);
-
+                            ProfileFriend profileFriend=new ProfileFriend(id,firstName,lastName,age,sex,listInterests);
+                            Friends.add(profileFriend);
+                            AdapterSignIn adapterSignIn = new AdapterSignIn(userId, firstName,lastName,age, sex, listInterests);
                         }
 
                         @Override
@@ -171,8 +159,5 @@ public class DatabaseProfile {
         myRefProfile.child("Sex").setValue("M");
     }
 
-    public Profile getProfile(String userId){
-        this.getUserInfo(userId);
-        return Profile.getInstanceWithParam(this.userId,this.firstName,this.lastName,this.age,this.sex,this.listInterests);
-    }
+
 }

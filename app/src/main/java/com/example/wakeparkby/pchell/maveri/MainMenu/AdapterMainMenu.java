@@ -3,10 +3,9 @@ package com.example.wakeparkby.pchell.maveri.MainMenu;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-
-import com.example.wakeparkby.pchell.maveri.ActivityMaps;
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
+import com.example.wakeparkby.pchell.maveri.Meeting.ActivityMaps;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 import com.google.firebase.auth.FirebaseAuth;
 

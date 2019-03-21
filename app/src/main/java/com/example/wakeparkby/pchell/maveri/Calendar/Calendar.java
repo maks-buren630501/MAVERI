@@ -1,6 +1,7 @@
 package com.example.wakeparkby.pchell.maveri.Calendar;
 
-import com.example.wakeparkby.pchell.maveri.Meeting;
+
+import com.example.wakeparkby.pchell.maveri.Meeting.Meeting;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,5 +1,7 @@
 package com.example.wakeparkby.pchell.maveri.Meeting;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.sql.Time;
 import java.util.Date;
 
