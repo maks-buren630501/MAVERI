@@ -13,13 +13,19 @@ public class AdapterFriendList  {
     ArrayList<ProfileFriend> getFriends() {
         return friends;
     }
-    AdapterFriendList()
+    public AdapterFriendList()
     {
-        DatabaseProfile databaseProfile = new DatabaseProfile();
+
+      //  DatabaseProfile databaseProfile = new DatabaseProfile();
       //databaseProfile.loadListFriends();
-        friends = databaseProfile.getFriends();
+      //  friends = databaseProfile.getFriends();
     }
 
 
-
+    public void add(ProfileFriend profileFriend) {
+        this.friends.add(profileFriend);
+    }
+    public ProfileFriend getProfileFriend(int id){
+        return this.friends.get(id);
+    }
 }

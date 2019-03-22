@@ -56,25 +56,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     }
 
     private void refreshList() {
-        myRefMeessage = database.getReference("Messages" + "/" + groupId + "/");
-        myRefMeessage.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot chatDS) {
-                /// изменить
-                final List<String> chatList = new ArrayList<>();
-                for (DataSnapshot data : chatDS.getChildren())
-                    chatList.add(String.valueOf(data.getValue()));
-                ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
-                        android.R.layout.simple_list_item_1,
-                        chatList.toArray(new String[chatList.size()]));
-                listViewChat.setAdapter(chatAdapter);
-            }
 
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
     }
 
 

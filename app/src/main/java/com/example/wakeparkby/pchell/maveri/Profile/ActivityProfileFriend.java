@@ -17,12 +17,16 @@ import java.util.ArrayList;
 public class ActivityProfileFriend extends AppCompatActivity implements View.OnClickListener{
 
 
-    ImageButton imageButtonBack;
     Button chat;
     TextView name;
     TextView interest;
     //ArrayList<String> Spisok;
-    private String userKey ;
+   // private String userKey ;
+    AdapterProfileFriend adapterProfileFriend;
+
+    public ActivityProfileFriend(AdapterProfileFriend adapterProfileFriend) {
+        this.adapterProfileFriend = adapterProfileFriend;
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,28 +35,19 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
         name=findViewById(R.id.namefriendinfo);
         interest=findViewById(R.id.infintfriendinfo);
         //Spisok=new ArrayList<>();
-        imageButtonBack=findViewById(R.id.iButtonBackfriendinfo);
-        imageButtonBack.setOnClickListener(this);
         chat=findViewById(R.id.monbutfriendinfo);
         chat.setOnClickListener(this);
-        //Spisok.add("Хоккей");
-       // Profile profile = new Profile();
-       // name.setText(String.format("%s %s", profile.getUserFirstName(), profile.getUserLastName()));
-       // interest.setText(profile.getUserListInterests());
-      //  userKey = profile.getUserKey();
-        //interest.setText( Spisok.get(Spisok.size() - 1));
+        name.setText(String.format("%s %s", adapterProfileFriend.getUserFirstName(), adapterProfileFriend.getUserLastName()));
+        interest.setText(adapterProfileFriend.getUserListInterests());
+        //userKey = adapterProfileFriend.getUserKey();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.iButtonBackfriendinfo:{
-                Intent intent_MainMenu = new Intent(this, ActivityMainMenu.class);
-                startActivity(intent_MainMenu);
-                break;
-            }
             case R.id.monbutfriendinfo:{
-                AdapterProfileFriend.startActivityChat(this);
+
+                adapterProfileFriend.startActivityChat(this);
             }
         }
     }
