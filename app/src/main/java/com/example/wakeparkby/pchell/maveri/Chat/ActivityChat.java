@@ -25,8 +25,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class ActivityChat extends AppCompatActivity implements View.OnClickListener {
+public class ActivityChat extends AppCompatActivity implements View.OnClickListener, Observer {
     AdapterChat adapterChat = Profile.getInstance().getAdapterChat();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
@@ -57,6 +59,11 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         refreshList();
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        this.refreshList();
+    }
+
     public void refreshList() {
         ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
                 android.R.layout.simple_list_item_1,
@@ -84,4 +91,6 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+
 }

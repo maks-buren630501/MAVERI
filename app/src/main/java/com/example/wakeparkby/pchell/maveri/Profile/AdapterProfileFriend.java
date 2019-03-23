@@ -29,8 +29,8 @@ public class AdapterProfileFriend  {
     protected void startActivityChat(Context context) {
 
         AdapterChat adapterChat = new AdapterChat(this.profileFriend.getUserKey(), Profile.getInstance().getUserKey());
-           // Intent intent_Chat = new Intent(context, ActivityChat.class);
-            //context.startActivity(intent_Chat);
+            Intent intent_Chat = new Intent(context, ActivityChat.class);
+            context.startActivity(intent_Chat);
 
     }
 

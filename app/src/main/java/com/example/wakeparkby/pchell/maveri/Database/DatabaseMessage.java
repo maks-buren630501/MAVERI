@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 
-public class DatabaseMessage{
+public class DatabaseMessage extends Observable{
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
     private String groupId;
@@ -36,8 +36,7 @@ public class DatabaseMessage{
                 for (DataSnapshot data : chatDS.getChildren())
                     chatList.add(String.valueOf(data.getValue()));
                 Profile.getInstance().setAdapterChat(new AdapterChat(groupId, new ListMessage(chatList)));
-
-
+                notifyObservers();
             }
 
 
