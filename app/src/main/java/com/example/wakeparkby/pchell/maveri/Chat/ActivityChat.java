@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityChat extends AppCompatActivity implements View.OnClickListener {
-    Profile profile = Profile.getInstance();
+    AdapterChat adapterChat = Profile.getInstance().getAdapterChat();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
     private ImageView sendButton;
@@ -37,8 +37,8 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private String groupId;
     private String userKey = "userKey";
     private String a;
-    private List<String> chatList = new ArrayList<>();
-    AdapterChat adapterChat = new AdapterChat();
+    private List<String> chatList = adapterChat.getListMessage().getMessages();
+    //AdapterChat adapterChat = new AdapterChat();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +49,21 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         messageArea = findViewById(R.id.messageArea);
         sendButton.setOnClickListener(this);
         // adapterChat.getListMessage(profile.getUserKey(),);
-        groupId = adapterChat.getGroupId();
+
+
+        //groupId = adapterChat.getGroupId();
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);
         refreshList();
     }
 
-    private void refreshList() {
-
+    public void refreshList() {
+        ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
+                android.R.layout.simple_list_item_1,
+                chatList.toArray(new String[chatList.size()]));
+        listViewChat.setAdapter(chatAdapter);
+        //ListMessage listMessage = new ListMessage();
+        //listMessage.setChatList(chatList);
     }
 
 

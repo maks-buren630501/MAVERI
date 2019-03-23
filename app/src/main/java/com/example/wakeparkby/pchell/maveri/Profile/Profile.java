@@ -31,29 +31,28 @@ public class Profile {
     AdapterChat adapterChat = new AdapterChat();
 
 
-    public static Profile getInstance(){
-        if(instance == null){		//если объект еще не создан
-            instance = new Profile();	//создать новый пустой объект
+    public static Profile getInstance() {
+        if (instance == null) {        //если объект еще не создан
+            instance = new Profile();    //создать новый пустой объект
         }
         return instance;
     }
 
     public static Profile getInstanceWithParam(String id, String firstName, String lastName, String age, String sex, String listInterests) {
-        if(instance == null){		//если объект еще не создан
-            instance = new Profile(id,firstName,lastName,age,sex,listInterests);	//создать новый объект
+        if (instance == null) {        //если объект еще не создан
+            instance = new Profile(id, firstName, lastName, age, sex, listInterests);    //создать новый объект
         }
         return instance;
     }
 
 
-
-    private Profile(){
+    private Profile() {
 
     }
 
 
-   private Profile(String id, String firstName, String lastName, String age, String sex, String listInterests) {
-       this.userKey = id;
+    private Profile(String id, String firstName, String lastName, String age, String sex, String listInterests) {
+        this.userKey = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -85,7 +84,7 @@ public class Profile {
         return userKey;
     }
 
-    public ListMeeting getListMeeting(){
+    public ListMeeting getListMeeting() {
         return this.listMeeting;
     }
 
@@ -97,7 +96,11 @@ public class Profile {
         this.adapterFriendList = friends;
     }
 
-    public void setAdapterChat(AdapterChat chat){
+    public void setAdapterChat(AdapterChat chat) {
         this.adapterChat = adapterChat;
+    }
+
+    public AdapterChat getAdapterChat() {
+        return this.adapterChat;
     }
 }

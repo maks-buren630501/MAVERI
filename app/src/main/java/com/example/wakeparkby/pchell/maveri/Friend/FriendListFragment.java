@@ -27,12 +27,12 @@ import java.util.PriorityQueue;
 public class FriendListFragment extends ListFragment {
     private AdapterFriendArray arrayAdapter;
     private ArrayList<ProfileFriend> profilesList;
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-      //  ArrayList<Profile> profiles=getArguments().getParcelable("ListProfiles");
         super.onActivityCreated(savedInstanceState);
 
-         }
+    }
 
 
     @Override
@@ -41,27 +41,29 @@ public class FriendListFragment extends ListFragment {
 
         Profile profile = Profile.getInstance();
         profilesList = profile.getAdapterFriendList().getFriends();
-      //  AdapterFriendList adapterFriendList=new AdapterFriendList();
-     //   profiles=adapterFriendList.getFriends();
         arrayAdapter = new AdapterFriendArray(getActivity(), profilesList);
         setListAdapter(arrayAdapter);
         View view = inflater.inflate(R.layout.listfragment, container, false);
         return view;
     }
-        //обработка нажатия на профиль
+
+    //обработка нажатия на профиль
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         ProfileFriend friend = profilesList.get(position);
         AdapterProfileFriend adapterProfileFriend = new AdapterProfileFriend(friend);
-       // super.onListItemClick(l, v, position, id);
-       //Toast.makeText(getActivity(), "Вы выбрали позицию: " + position, Toast.LENGTH_SHORT).show();
-        ActivityProfileFriend activityProfileFriend = new ActivityProfileFriend(adapterProfileFriend);
-        Intent intent_friendProfile = new Intent(FriendListFragment.this.getActivity(),ActivityProfileFriend.class);
-        //intent_friendProfile.putExtra("Id",profiles.get(position).getUserId());
+        Intent intent_friendProfile = new Intent(FriendListFragment.this.getActivity(), ActivityProfileFriend.class);
+        intent_friendProfile.putExtra("userFirstName", adapterProfileFriend.getUserFirstName());
+        intent_friendProfile.putExtra("userLastName", adapterProfileFriend.getUserLastName());
+        intent_friendProfile.putExtra("userListInterests", adapterProfileFriend.getUserListInterests());
+        intent_friendProfile.putExtra("userId", adapterProfileFriend.getUserId());
+        intent_friendProfile.putExtra("userAge", adapterProfileFriend.getUserAge());
+        intent_friendProfile.putExtra("userSex", adapterProfileFriend.getUserSex());
+
+
         startActivity(intent_friendProfile);
 
     }
-
 
 
 }

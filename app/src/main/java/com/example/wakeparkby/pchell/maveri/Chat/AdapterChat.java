@@ -13,11 +13,12 @@ import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 public class AdapterChat {
 
     private String groupId;
     ListMessage listMessage = new ListMessage();
-    DatabaseMessage databaseMessage = new DatabaseMessage();
+    //DatabaseMessage databaseMessage = new DatabaseMessage();
 
     public AdapterChat(String userKey, String userKey1) {
         if (userKey.hashCode() > userKey1.hashCode()) {
@@ -28,7 +29,11 @@ public class AdapterChat {
             groupId = userKey1.concat(userKey);
         }
         listMessage.setGroupId(groupId);
+    }
 
+    public AdapterChat(String groupId, ListMessage listMessage) {
+        this.groupId = groupId;
+        this.listMessage = listMessage;
     }
 
     public AdapterChat() {
@@ -38,18 +43,22 @@ public class AdapterChat {
         return groupId;
     }
 
-    public void sendMessage(String messageText){
+    public void sendMessage(String messageText) {
         Date dateNow = new Date();
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd.MM.yyyy(E) hh:mm:ss");
         String time = formatForDateNow.format(dateNow);
-      //  Profile profile = new Profile();
-     //   profile.getFirstName();
+        //  Profile profile = new Profile();
+        //   profile.getFirstName();
         ListMessage listMessage = new ListMessage();
-    //    listMessage.sendMessage(profile.getFirstName(),time ,messageText);
+        //    listMessage.sendMessage(profile.getFirstName(),time ,messageText);
     }
 
     protected static void startActivityLocationSelection(Context context) {
         Intent intent_selectPlace = new Intent(context, ActivityLocationSelection.class);
         context.startActivity(intent_selectPlace);
+    }
+
+    public ListMessage getListMessage() {
+        return listMessage;
     }
 }

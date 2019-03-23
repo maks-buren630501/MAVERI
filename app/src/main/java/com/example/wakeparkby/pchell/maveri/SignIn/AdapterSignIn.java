@@ -17,7 +17,11 @@ import com.google.firebase.auth.FirebaseAuth;
 public class AdapterSignIn {
     Profile profile;
 
-    public  AdapterSignIn(){};
+    public AdapterSignIn() {
+    }
+
+    ;
+
     public AdapterSignIn(String userId, String firstName, String lastName, String age, String sex, String listInterests) {
         profile.getInstanceWithParam(userId, firstName, lastName, age, sex, listInterests);
     }

@@ -5,7 +5,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
+import com.example.wakeparkby.pchell.maveri.Chat.AdapterChat;
 import com.example.wakeparkby.pchell.maveri.Chat.ListMessage;
+import com.example.wakeparkby.pchell.maveri.ObserverMessage;
+import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,14 +18,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
 
-public class DatabaseMessage {
+public class DatabaseMessage{
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
     private String groupId;
     private List<String> chatList = new ArrayList<>();
 
-    public void loadGroupMessage(String groupId) {
+    public void loadGroupMessage(final String groupId) {
         String str;
         this.groupId = groupId;
         myRefMeessage = database.getReference("Messages" + "/" + groupId + "/");
@@ -31,14 +35,10 @@ public class DatabaseMessage {
             public void onDataChange(@NonNull DataSnapshot chatDS) {
                 for (DataSnapshot data : chatDS.getChildren())
                     chatList.add(String.valueOf(data.getValue()));
-                /*ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
-                        android.R.layout.simple_list_item_1,
-                        chatList.toArray(new String[chatList.size()]));*/
-                //listViewChat.setAdapter(chatAdapter);
-                ListMessage listMessage = new ListMessage();
-                listMessage.setChatList(chatList);
-            }
+                Profile.getInstance().setAdapterChat(new AdapterChat(groupId, new ListMessage(chatList)));
 
+
+            }
 
 
             @Override
@@ -50,6 +50,6 @@ public class DatabaseMessage {
 
     public void sendMessage(String name, String time, String message) {
         myRefMeessage = database.getReference("Messages");
-        myRefMeessage.child(groupId).push().setValue(name + "       " +time + System.lineSeparator() + message);
+        myRefMeessage.child(groupId).push().setValue(name + "       " + time + System.lineSeparator() + message);
     }
 }

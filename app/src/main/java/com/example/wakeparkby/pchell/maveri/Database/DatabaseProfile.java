@@ -26,23 +26,11 @@ public class DatabaseProfile {
     private String age;
     private String sex;
     private String listInterests;
-    private String profileUserName;
-    private String profileUserLastName;
-    private String profileUserAge;
-    private String profileUserSex;
-    private AdapterFriendList friends =new AdapterFriendList();
+    private AdapterFriendList friends = new AdapterFriendList();
 
 
-    public DatabaseProfile(String listInterests , String id, String firstName, String lastName, String age, String sex) {
-        this.listInterests = listInterests;
-        this.userId = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.sex = sex;
-        SetProfileDatabase();
+    public DatabaseProfile() {
     }
-    public DatabaseProfile(){}
 
     private void SetProfileDatabase() {
         myRefProfile = database.getReference("/" + userId);
@@ -54,7 +42,7 @@ public class DatabaseProfile {
 
     }
 
-    private void GetProfileDatabase() {
+    /*private void GetProfileDatabase() {
         myRefProfile.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot userTasksDS) {
@@ -73,27 +61,26 @@ public class DatabaseProfile {
                         profileUserSex = String.valueOf(battle.getValue());
                     }
                 }
-                //ActivityProfile activityProfile = new ActivityProfile(profileUserName,profileUserLastName,profileUserAge,profileUserSex);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-    }
+    }*/
 
     public void loadUserInfo(final String userId) {
         this.userId = userId;
-        myRefProfile = database.getReference("Users"+"/" + userId );
+        myRefProfile = database.getReference("Users" + "/" + userId);
         myRefProfile.addValueEventListener(new ValueEventListener() {
             @Override
-                public void onDataChange( DataSnapshot giveSeasonTicketDS) {
+            public void onDataChange(DataSnapshot giveSeasonTicketDS) {
                 firstName = String.valueOf(giveSeasonTicketDS.child("FirstName").getValue());
                 lastName = String.valueOf(giveSeasonTicketDS.child("LastName").getValue());
                 age = String.valueOf(giveSeasonTicketDS.child("Age").getValue());
                 sex = String.valueOf(giveSeasonTicketDS.child("Sex").getValue());
                 listInterests = String.valueOf(giveSeasonTicketDS.child("Interests").getValue());
-                AdapterSignIn adapterSignIn = new AdapterSignIn(userId, firstName,lastName,age, sex, listInterests);
+                AdapterSignIn adapterSignIn = new AdapterSignIn(userId, firstName, lastName, age, sex, listInterests);
                 loadListFriends();
 
             }
@@ -106,41 +93,38 @@ public class DatabaseProfile {
         });
     }
 
-    public void loadListFriends(){
+    public void loadListFriends() {
 
-        myRefProfile = database.getReference("Users"+"/" + userId + "/Friends");
+        myRefProfile = database.getReference("Users" + "/" + userId + "/Friends");
         myRefProfile.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot getListFriendsDS) {
                 final List<String> friendsList = new ArrayList<>();
                 for (DataSnapshot data : getListFriendsDS.getChildren())
                     friendsList.add(String.valueOf(data.getKey()));
-                //Friends.clear();
-
-                    myRefProfile = database.getReference("Users"+"/");
-                    myRefProfile.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot getInfoFriendsDS) {
-                            for (int i = 0 ; i< friendsList.size();i++) {
-                                final String id = friendsList.get(i);
-                                firstName = String.valueOf(getInfoFriendsDS.child(id).child("FirstName").getValue());
-                                lastName = String.valueOf(getInfoFriendsDS.child(id).child("LastName").getValue());
-                                age = String.valueOf(getInfoFriendsDS.child(id).child("Age").getValue());
-                                sex = String.valueOf(getInfoFriendsDS.child(id).child("Sex").getValue());
-                                listInterests = String.valueOf(getInfoFriendsDS.child(id).child("Interests").getValue());
-                                ProfileFriend profileFriend=new ProfileFriend(id,firstName,lastName,age,sex,listInterests);
-                                friends.add(profileFriend);
-                            }
-                            Profile profile = Profile.getInstance();
-                            profile.setFriendList(friends);
+                myRefProfile = database.getReference("Users" + "/");
+                myRefProfile.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot getInfoFriendsDS) {
+                        for (int i = 0; i < friendsList.size(); i++) {
+                            final String id = friendsList.get(i);
+                            firstName = String.valueOf(getInfoFriendsDS.child(id).child("FirstName").getValue());
+                            lastName = String.valueOf(getInfoFriendsDS.child(id).child("LastName").getValue());
+                            age = String.valueOf(getInfoFriendsDS.child(id).child("Age").getValue());
+                            sex = String.valueOf(getInfoFriendsDS.child(id).child("Sex").getValue());
+                            listInterests = String.valueOf(getInfoFriendsDS.child(id).child("Interests").getValue());
+                            ProfileFriend profileFriend = new ProfileFriend(id, firstName, lastName, age, sex, listInterests);
+                            friends.add(profileFriend);
                         }
+                        Profile profile = Profile.getInstance();
+                        profile.setFriendList(friends);
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                        }
-                    });
-
+                    }
+                });
 
 
             }
@@ -152,8 +136,8 @@ public class DatabaseProfile {
         });
     }
 
-    public void newProfile(String userKey, String firstName, String lastName, String age, String interests){
-    myRefProfile = database.getReference("Users"+"/" + userKey );
+    public void newProfile(String userKey, String firstName, String lastName, String age, String interests) {
+        myRefProfile = database.getReference("Users" + "/" + userKey);
         myRefProfile.child("FirstName").setValue(firstName);
         myRefProfile.child("LastName").setValue(lastName);
         myRefProfile.child("Age").setValue(age);
@@ -161,23 +145,4 @@ public class DatabaseProfile {
         myRefProfile.child("Sex").setValue("M");
     }
 
-
 }
-
-
-
-/*for (int i = 0 ; i< friendsList.size();i++){
-final String id = friendsList.get(i);
-        myRefProfile = database.getReference("Users"+"/" + id);
-        myRefProfile.addValueEventListener(new ValueEventListener() {
-@Override
-public void onDataChange(@NonNull DataSnapshot getInfoFriendsDS) {
-        firstName = String.valueOf(getInfoFriendsDS.child("FirstName").getValue());
-        lastName = String.valueOf(getInfoFriendsDS.child("LastName").getValue());
-        age = String.valueOf(getInfoFriendsDS.child("Age").getValue());
-        sex = String.valueOf(getInfoFriendsDS.child("Sex").getValue());
-        listInterests = String.valueOf(getInfoFriendsDS.child("Interests").getValue());
-        ProfileFriend profileFriend=new ProfileFriend(id,firstName,lastName,age,sex,listInterests);
-        friends.add(profileFriend);
-
-        }*/

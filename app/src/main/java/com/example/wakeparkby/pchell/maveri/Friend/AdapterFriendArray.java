@@ -19,22 +19,24 @@ import java.util.ArrayList;
 public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
 
     private Context mContext;
-    private ArrayList<ProfileFriend> profileList= new ArrayList<>();
+    private ArrayList<ProfileFriend> profileList = new ArrayList<>();
+
     public AdapterFriendArray(@NonNull Context context, ArrayList<ProfileFriend> profileArrayList) {
-        super(context, 0,profileArrayList);
-        mContext=context;
-        profileList=profileArrayList;
+        super(context, 0, profileArrayList);
+        mContext = context;
+        profileList = profileArrayList;
     }
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
-        if(listItem == null)
-            listItem = LayoutInflater.from(mContext).inflate(R.layout.friend_list_row,parent,false);
+        if (listItem == null)
+            listItem = LayoutInflater.from(mContext).inflate(R.layout.friend_list_row, parent, false);
 
-        ProfileFriend currentProfile= profileList.get(position);
+        ProfileFriend currentProfile = profileList.get(position);
 
-        ImageView imageView= listItem.findViewById(R.id.photo_list_friend_row);
+        ImageView imageView = listItem.findViewById(R.id.photo_list_friend_row);
         TextView name = (TextView) listItem.findViewById(R.id.name_list_friend_row);
         name.setText(String.format("%s %s", currentProfile.getFirstName(), currentProfile.getLastName()));
 

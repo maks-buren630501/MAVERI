@@ -7,8 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ListMessage {
-    private HashMap<String,String> listMessage = new HashMap<>();
+    //private HashMap<String,String> listMessage = new HashMap<>();
     List<String> chatList = new ArrayList<String>();
+
+    public ListMessage() {
+
+    }
 
     public void sendMessage(String name, String time, String message) {
         DatabaseMessage databaseMessage = new DatabaseMessage();
@@ -20,7 +24,15 @@ public class ListMessage {
         databaseMessage.loadGroupMessage(groupId);
     }
 
+    public ListMessage(List<String> messages) {
+        this.chatList = messages;
+    }
+
     public void setChatList(List<String> chatList) {
         this.chatList = chatList;
+    }
+
+    public List<String> getMessages() {
+        return this.chatList;
     }
 }
