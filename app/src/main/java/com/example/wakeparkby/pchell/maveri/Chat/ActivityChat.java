@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.wakeparkby.pchell.maveri.LocationSelection.ActivityLocationSelection;
+import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
@@ -28,7 +29,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ActivityChat extends AppCompatActivity implements View.OnClickListener, Observer {
+public class ActivityChat extends AppCompatActivity implements View.OnClickListener{
     AdapterChat adapterChat = Profile.getInstance().getAdapterChat();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
@@ -41,6 +42,35 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private String a;
     private List<String> chatList = adapterChat.getListMessage().getMessages();
     //AdapterChat adapterChat = new AdapterChat();
+
+
+    ObserverMessage observer = new ObserverMessage("Chat") {
+
+        /**
+
+         * override method of Observer class with new reaction for notify observers
+
+         */
+
+        @Override
+        public void update() {
+
+            if (observer.getStatus() == 10) {
+
+                if (observer.getId() == 1) {
+                    refreshList();
+                    observer.setId(0);
+                }
+                else {
+
+                }
+            }
+        }
+
+
+    };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +87,13 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);
         refreshList();
+
+
+
+
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        this.refreshList();
-    }
+
 
     public void refreshList() {
         ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,

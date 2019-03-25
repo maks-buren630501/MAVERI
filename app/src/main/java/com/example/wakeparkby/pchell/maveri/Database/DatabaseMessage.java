@@ -25,6 +25,10 @@ public class DatabaseMessage extends Observable{
     private DatabaseReference myRefMeessage;
     private String groupId;
     private List<String> chatList = new ArrayList<>();
+    ObserverMessage observerMessage = new ObserverMessage("DataBaseMessage");
+    public DatabaseMessage(){
+        observerMessage.setStatus(5);
+    }
 
     public void loadGroupMessage(final String groupId) {
         String str;
@@ -36,7 +40,7 @@ public class DatabaseMessage extends Observable{
                 for (DataSnapshot data : chatDS.getChildren())
                     chatList.add(String.valueOf(data.getValue()));
                 Profile.getInstance().setAdapterChat(new AdapterChat(groupId, new ListMessage(chatList)));
-                notifyObservers();
+                observerMessage.notifyAllObservers(1);
             }
 
 
