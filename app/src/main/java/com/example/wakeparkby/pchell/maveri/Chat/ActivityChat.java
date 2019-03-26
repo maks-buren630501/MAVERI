@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ActivityChat extends AppCompatActivity implements View.OnClickListener{
+public class ActivityChat extends AppCompatActivity implements View.OnClickListener {
     AdapterChat adapterChat = Profile.getInstance().getAdapterChat();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
@@ -40,36 +40,33 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private String groupId;
     private String userKey = "userKey";
     private String a;
-    private List<String> chatList = adapterChat.getListMessage().getMessages();
+    private List<String> chatList;// = adapterChat.getListMessage().getMessages();
     //AdapterChat adapterChat = new AdapterChat();
 
 
     ObserverMessage observer = new ObserverMessage("Chat") {
 
         /**
-
          * override method of Observer class with new reaction for notify observers
 
          */
 
         @Override
         public void update() {
+            int n = observer.getStatus();
 
-            if (observer.getStatus() == 10) {
+            if (n == 10) {
 
                 if (observer.getId() == 1) {
                     refreshList();
                     observer.setId(0);
-                }
-                else {
-
+                } else {
                 }
             }
         }
 
 
     };
-
 
 
     @Override
@@ -81,21 +78,17 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         messageArea = findViewById(R.id.messageArea);
         sendButton.setOnClickListener(this);
         // adapterChat.getListMessage(profile.getUserKey(),);
-
-
         //groupId = adapterChat.getGroupId();
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);
         refreshList();
 
 
-
-
     }
 
 
-
     public void refreshList() {
+        chatList = Profile.getInstance().getAdapterChat().getListMessage().getMessages();
         ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
                 android.R.layout.simple_list_item_1,
                 chatList.toArray(new String[chatList.size()]));
