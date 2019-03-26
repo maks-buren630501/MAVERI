@@ -49,8 +49,9 @@ public class AdapterChat {
         String time = formatForDateNow.format(dateNow);
         //  Profile profile = new Profile();
         //   profile.getFirstName();
+
         ListMessage listMessage = new ListMessage();
-        //    listMessage.sendMessage(profile.getFirstName(),time ,messageText);
+        listMessage.sendMessage(Profile.getInstance().getFirstName(),time ,messageText);
     }
 
     protected static void startActivityLocationSelection(Context context) {
