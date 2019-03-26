@@ -7,11 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.wakeparkby.pchell.maveri.Meeting.AdapterListMeeting;
+import com.example.wakeparkby.pchell.maveri.Meeting.ListMeeting;
 import com.example.wakeparkby.pchell.maveri.R;
+import com.google.android.gms.maps.model.LatLng;
 
-public class ActivityLocationSelection extends AppCompatActivity implements View.OnClickListener {
+import java.sql.Time;
+import java.util.Date;
+
+public class ActivityLocationSelection extends AppCompatActivity  {
 
     private Button continueButton;
+
+    private AdapterListMeeting adapterListMeeting = new AdapterListMeeting();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,9 +27,27 @@ public class ActivityLocationSelection extends AppCompatActivity implements View
         continueButton = (Button) findViewById(R.id.continueButton);
         continueButton.setOnClickListener((View.OnClickListener) this);
     }
-
+/*
     @Override
     public void onClick(View v) {
         AdapterLocationSelection.startActivityDateSelection(this);
     }
+
+    public LatLng getPlaces() {
+
+    }
+
+    public String getName() {
+
+    }
+
+    public Date getDate() {
+
+    }
+
+    public Time getTime() {
+
+    }
+*/
+
 }
