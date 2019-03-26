@@ -41,6 +41,7 @@ public class DatabaseMessage extends Observable{
                     chatList.add(String.valueOf(data.getValue()));
                 Profile.getInstance().setAdapterChat(new AdapterChat(groupId, new ListMessage(chatList)));
                 observerMessage.notifyAllObservers(1);
+
             }
 
 
@@ -50,6 +51,8 @@ public class DatabaseMessage extends Observable{
         });
 
     }
+
+
 
     public void sendMessage(String name, String time, String message) {
         myRefMeessage = database.getReference("Messages");

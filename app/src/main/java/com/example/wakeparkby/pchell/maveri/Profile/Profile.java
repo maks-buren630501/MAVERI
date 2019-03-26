@@ -97,7 +97,7 @@ public class Profile {
     }
 
     public void setAdapterChat(AdapterChat chat) {
-        this.adapterChat = adapterChat;
+        this.adapterChat = chat;
     }
 
     public AdapterChat getAdapterChat() {
