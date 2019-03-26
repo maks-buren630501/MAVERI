@@ -8,6 +8,7 @@ public class ListInterests {
 
     HashMap<String, String[]> hashMap;
     public static ArrayList<String> listInterests = new ArrayList<>();
+
     public static HashMap<String, String[]> getInterests() {
         HashMap<String, String[]> mapInterests = new HashMap<>();
         ArrayList<String[]> current = new ArrayList<>();
@@ -37,16 +38,17 @@ public class ListInterests {
         return mapInterests;
     }
 
-    ListInterests(){
-        this.hashMap= getInterests();
+    ListInterests() {
+        this.hashMap = getInterests();
     }
 
-    public static void setListInterests(ArrayList<String> qwe){
-        for (String z: qwe) {
+    public static void setListInterests(ArrayList<String> qwe) {
+        for (String z : qwe) {
             listInterests.add(z);
         }
     }
-    public static ArrayList<String> getListInterests(){
+
+    public static ArrayList<String> getListInterests() {
         return listInterests;
     }
 

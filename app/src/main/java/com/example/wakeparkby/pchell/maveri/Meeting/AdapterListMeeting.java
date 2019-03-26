@@ -12,22 +12,18 @@ public class AdapterListMeeting {
     Profile profile;
     private ListMeeting listMeeting;
 
-    public AdapterListMeeting(){
+    public AdapterListMeeting() {
         profile = Profile.getInstance();
         listMeeting = profile.getListMeeting();
     }
 
-    public void addMeeting(LatLng place, String name, Date date, Time time){
-        listMeeting.addMeeting(new Meeting(place,name,date,time));
+    public void addMeeting(LatLng place, String name, Date date, Time time) {
+        listMeeting.addMeeting(new Meeting(place, name, date, time));
     }
 
-    public void removeMeeting(int index){
+    public void removeMeeting(int index) {
         listMeeting.removeMeeting(index);
     }
-
-
-
-
 
 
 }

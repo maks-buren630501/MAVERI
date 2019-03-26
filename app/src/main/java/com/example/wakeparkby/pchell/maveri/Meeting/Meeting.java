@@ -20,15 +20,15 @@ public class Meeting {
         this.time = time;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public Date getDate(){
+    public Date getDate() {
         return this.date;
     }
 
-    public Time getTime(){
+    public Time getTime() {
         return this.time;
     }
 

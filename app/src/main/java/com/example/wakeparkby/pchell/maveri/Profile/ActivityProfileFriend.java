@@ -9,50 +9,36 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
+import com.example.wakeparkby.pchell.maveri.Chat.AdapterChat;
 import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
 
-public class ActivityProfileFriend extends AppCompatActivity implements View.OnClickListener{
-
-
-    ImageButton imageButtonBack;
+public class ActivityProfileFriend extends AppCompatActivity implements View.OnClickListener {
     Button chat;
     TextView name;
     TextView interest;
-    //ArrayList<String> Spisok;
-    private String userKey ;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //int id=savedInstanceState.getInt("Id");
         setContentView(R.layout.activity_friend_info);
-        name=findViewById(R.id.namefriendinfo);
-        interest=findViewById(R.id.infintfriendinfo);
-        //Spisok=new ArrayList<>();
-        imageButtonBack=findViewById(R.id.iButtonBackfriendinfo);
-        imageButtonBack.setOnClickListener(this);
-        chat=findViewById(R.id.monbutfriendinfo);
+        name = findViewById(R.id.namefriendinfo);
+        interest = findViewById(R.id.infintfriendinfo);
+        chat = findViewById(R.id.monbutfriendinfo);
         chat.setOnClickListener(this);
-        //Spisok.add("Хоккей");
-       // Profile profile = new Profile();
-       // name.setText(String.format("%s %s", profile.getUserFirstName(), profile.getUserLastName()));
-       // interest.setText(profile.getUserListInterests());
-      //  userKey = profile.getUserKey();
-        //interest.setText( Spisok.get(Spisok.size() - 1));
+        name.setText(String.format("%s %s", getIntent().getStringExtra("userFirstName"), getIntent().getStringExtra("userLastName")));
+        interest.setText(getIntent().getStringExtra("userListInterests"));
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.iButtonBackfriendinfo:{
-                Intent intent_MainMenu = new Intent(this, ActivityMainMenu.class);
-                startActivity(intent_MainMenu);
-                break;
-            }
-            case R.id.monbutfriendinfo:{
-                AdapterProfileFriend.startActivityChat(this);
+        switch (v.getId()) {
+            case R.id.monbutfriendinfo: {
+                AdapterProfileFriend adapterProfileFriend = new AdapterProfileFriend(getIntent().getStringExtra("userId"),
+                        getIntent().getStringExtra("userFirstName"), getIntent().getStringExtra("userLastName"),
+                        getIntent().getStringExtra("userAge"), getIntent().getStringExtra("userSex"), getIntent().getStringExtra("userListInterests"));
+                adapterProfileFriend.startActivityChat(this);
             }
         }
     }

@@ -17,9 +17,9 @@ public class AdapterCreateProfile {
         context.startActivity(intent_signIn);
     }
 
-    public AdapterCreateProfile(String userKey, String firstName, String lastName, String age, String interestString){
+    public AdapterCreateProfile(String userKey, String firstName, String lastName, String age, String interestString) {
         DatabaseProfile databaseProfile = new DatabaseProfile();
-        databaseProfile.newProfile(userKey ,firstName,lastName,age,interestString);
+        databaseProfile.newProfile(userKey, firstName, lastName, age, interestString);
     }
 
 

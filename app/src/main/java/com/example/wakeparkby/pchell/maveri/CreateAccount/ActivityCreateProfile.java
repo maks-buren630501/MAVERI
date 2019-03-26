@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class ActivityCreateProfile extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
-    ChangeToArray changeToArray=new ChangeToArray();
+    ChangeToArray changeToArray = new ChangeToArray();
     ArrayList<String> interests = new ArrayList<String>();
     ArrayAdapter adapter;
     ListView listMain;
@@ -57,7 +57,7 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
 
 
         getInterestMain();
-        adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_multiple_choice,interests );
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, interests);
         listMain = findViewById(R.id.list1);
         listMain.setAdapter(adapter);
 
@@ -70,7 +70,7 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
                 SparseBooleanArray chosen = ((ListView) parent).getCheckedItemPositions();
                 for (int i = 0; i < chosen.size(); i++) {
                     if (chosen.valueAt(i)) {
-                        interestString+=changeToArray.GetStsring(0)[chosen.keyAt(i)]+", ";
+                        interestString += changeToArray.GetStsring(0)[chosen.keyAt(i)] + ", ";
                         System.out.print("");
                     }
                 }
@@ -80,11 +80,11 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
     }
 
 
-    private void getInterestMain(){
+    private void getInterestMain() {
 
-        for( int i = 0; i <= changeToArray.GetStsring(0).length - 1; i++) {
-           interests.add(changeToArray.GetStsring(0)[i]);
-       }
+        for (int i = 0; i <= changeToArray.GetStsring(0).length - 1; i++) {
+            interests.add(changeToArray.GetStsring(0)[i]);
+        }
 
 
     }
@@ -96,7 +96,7 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
         age = String.valueOf(editTextAge.getText());
         Toast.makeText(ActivityCreateProfile.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
         AdapterCreateProfile.startActivitySignIn(this);
-        AdapterCreateProfile adapterCreateProfile = new AdapterCreateProfile(userKey,firstName,lastName,age,interestString);
+        AdapterCreateProfile adapterCreateProfile = new AdapterCreateProfile(userKey, firstName, lastName, age, interestString);
 
     }
 }

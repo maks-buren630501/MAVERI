@@ -7,13 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ListMessage {
-    private HashMap<String,String> listMessage = new HashMap<>();
+    //private HashMap<String,String> listMessage = new HashMap<>();
     List<String> chatList = new ArrayList<String>();
 
+    public ListMessage() {
 
-    public void setId(String groupId) {
-        DatabaseMessage databaseMessage = new DatabaseMessage();
-        databaseMessage.setId(groupId);
     }
 
     public void sendMessage(String name, String time, String message) {
@@ -21,4 +19,20 @@ public class ListMessage {
         databaseMessage.sendMessage(name, time, message);
     }
 
+    public void setGroupId(String groupId) {
+        DatabaseMessage databaseMessage = new DatabaseMessage();
+        databaseMessage.loadGroupMessage(groupId);
+    }
+
+    public ListMessage(List<String> messages) {
+        this.chatList = messages;
+    }
+
+    public void setChatList(List<String> chatList) {
+        this.chatList = chatList;
+    }
+
+    public List<String> getMessages() {
+        return this.chatList;
+    }
 }

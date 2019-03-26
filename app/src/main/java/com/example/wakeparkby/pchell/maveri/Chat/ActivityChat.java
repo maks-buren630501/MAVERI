@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.wakeparkby.pchell.maveri.LocationSelection.ActivityLocationSelection;
+import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
@@ -25,9 +26,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class ActivityChat extends AppCompatActivity implements View.OnClickListener {
-    Profile profile = Profile.getInstance();
+public class ActivityChat extends AppCompatActivity implements View.OnClickListener{
+    AdapterChat adapterChat = Profile.getInstance().getAdapterChat();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
     private ImageView sendButton;
@@ -37,8 +40,37 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private String groupId;
     private String userKey = "userKey";
     private String a;
-    private List<String> chatList = new ArrayList<>();
-    AdapterChat adapterChat = new AdapterChat();
+    private List<String> chatList = adapterChat.getListMessage().getMessages();
+    //AdapterChat adapterChat = new AdapterChat();
+
+
+    ObserverMessage observer = new ObserverMessage("Chat") {
+
+        /**
+
+         * override method of Observer class with new reaction for notify observers
+
+         */
+
+        @Override
+        public void update() {
+
+            if (observer.getStatus() == 10) {
+
+                if (observer.getId() == 1) {
+                    refreshList();
+                    observer.setId(0);
+                }
+                else {
+
+                }
+            }
+        }
+
+
+    };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,32 +81,27 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         messageArea = findViewById(R.id.messageArea);
         sendButton.setOnClickListener(this);
         // adapterChat.getListMessage(profile.getUserKey(),);
-        groupId = adapterChat.getGroupId();
+
+
+        //groupId = adapterChat.getGroupId();
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);
         refreshList();
+
+
+
+
     }
 
-    private void refreshList() {
-        myRefMeessage = database.getReference("Messages" + "/" + groupId + "/");
-        myRefMeessage.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot chatDS) {
-                /// изменить
-                final List<String> chatList = new ArrayList<>();
-                for (DataSnapshot data : chatDS.getChildren())
-                    chatList.add(String.valueOf(data.getValue()));
-                ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
-                        android.R.layout.simple_list_item_1,
-                        chatList.toArray(new String[chatList.size()]));
-                listViewChat.setAdapter(chatAdapter);
-            }
 
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+    public void refreshList() {
+        ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
+                android.R.layout.simple_list_item_1,
+                chatList.toArray(new String[chatList.size()]));
+        listViewChat.setAdapter(chatAdapter);
+        //ListMessage listMessage = new ListMessage();
+        //listMessage.setChatList(chatList);
     }
 
 
@@ -95,4 +122,6 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
+
 }

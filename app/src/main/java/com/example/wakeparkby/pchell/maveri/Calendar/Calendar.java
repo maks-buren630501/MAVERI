@@ -9,11 +9,15 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class Calendar extends HashMap<Date, ArrayList<Meeting>> {
-    public Set<Date> getAllMeetingDate(){
-      return   this.keySet();
+    public Set<Date> getAllMeetingDate() {
+        return this.keySet();
     }
-    public  Calendar(){super();}
-    public ArrayList<Meeting> get(Date date){
-      return super.get(date);
+
+    public Calendar() {
+        super();
+    }
+
+    public ArrayList<Meeting> get(Date date) {
+        return super.get(date);
     }
 }

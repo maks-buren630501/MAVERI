@@ -16,20 +16,11 @@ public class ActivityFriendList extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-         Bundle bundle=new Bundle();
-       // ArrayList<Profile> profiles=new ArrayList<>();
-       // profiles.add(new Profile("ssss"));
-       // Intent intent=new Intent();
-       // intent.putExtra("ListProfiles", profiles);
+        Bundle bundle = new Bundle();
         super.onCreate(savedInstanceState);
         FriendListFragment friendListFragment = new FriendListFragment();
-
         setContentView(R.layout.activity_friend_list);
     }
-
-
-
-
 
 
 }

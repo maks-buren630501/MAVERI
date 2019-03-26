@@ -25,23 +25,22 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
-        name= (TextView) findViewById(R.id.nameuserinfo);
-        interest= (TextView) findViewById(R.id.infintuserinfo);
-        imageButtonBack=(ImageButton) findViewById(R.id.iButtonBackuserinfo);
+        name = (TextView) findViewById(R.id.nameuserinfo);
+        interest = (TextView) findViewById(R.id.infintuserinfo);
+        imageButtonBack = (ImageButton) findViewById(R.id.iButtonBackuserinfo);
         imageButtonBack.setOnClickListener(this);
         AdapterProfile adapterProfile = new AdapterProfile();
         profileName = adapterProfile.getProfileName();
         name.setText(profileName);
         listInterests = adapterProfile.getListInterests();
         interest.setText(listInterests);
-        // ( Spisok.get(Spisok.size() - 1));
     }
 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.iButtonBackuserinfo:{
+        switch (v.getId()) {
+            case R.id.iButtonBackuserinfo: {
                 Intent intent = new Intent(this, ActivityMainMenu.class);
                 startActivity(intent);
                 break;
