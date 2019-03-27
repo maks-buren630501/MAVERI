@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/friends"
+            android:icon="@mipmap/ic_launcher_foreground"
+            android:title="Друзья" />
+        <item
+            android:id="@+id/calendar"
+            android:icon="@mipmap/ic_calendar_foreground"
+            android:title="Календарь" />
+        <item
+            android:id="@+id/message"
+            android:icon="@mipmap/ic_message_foreground"
+            android:title="Сообщения" />
+    </group>
+
+    <item android:title=" ">
+        <menu></menu>
+    </item>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Настройки" />
+
+</menu>

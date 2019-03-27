@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">MAVERI</string>
+    <string name="friends">Friends</string>
+    <string name="empty" />
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="name">Имя:</string>
+    <string name="second_name">Фамилия:</string>
+    <string name="age">Возраст:</string>
+    <string name="intrests">Выберите интересы:</string>
 </resources>
