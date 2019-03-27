@@ -1,6 +1,5 @@
 package com.example.wakeparkby.pchell.maveri.Meeting;
 
-import com.example.wakeparkby.pchell.maveri.LocationSelection.ActivityLocationSelection;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.google.android.gms.maps.model.LatLng;
 

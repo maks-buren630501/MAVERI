@@ -13,94 +13,71 @@ public class ObserverMessage {
 
     int status = 10;
 
-
-
     /**
-
      * this constructor with one par
-
+     *
      * @param name name of observer
-
      */
 
-    public ObserverMessage(String name){
-
+    public ObserverMessage(String name) {
         this.name = name;
-
         observers.add(this);
-
-
-
     }
 
 
-
     /**
-
      * this setter for status
-
+     *
      * @param status of observer
-
      */
 
-    public void setStatus(int status){
+    public void setStatus(int status) {
 
         this.status = status;
 
 
-
     }
 
 
-
     /**
-
      * his setter for id
-
+     *
      * @param id is id
-
      */
 
-    public void setId(int id){
+    public void setId(int id) {
 
         this.id = id;
 
 
-
     }
 
 
-
     /**
-
      * this is getter for id
-
+     *
      * @return id of observer
-
      */
 
-    public int getId(){
+    public int getId() {
 
         return id;
 
     }
 
 
-    public int getStatus(){
+    public int getStatus() {
         return status;
     }
 
 
-
     /**
-
      * this func notify all observers about changing
-
      */
 
-    public void notifyAllObservers(){
+    public void notifyAllObservers() {
 
-        for(ObserverMessage observer : observers){
+        for (ObserverMessage observer : observers) {
 
             observer.update();
 
@@ -109,20 +86,17 @@ public class ObserverMessage {
     }
 
 
-
     /**
-
      * this func notify observers by id
-
+     *
      * @param id id of notified observer
-
      */
 
-    public void notifyAllObservers(int id){
+    public void notifyAllObservers(int id) {
 
         this.setId(id);
 
-        for(ObserverMessage observer : observers){
+        for (ObserverMessage observer : observers) {
 
             observer.update();
 
@@ -131,17 +105,11 @@ public class ObserverMessage {
     }
 
 
-
     /**
-
      * is abstract method for update in observer
-
      */
 
-    public void update(){
-
-
-
+    public void update() {
     }
 
 }

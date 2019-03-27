@@ -56,6 +56,6 @@ public class DatabaseMessage extends Observable{
 
     public void sendMessage(String name, String time, String message) {
         myRefMeessage = database.getReference("Messages");
-        myRefMeessage.child(groupId).push().setValue(name + "       " + time + System.lineSeparator() + message);
+        myRefMeessage.child(Profile.getInstance().getAdapterChat().getGroupId()).push().setValue(name + "       " + time + System.lineSeparator() + message);
     }
 }

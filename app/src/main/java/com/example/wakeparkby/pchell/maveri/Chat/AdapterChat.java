@@ -1,15 +1,13 @@
 package com.example.wakeparkby.pchell.maveri.Chat;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.app.ListFragment;
-import android.support.v7.app.AppCompatActivity;
 
-import com.example.wakeparkby.pchell.maveri.Database.DatabaseMessage;
-import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
-import com.example.wakeparkby.pchell.maveri.LocationSelection.ActivityLocationSelection;
+import com.example.wakeparkby.pchell.maveri.LocationSelection.ActivityMaps;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
-import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,6 +37,12 @@ public class AdapterChat {
     public AdapterChat() {
     }
 
+    public static void pickPositionOnMap(Context context, LatLng latLng) {
+        Intent intent_map = new Intent(context, ActivityMaps.class);
+        context.startActivity(intent_map);
+        ActivityMaps activityMaps = new ActivityMaps();
+    }
+
     public String getGroupId() {
         return groupId;
     }
@@ -49,16 +53,18 @@ public class AdapterChat {
         String time = formatForDateNow.format(dateNow);
         //  Profile profile = new Profile();
         //   profile.getFirstName();
+
         ListMessage listMessage = new ListMessage();
-        //    listMessage.sendMessage(profile.getFirstName(),time ,messageText);
+        listMessage.sendMessage(Profile.getInstance().getFirstName(),time ,messageText);
     }
 
-    protected static void startActivityLocationSelection(Context context) {
-        Intent intent_selectPlace = new Intent(context, ActivityLocationSelection.class);
-        context.startActivity(intent_selectPlace);
+    protected static void startActivityLocationSelection(Context context, LatLng latLng) {
+        Intent intent_maps = new Intent(context, ActivityMaps.class);
+        context.startActivity(intent_maps);
     }
 
     public ListMessage getListMessage() {
         return listMessage;
     }
+
 }
