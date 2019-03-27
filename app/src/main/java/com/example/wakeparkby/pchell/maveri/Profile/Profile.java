@@ -3,16 +3,10 @@ package com.example.wakeparkby.pchell.maveri.Profile;
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
-// String userKey = mAuth.getCurrentUser().getUid();  получение userkey
 public class Profile {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private String userId = mAuth.getCurrentUser().getUid();
     private static String userKey;
-
 
     private static String firstName;
     private String lastName;
@@ -20,16 +14,11 @@ public class Profile {
     private String sex;
     private String listInterests;
 
-
-
     private static String userFirstName;
     private static String userLastName;
     private static String userAge;
     private static String userSex;
     private static String userListInterests;
-
-
-
 
     public Profile(String firstName, String lastName) {
         this.firstName=firstName;
@@ -56,11 +45,7 @@ public class Profile {
         this.age = age;
         this.sex = sex;
         this.listInterests = listInterests;
-        //AdapterProfile adapterProfile = new AdapterProfile();
-        //adapterProfile.setUserInfo();
-        // ListInterests listInterests = new ListInterests();
-        //  final List<String> InterestsList = listInterests.getListInterests();
-        //  DatabaseProfile databaseProfile = new DatabaseProfile(InterestsList ,id, firstName, lastName, age, sex);
+
     }
 
     public Profile() {
