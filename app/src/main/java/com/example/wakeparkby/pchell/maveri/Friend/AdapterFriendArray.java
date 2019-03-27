@@ -30,6 +30,7 @@ public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
 
 
     public void addAll(ArrayList<ProfileFriend> items) {
+        clear();
         for(ProfileFriend item :items)
         {
             super.add(item);
