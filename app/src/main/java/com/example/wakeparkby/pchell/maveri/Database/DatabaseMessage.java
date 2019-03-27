@@ -33,10 +33,11 @@ public class DatabaseMessage extends Observable{
     public void loadGroupMessage(final String groupId) {
         String str;
         this.groupId = groupId;
-        myRefMeessage = database.getReference("Messages" + "/" + groupId + "/");
+        myRefMeessage = database.getReference("Messages" + "/" + groupId + "/Message/");
         myRefMeessage.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot chatDS) {
+                chatList.clear();
                 for (DataSnapshot data : chatDS.getChildren())
                     chatList.add(String.valueOf(data.getValue()));
                 Profile.getInstance().setAdapterChat(new AdapterChat(groupId, new ListMessage(chatList)));
@@ -56,6 +57,6 @@ public class DatabaseMessage extends Observable{
 
     public void sendMessage(String name, String time, String message) {
         myRefMeessage = database.getReference("Messages");
-        myRefMeessage.child(Profile.getInstance().getAdapterChat().getGroupId()).push().setValue(name + "       " + time + System.lineSeparator() + message);
+        myRefMeessage.child(Profile.getInstance().getAdapterChat().getGroupId()).child("Message").push().setValue(name + "       " + time + System.lineSeparator() + message);
     }
 }

@@ -1,8 +1,6 @@
 package com.example.wakeparkby.pchell.maveri.Chat;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 
 import com.example.wakeparkby.pchell.maveri.LocationSelection.ActivityMaps;
@@ -16,6 +14,7 @@ public class AdapterChat {
 
     private String groupId;
     ListMessage listMessage = new ListMessage();
+    ListMeetingUserOnChat listMeetingUserOnChat = new ListMeetingUserOnChat();
     //DatabaseMessage databaseMessage = new DatabaseMessage();
 
     public AdapterChat(String userKey, String userKey1) {
@@ -27,11 +26,17 @@ public class AdapterChat {
             groupId = userKey1.concat(userKey);
         }
         listMessage.setGroupId(groupId);
+        listMeetingUserOnChat.loadMeeting(groupId);
     }
 
     public AdapterChat(String groupId, ListMessage listMessage) {
         this.groupId = groupId;
         this.listMessage = listMessage;
+    }
+
+    public AdapterChat(String groupId, ListMeetingUserOnChat listMeetingUserOnChat) {
+        this.groupId = groupId;
+        this.listMeetingUserOnChat = listMeetingUserOnChat;
     }
 
     public AdapterChat() {
@@ -42,6 +47,7 @@ public class AdapterChat {
         context.startActivity(intent_map);
         ActivityMaps activityMaps = new ActivityMaps();
     }
+
 
     public String getGroupId() {
         return groupId;
@@ -55,16 +61,26 @@ public class AdapterChat {
         //   profile.getFirstName();
 
         ListMessage listMessage = new ListMessage();
-        listMessage.sendMessage(Profile.getInstance().getFirstName(),time ,messageText);
+        listMessage.sendMessage(Profile.getInstance().getFirstName(), time, messageText);
     }
 
-    protected static void startActivityLocationSelection(Context context, LatLng latLng) {
+    protected static void startActivityMeetingOnMaps(Context context, String coordinates) {
+        Intent intent_meetingOnMaps = new Intent(context, ActivityMaps.class);
+        intent_meetingOnMaps.putExtra("coordinates",coordinates);
+        context.startActivity(intent_meetingOnMaps);
+    }
+
+    public static void startActivityMap(Context context) {
         Intent intent_maps = new Intent(context, ActivityMaps.class);
         context.startActivity(intent_maps);
     }
 
     public ListMessage getListMessage() {
         return listMessage;
+    }
+
+    public ListMeetingUserOnChat getlistMeetingChat() {
+        return listMeetingUserOnChat;
     }
 
 }
