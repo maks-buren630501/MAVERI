@@ -103,6 +103,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
     }
 
     private void startActivityMainMenu() {
+
         AdapterSignIn.startActivityMainMenu(this);
     }
 }

@@ -51,7 +51,7 @@ public class Profile {
     }
 
 
-    private Profile(String id, String firstName, String lastName, String age, String sex, String listInterests) {
+    public Profile(String id, String firstName, String lastName, String age, String sex, String listInterests) {
         this.userKey = id;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -15,6 +15,7 @@ import com.example.wakeparkby.pchell.maveri.Profile.ProfileFriend;
 import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
 
@@ -26,6 +27,41 @@ public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
         mContext = context;
         profileList = profileArrayList;
     }
+
+
+    public void addAll(ArrayList<ProfileFriend> items) {
+        for(ProfileFriend item :items)
+        {
+            super.add(item);
+        }
+
+        profileList=items;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void add( @Nullable ProfileFriend object) {
+        super.add(object);
+        profileList.add(object);
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void clear() {
+        super.clear();
+        profileList.clear();
+    }
+
+    @Override
+    public void remove( @Nullable ProfileFriend object) {
+        super.remove(object);
+        profileList.remove(object);
+        notifyDataSetChanged();
+    }
+
+
+
+
 
     @NonNull
     @Override
