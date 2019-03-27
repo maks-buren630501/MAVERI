@@ -1,10 +1,12 @@
-package com.example.wakeparkby.pchell.maveri.Meeting;
+package com.example.wakeparkby.pchell.maveri.LocationSelection;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
 import com.example.wakeparkby.pchell.maveri.R;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -15,6 +17,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private LatLng latLng; //= new LatLng(18.5259949,109.3576236);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +32,11 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        // Add a marker in Sydney, Australia, and move the camera.
-        LatLng minsk = new LatLng(53.904851, 27.561785);
-        // mMap.addMarker(new MarkerOptions().position(minsk).title("Marker in Minsk"));
-        // mMap.moveCamera(CameraUpdateFactory.newLatLng(minsk));
+        if (latLng!=null){
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Место встречи"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        }
+        else
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -41,7 +45,6 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
-
 
     public boolean onMarkerClick(Marker marker) {
         Integer clickCount = (Integer) marker.getTag();
