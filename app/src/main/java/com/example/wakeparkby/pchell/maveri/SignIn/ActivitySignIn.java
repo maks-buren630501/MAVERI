@@ -14,8 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
-import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.CreateAccount.ActivityCreateAccount;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -127,4 +125,129 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                     }
                 });
     }
+
+    private void startActivityMainMenu() {
+        AdapterSignIn.startActivityMainMenu(this);
+    }
+
+    public class AnimationThread extends Thread {
+
+
+
+        private Vector<Integer> iconsHuman;
+
+        RelativeLayout animationHuman;
+
+        //ImageView imageViewHuman;
+
+
+
+        private int count_of_cycles = 0;
+
+
+
+        AnimationThread(RelativeLayout relativeLayout, ImageView imageViewHuman) {
+
+            this.animationHuman = relativeLayout;
+
+            //  this.imageViewHuman = imageViewHuman;
+
+        }
+
+
+
+        @Override
+
+        public void run() {
+
+            do {
+
+                runOnUiThread(new Runnable() {
+
+                    @Override
+
+                    public void run() {       // animationHuman.addView(imageViewHuman);
+
+                        switch (count_of_cycles) {
+
+                            case 1:
+
+                                imageViewHuman.setImageResource(R.drawable.human_1);
+
+                                break;
+
+                            case 2:
+
+                                imageViewHuman.setImageResource(R.drawable.human_2);
+
+                                break;
+
+                            case 3:
+
+                                imageViewHuman.setImageResource(R.drawable.human_3);
+
+                                break;
+
+                            case 4:
+
+                                imageViewHuman.setImageResource(R.drawable.human_4);
+
+                                break;
+
+                            case 5:
+
+                                imageViewHuman.setImageResource(R.drawable.human_5);
+
+                                break;
+
+                            case 6:
+
+                                imageViewHuman.setImageResource(R.drawable.human_6);
+
+                                break;
+
+                            case 7:
+
+                                imageViewHuman.setImageResource(R.drawable.human_7);
+
+                                break;
+
+                            case 8:
+
+                                imageViewHuman.setImageResource(R.drawable.human_8);
+
+                                break;
+
+                        }
+
+                    }
+
+                });
+
+
+
+                count_of_cycles++;
+
+                if (count_of_cycles == 8)
+
+                    count_of_cycles = 0;
+
+
+
+                try {
+
+                    Thread.sleep(1000 / 7);
+
+                } catch (InterruptedException e) {
+
+                    e.printStackTrace();
+
+                }
+
+            } while (have);
+
+        }
+
+    }
+
 }
