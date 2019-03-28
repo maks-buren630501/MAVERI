@@ -2,7 +2,9 @@ package com.example.wakeparkby.pchell.maveri.Profile;
 
 import com.example.wakeparkby.pchell.maveri.Chat.AdapterChat;
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
+import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendArray;
 import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
+import com.example.wakeparkby.pchell.maveri.Friend.FriendListFragment;
 import com.example.wakeparkby.pchell.maveri.Meeting.ListMeeting;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -51,7 +53,7 @@ public class Profile {
     }
 
 
-    private Profile(String id, String firstName, String lastName, String age, String sex, String listInterests) {
+    public Profile(String id, String firstName, String lastName, String age, String sex, String listInterests) {
         this.userKey = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -94,6 +96,7 @@ public class Profile {
 
     public void setFriendList(AdapterFriendList friends) {
         this.adapterFriendList = friends;
+//        FriendListFragment.getArrayAdapter().addAll(friends.getFriends());
     }
 
     public void setAdapterChat(AdapterChat chat) {

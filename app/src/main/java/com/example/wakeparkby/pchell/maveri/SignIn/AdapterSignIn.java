@@ -34,6 +34,7 @@ public class AdapterSignIn {
 
 
     public static void startActivityMainMenu(Context context) {
+        //  Intent intent_Main_Menu = new Intent(context, ActivityFriendList.class);
         Intent intent_Main_Menu = new Intent(context, ActivityMainMenu.class);
         context.startActivity(intent_Main_Menu);
 

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class FriendListFragment extends ListFragment {
-    private AdapterFriendArray arrayAdapter;
+    private static  AdapterFriendArray arrayAdapter;
     private ArrayList<ProfileFriend> profilesList;
 
     @Override
@@ -34,6 +34,10 @@ public class FriendListFragment extends ListFragment {
 
     }
 
+    public static  AdapterFriendArray getArrayAdapter() {
+        return arrayAdapter;
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +50,9 @@ public class FriendListFragment extends ListFragment {
         View view = inflater.inflate(R.layout.listfragment, container, false);
         return view;
     }
+
+
+
 
     //обработка нажатия на профиль
     @Override

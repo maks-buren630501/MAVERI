@@ -15,16 +15,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SignIn.ActivitySignIn">
-            <intent-filter>
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Chat.ActivityChat"/>
+
+    <activity android:name=".Chat.ActivityChat"/>
         <activity android:name=".CreateAccount.ActivityCreateAccount"/>
-        <activity android:name=".Friend.ActivityFriendList"/>
         <activity android:name=".MainMenu.ActivityMainMenu"/>
+        <activity android:name=".Friend.ActivityFriendList"/>
         <activity android:name=".Profile.ActivityProfileFriend"/>
         <activity android:name=".Profile.ActivityProfile"/>
         <activity android:name=".LocationSelection.ActivityDateSelection"/>

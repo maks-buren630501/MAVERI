@@ -8,14 +8,12 @@ import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
+import android.support.design.widget.FloatingActionButton;
 
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
-import com.example.wakeparkby.pchell.maveri.Profile.AdapterProfile;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,12 +22,13 @@ import java.util.ArrayList;
 
 public class ActivityCreateProfile extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
-    ChangeToArray changeToArray = new ChangeToArray();
-    ArrayList<String> interests = new ArrayList<String>();
+    AllDataProfile changeToArray=new AllDataProfile();
+    ArrayList<String> lowInterests = new ArrayList<String>();
+    ArrayList<String> highInterests = new ArrayList<String>();
     ArrayAdapter adapter;
+
     ListView listMain;
-    TextView selection;
-    private Button countiusButton;
+    private FloatingActionButton countiusButton;
     private String interestString;
     private EditText editTextName;
     private EditText editTextSecond;
@@ -47,46 +46,40 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_profile);
+        setContentView(R.layout.activity_create_new_profile);
 
-        countiusButton = (Button) findViewById(R.id.countiusButton);
-        countiusButton.setOnClickListener((View.OnClickListener) this);
+        countiusButton = (FloatingActionButton) findViewById(R.id.countiusButton);
+        countiusButton.setOnClickListener(this);
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextSecond = (EditText) findViewById(R.id.editTextSecond);
         editTextAge = (EditText) findViewById(R.id.editTextAge);
 
-
-        getInterestMain();
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, interests);
+        getInterestLowInterests(0);
+        getInterestHighInterests();
+        adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,highInterests );
         listMain = findViewById(R.id.list1);
         listMain.setAdapter(adapter);
 
 
         listMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-
-                SparseBooleanArray chosen = ((ListView) parent).getCheckedItemPositions();
-                for (int i = 0; i < chosen.size(); i++) {
-                    if (chosen.valueAt(i)) {
-                        interestString += changeToArray.GetStsring(0)[chosen.keyAt(i)] + ", ";
-                        System.out.print("");
-                    }
-                }
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AllDataProfile.positionLowList = position;
+                Intent intent = new Intent(ActivityCreateProfile.this, ActivityChooseLowInterests.class);
+                startActivity(intent);
             }
         });
 
     }
 
+    private void getInterestHighInterests(){
+            highInterests=changeToArray.GetStringHighInterests();
+    }
 
-    private void getInterestMain() {
-
-        for (int i = 0; i <= changeToArray.GetStsring(0).length - 1; i++) {
-            interests.add(changeToArray.GetStsring(0)[i]);
+    private void getInterestLowInterests(int position) {
+        for (int i = 0; i <= changeToArray.GetStringLowInterests(position).length - 1; i++) {
+            lowInterests.add(changeToArray.GetStringLowInterests(position)[i]);
         }
-
-
     }
 
     @Override
@@ -94,9 +87,10 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
         firstName = String.valueOf(editTextName.getText());
         lastName = String.valueOf(editTextSecond.getText());
         age = String.valueOf(editTextAge.getText());
+        DatabaseProfile databaseProfile = new DatabaseProfile();
+        databaseProfile.newProfile(userKey ,firstName,lastName,age,interestString);
         Toast.makeText(ActivityCreateProfile.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
-        AdapterCreateProfile.startActivitySignIn(this);
-        AdapterCreateProfile adapterCreateProfile = new AdapterCreateProfile(userKey, firstName, lastName, age, interestString);
-
+        Intent intent_signIn = new Intent(this, ActivitySignIn.class);
+        startActivity(intent_signIn);
     }
 }

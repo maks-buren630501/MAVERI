@@ -1,83 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true"
-    tools:context=".CreateAccount.ActivityCreateAccount"
-    >
+    android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_singup"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".SignIn"
+        tools:layout_editor_absoluteX="0dp">
 
 
-        <TextView
-            android:id="@+id/textViewEmail"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
 
-            android:hint="Email:"
-            android:textColorHint="#010101"
-            android:textSize="18dp"
-            android:layout_alignLeft="@+id/editTextEmail"
-            />
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Почта:"
+                android:textColorHint="#000000"
+                android:textSize="18dp" />
 
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:hint="mail"
-            android:layout_below="@id/textViewEmail"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="-35dp"
-            android:inputType="textEmailAddress"
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/textViewEmail"
+                android:layout_centerInParent="true"
+                android:background="@drawable/rounded_edittext_focused"
+                android:hint="mail@mail.com"
+                android:inputType="textWebEmailAddress"
+                android:textColor="#000000"
+                android:textColorHint="#A9A9A9"
+                android:paddingStart="10dp"/>
 
-            />
+            <TextView
+                android:id="@+id/textViewPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextEmail"
+                android:layout_alignLeft="@+id/editTextPassword"
+                android:hint="Пароль:"
+                android:textColorHint="#000000"
+                android:textSize="18dp"
+
+                />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/textViewPassword"
+                android:layout_centerInParent="true"
+                android:background="@drawable/rounded_edittext_focused"
+                android:hint="**********"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textColorHint="#A9A9A9"
+                android:paddingStart="10dp"/>
+
+            <TextView
+                android:id="@+id/textViewNewPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextPassword"
+                android:layout_alignRight="@+id/editTextPassword"
+                android:clickable="true"
+                android:hint=" "
+                android:textColorHint="#0d1cbf"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/buttonEnterNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNewPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:hint="Создать"
+                android:textColorHint="#000000"
+                android:textSize="16dp"
+                android:background="@drawable/rounded_edittext"/>
+
+        </RelativeLayout>
 
 
-        <TextView
-            android:id="@+id/textViewPassword"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:hint="Password:"
-            android:textColorHint="#010101"
-            android:textSize="18dp"
-            android:layout_below="@id/editTextEmail"
-            android:layout_alignLeft="@+id/editTextPassword"
-
-            />
-
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:hint="*************"
-            android:layout_below="@id/textViewPassword"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="-35dp"
-            android:inputType="textPassword"
-            />
-        <Button
-            android:id="@+id/buttonSave"
-            android:layout_width="210dp"
-            android:layout_height="70dp"
-            android:hint="Save"
-            android:textColorHint="#010101"
-            android:textSize="16dp"
-            android:layout_below="@id/editTextPassword"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            />
     </RelativeLayout>
-
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
