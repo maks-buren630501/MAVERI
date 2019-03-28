@@ -30,7 +30,7 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
         mAuth = FirebaseAuth.getInstance();
         etEmail = (EditText) findViewById(R.id.editTextEmail);
         etPassword = (EditText) findViewById(R.id.editTextPassword);
-        findViewById(R.id.buttonSave).setOnClickListener(this);
+        findViewById(R.id.buttonEnterNew).setOnClickListener(this);
 
     }
 
@@ -40,7 +40,7 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
             Toast.makeText(ActivityCreateAccount.this, "Введите Email !!!", Toast.LENGTH_SHORT).show();
         } else if (etPassword.getText().toString().equals("")) {
             Toast.makeText(ActivityCreateAccount.this, "Введите Password !!!", Toast.LENGTH_SHORT).show();
-        } else if (view.getId() == R.id.buttonSave) {
+        } else if (view.getId() == R.id.buttonEnterNew) {
             String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
             registration(email, password);

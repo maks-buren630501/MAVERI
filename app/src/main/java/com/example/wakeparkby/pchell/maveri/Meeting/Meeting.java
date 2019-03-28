@@ -4,35 +4,38 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Meeting {
 
-    private LatLng place;
+    private String coordinates;
     private String name;
-    private Date date;
-    private Time time;
+    private String date;
+    private String id;
 
+    public Meeting(HashMap<Integer, HashMap<String, String>> listMeetingChat) {
+        for (Map.Entry entry : listMeetingChat.entrySet()) {
+             int key = (int) entry.getKey();
+            this.name = listMeetingChat.get(key).get("Name");
+            this.date = listMeetingChat.get(key).get("Date");
+            this.coordinates = listMeetingChat.get(key).get("LatLng");
+        }
+    }
 
-    public Meeting(LatLng place, String name, Date date, Time time) {
-        this.place = place;
-        this.name = name;
-        this.date = date;
-        this.time = time;
+    public String getCoordinates() {
+        return coordinates;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
-    public Date getDate() {
-        return this.date;
+    public String getDate() {
+        return date;
     }
 
-    public Time getTime() {
-        return this.time;
-    }
-
-    public LatLng getPlace() {
-        return this.place;
+    public String getId() {
+        return id;
     }
 }

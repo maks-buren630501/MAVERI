@@ -1,5 +1,6 @@
 package com.example.wakeparkby.pchell.maveri.Chat;
 
+import com.example.wakeparkby.pchell.maveri.Database.DatabaseMeeting;
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseMessage;
 
 import java.util.ArrayList;

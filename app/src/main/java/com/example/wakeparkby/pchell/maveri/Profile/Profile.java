@@ -96,7 +96,7 @@ public class Profile {
 
     public void setFriendList(AdapterFriendList friends) {
         this.adapterFriendList = friends;
-        FriendListFragment.getArrayAdapter().addAll(friends.getFriends());
+//        FriendListFragment.getArrayAdapter().addAll(friends.getFriends());
     }
 
     public void setAdapterChat(AdapterChat chat) {

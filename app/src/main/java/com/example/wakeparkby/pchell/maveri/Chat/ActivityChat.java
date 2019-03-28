@@ -28,7 +28,9 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -40,14 +42,13 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private ImageView selectPlaceButton;
     private EditText messageArea;
     private ListView listViewChat;
-    private String groupId;
-    private String userKey = "userKey";
-    private String a;
-    private List<String> chatList;// = adapterChat.getListMessage().getMessages();
+    private List<String> chatList;
+    private HashMap<Integer, HashMap<String, String>> listMeetingChat;
+    private String name;
+    private String date;
+    private String coordinates;
     private final int IDD_THREE_BUTTONS = 0;
-    private LatLng latLng = new LatLng(18.5259949,109.3576236);
-    //AdapterChat adapterChat = new AdapterChat();
-
+    private LatLng latLng = new LatLng(18.5259949, 109.3576236);
 
     ObserverMessage observer = new ObserverMessage("Chat") {
 
@@ -63,7 +64,12 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             if (n == 10) {
 
                 if (observer.getId() == 1) {
-                    refreshList();
+                    refreshChat();
+                    observer.setId(0);
+                } else {
+                }
+                if (observer.getId() == 2) {
+                    refreshChatMeeting();
                     observer.setId(0);
                 } else {
                 }
@@ -86,20 +92,33 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         //groupId = adapterChat.getGroupId();
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);
-        refreshList();
+        refreshChat();
 
 
     }
 
 
-    public void refreshList() {
+    public void refreshChat() {
         chatList = Profile.getInstance().getAdapterChat().getListMessage().getMessages();
         ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
                 android.R.layout.simple_list_item_1,
                 chatList.toArray(new String[chatList.size()]));
         listViewChat.setAdapter(chatAdapter);
-        //ListMessage listMessage = new ListMessage();
-        //listMessage.setChatList(chatList);
+        // chatList.clear();
+    }
+
+    public void refreshChatMeeting() {
+        listMeetingChat = Profile.getInstance().getAdapterChat().getlistMeetingChat().getListMeetingChat();
+        if (listMeetingChat.size() != 0) {
+            for (Map.Entry entry : listMeetingChat.entrySet()) {
+                int key = (int) entry.getKey();
+                //values1.add((String[]) entry.getValue());
+                this.name = listMeetingChat.get(key).get("Name");
+                this.date = listMeetingChat.get(key).get("Date");
+                this.coordinates = listMeetingChat.get(key).get("LatLng");
+                showDialog(IDD_THREE_BUTTONS);
+            }
+        }
     }
 
 
@@ -115,8 +134,8 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             }
 
             case R.id.placeButton: {
-                //AdapterChat.startActivityLocationSelection(this);
-                showDialog(IDD_THREE_BUTTONS);
+                AdapterChat.startActivityMap(this);
+                // showDialog(IDD_THREE_BUTTONS);
                 break;
             }
         }
@@ -127,9 +146,8 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         switch (id) {
             case IDD_THREE_BUTTONS:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle(Profile.getInstance().getFirstName() + "предложил встречу");
-                builder.setMessage("Дата: " + "28.03.2019" + System.lineSeparator() + "Время: " + "18:30" + System.lineSeparator() + "Место: " + "Бар <<Веселый пчел>>"
-                        + System.lineSeparator() + "Адрес: " + "ул. Святого Пчела 8")
+                builder.setTitle(Profile.getInstance().getFirstName() + " предложил встречу");
+                builder.setMessage("Дата: " + date + System.lineSeparator() + "Место: " + name)
                         .setCancelable(false)
                         .setPositiveButton("Отмена",
                                 new DialogInterface.OnClickListener() {
@@ -142,13 +160,14 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,
                                                         int id) {
-                                        startActivityMaps();
+                                        startActivityMaps(coordinates);
                                     }
                                 })
                         .setNeutralButton("Согласиться",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,
                                                         int id) {
+
                                         dialog.cancel();
                                     }
                                 });
@@ -159,8 +178,8 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void startActivityMaps() {
-        AdapterChat.startActivityLocationSelection(this,latLng);
+    private void startActivityMaps(String coordinates) {
+        AdapterChat.startActivityMeetingOnMaps(this, coordinates);
     }
 
 
