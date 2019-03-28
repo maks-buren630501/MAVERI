@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
 import com.example.wakeparkby.pchell.maveri.Friend.FriendListFragment;
+import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.Profile.ProfileFriend;
 import com.example.wakeparkby.pchell.maveri.SignIn.AdapterSignIn;
@@ -31,6 +32,7 @@ public class DatabaseProfile {
     private AdapterFriendList friends = new AdapterFriendList();
     private static ArrayList<ProfileFriend> searchProfiles=new ArrayList<>();
     private String searchRequest="";
+    ObserverMessage observerMessage = new ObserverMessage("DatabaseProfile");
 
     public static ArrayList<ProfileFriend> getSearchProfiles() {
         return searchProfiles;
@@ -125,6 +127,7 @@ public class DatabaseProfile {
                         }
                         Profile profile = Profile.getInstance();
                         profile.setFriendList(friends);
+                        observerMessage.notifyAllObservers(3);
                     }
 
                     @Override
