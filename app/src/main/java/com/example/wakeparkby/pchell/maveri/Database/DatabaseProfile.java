@@ -189,7 +189,7 @@ public class DatabaseProfile {
         Query query = myRefProfile.orderByChild("LastName").startAt(parametr)
                 .endAt(parametr + "\uf8ff");
         searchProfiles.clear();
-        FriendListFragment.getArrayAdapter().addAll(searchProfiles);
+        FriendListFragment.getArrayAdapter().clear();
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot data, @Nullable String s) {
@@ -202,7 +202,7 @@ public class DatabaseProfile {
                         public void onDataChange(@NonNull DataSnapshot getInfoFriendsDS) {
 
 
-                            FriendListFragment.getArrayAdapter().add(setDataProfile(getInfoFriendsDS,searchProfiles,search));
+                            FriendListFragment.getArrayAdapter(). add(  setDataProfile(getInfoFriendsDS,searchProfiles,search));
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
