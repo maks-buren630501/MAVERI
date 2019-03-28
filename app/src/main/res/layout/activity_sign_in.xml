@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:layout_height="match_parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
+        android:background="@drawable/background_singup"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
-        tools:context=".SignIn">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".SignIn"
+        tools:layout_editor_absoluteX="0dp">
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true">
+            android:layout_centerInParent="true">
+
+            <RelativeLayout
+                android:id="@+id/animationHuman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentBottom="false"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="215dp">
+
+                <ImageView
+                    android:id="@+id/imageViewHuman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textViewEmail"
@@ -32,15 +48,15 @@
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_below="@id/textViewEmail"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/rounded_edittext_focused"
                 android:hint="mail@mail.com"
                 android:inputType="textWebEmailAddress"
+                android:textColor="#000000"
                 android:textColorHint="#A9A9A9"
-                android:backgroundTint="#000000"
-                android:textColor="#000000"/>
+                android:paddingStart="10dp"/>
 
             <TextView
                 android:id="@+id/textViewPassword"
@@ -57,15 +73,15 @@
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_below="@id/textViewPassword"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/rounded_edittext_focused"
                 android:hint="**********"
                 android:inputType="textPassword"
+                android:textColor="#000000"
                 android:textColorHint="#A9A9A9"
-                android:backgroundTint="#000000"
-                android:textColor="#000000"/>
+                android:paddingStart="10dp"/>
 
             <TextView
                 android:id="@+id/textViewNewPassword"
@@ -75,7 +91,7 @@
                 android:layout_alignRight="@+id/editTextPassword"
                 android:clickable="true"
                 android:hint="Забыли пароль ?"
-                android:textColorHint="#0d1cbf"
+                android:textColorHint="#111111"
                 android:textSize="10dp" />
 
             <TextView
@@ -86,11 +102,11 @@
                 android:layout_alignLeft="@+id/editTextPassword"
                 android:clickable="true"
                 android:hint="Зарегистрироваться ?"
-                android:textColorHint="#0d1cbf"
+                android:textColorHint="#111111"
                 android:textSize="10dp" />
 
             <Button
-                android:id="@+id/buttonEnter"
+                android:id="@+id/buttonEnterNew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewNewPassword"
@@ -99,7 +115,19 @@
                 android:layout_marginTop="20dp"
                 android:hint="Войти"
                 android:textColorHint="#000000"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:background="@drawable/rounded_edittext"/>
+
+            <ImageView
+                android:id="@+id/imageViewEarth"
+                android:layout_width="157dp"
+                android:layout_height="157dp"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_alignTop="@+id/buttonEnterNew"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="150dp"
+                app:srcCompat="@drawable/earth" />
+
         </RelativeLayout>
 
 
