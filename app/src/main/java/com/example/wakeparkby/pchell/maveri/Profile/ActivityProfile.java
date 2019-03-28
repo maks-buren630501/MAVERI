@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class ActivityProfile extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton imageButtonBack;
     private TextView name;
     private TextView interest;
 
@@ -28,7 +27,6 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_user_info);
         name = (TextView) findViewById(R.id.nameuserinfo);
         interest = (TextView) findViewById(R.id.infintuserinfo);
-        imageButtonBack.setOnClickListener(this);
         AdapterProfile adapterProfile = new AdapterProfile();
         profileName = adapterProfile.getProfileName();
         name.setText(profileName);
