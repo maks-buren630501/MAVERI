@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 
 
-
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 import com.example.wakeparkby.pchell.maveri.R;
@@ -34,10 +33,6 @@ public class ActivityMainMenu extends AppCompatActivity
         ImageButton headerButtonView = headerLayout.findViewById(R.id.profile);
         headerButtonView.setOnClickListener(this);
         navigationView.setNavigationItemSelectedListener(this);
-        /*
-        AdapterMainMenu adapterMainMenu = new AdapterMainMenu();
-        adapterMainMenu.getUserInfo();*/
-
     }
 
     @Override
@@ -57,8 +52,6 @@ public class ActivityMainMenu extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-
 
 
     @Override
@@ -83,7 +76,7 @@ public class ActivityMainMenu extends AppCompatActivity
         if (id == R.id.friends) {
             AdapterMainMenu.startActivityFriendList(this);
         } else if (id == R.id.calendar) {
-
+            //AdapterMainMenu.startActivityMaps(this);
         } else if (id == R.id.message) {
 
 
@@ -97,13 +90,10 @@ public class ActivityMainMenu extends AppCompatActivity
     }
 
 
-
-
-
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.profile:{
+        switch (v.getId()) {
+            case R.id.profile: {
                 AdapterMainMenu.startActivityProfile(this);
                 break;
             }

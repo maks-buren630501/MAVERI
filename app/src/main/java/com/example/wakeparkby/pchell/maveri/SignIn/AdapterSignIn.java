@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
+import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
 import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,13 +16,20 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AdapterSignIn {
     Profile profile;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private String userId = mAuth.getCurrentUser().getUid();
+
+    public AdapterSignIn() {
+    }
+
+    ;
+
+    public AdapterSignIn(String userId, String firstName, String lastName, String age, String sex, String listInterests) {
+        profile.getInstanceWithParam(userId, firstName, lastName, age, sex, listInterests);
+    }
 
 
-    public void getUserInfo(String userId) {
+    public void loadUserInfo(String userId) {
         DatabaseProfile databaseProfile = new DatabaseProfile();
-        profile = databaseProfile.getProfile(userId);
+        databaseProfile.loadUserInfo(userId);
     }
 
 

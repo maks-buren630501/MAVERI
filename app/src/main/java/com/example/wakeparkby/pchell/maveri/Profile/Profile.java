@@ -1,6 +1,9 @@
 package com.example.wakeparkby.pchell.maveri.Profile;
 
+import com.example.wakeparkby.pchell.maveri.Chat.AdapterChat;
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
+import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
+import com.example.wakeparkby.pchell.maveri.Meeting.ListMeeting;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -15,26 +18,41 @@ public class Profile {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private String userId = mAuth.getCurrentUser().getUid();
     */
+    private static Profile instance;
 
-
-    private static String userKey;
-    private static String firstName;
+    private String userKey;
+    private String firstName;
     private String lastName;
     private String age;
     private String sex;
     private String listInterests;
+    private ListMeeting listMeeting = new ListMeeting();
+    private AdapterFriendList adapterFriendList = new AdapterFriendList();
+    AdapterChat adapterChat = new AdapterChat();
 
 
-   public Profile(String id,String firstName,String lastName,String age,String sex,String listInterests) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.sex = sex;
-        this.listInterests = listInterests;
-        this.userKey = id;
+    public static Profile getInstance() {
+        if (instance == null) {        //если объект еще не создан
+            instance = new Profile();    //создать новый пустой объект
+        }
+        return instance;
     }
 
-    public Profile(String firstName, String lastName, String age, String sex, String listInterests) {
+    public static Profile getInstanceWithParam(String id, String firstName, String lastName, String age, String sex, String listInterests) {
+        if (instance == null) {        //если объект еще не создан
+            instance = new Profile(id, firstName, lastName, age, sex, listInterests);    //создать новый объект
+        }
+        return instance;
+    }
+
+
+    private Profile() {
+
+    }
+
+
+    private Profile(String id, String firstName, String lastName, String age, String sex, String listInterests) {
+        this.userKey = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -58,21 +76,31 @@ public class Profile {
         return sex;
     }
 
-    public String getUserId() {
-        return userKey;
-    }
-
     public String getListInterests() {
         return listInterests;
-    }
-
-    public Profile(String userKey) {
-        this.userKey = userKey;
     }
 
     public String getUserKey() {
         return userKey;
     }
 
+    public ListMeeting getListMeeting() {
+        return this.listMeeting;
+    }
 
+    public AdapterFriendList getAdapterFriendList() {
+        return adapterFriendList;
+    }
+
+    public void setFriendList(AdapterFriendList friends) {
+        this.adapterFriendList = friends;
+    }
+
+    public void setAdapterChat(AdapterChat chat) {
+        this.adapterChat = chat;
+    }
+
+    public AdapterChat getAdapterChat() {
+        return this.adapterChat;
+    }
 }
