@@ -12,6 +12,7 @@
         android:paddingHorizontal="20dp">
         android:layout_weight="9"
 
+
         <TextView
             android:layout_weight="7"
             android:layout_width="50dp"
@@ -22,16 +23,20 @@
 
         <ImageButton
             android:layout_weight="1"
-            android:id="@+id/search_friend_activity"
+            android:id="@+id/search_friend_button"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:src="@android:drawable/ic_search_category_default"
-            tools:ignore="RtlHardcoded" />
+            tools:ignore="RtlHardcoded"
+            android:onClick="onClick"/>
 
 
     </LinearLayout>
-
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/search_textline"/>
 <fragment
     android:layout_width="match_parent"
     android:layout_height="match_parent"

@@ -10,7 +10,7 @@ public class AdapterFriendList {
     private ArrayList<ProfileFriend> friends = new ArrayList<>();
 
 
-    ArrayList<ProfileFriend> getFriends() {
+    public ArrayList<ProfileFriend> getFriends() {
         return friends;
     }
 
