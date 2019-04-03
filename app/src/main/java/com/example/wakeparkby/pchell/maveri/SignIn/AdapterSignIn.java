@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.wakeparkby.pchell.maveri.AnimationLoad;
 import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
@@ -33,10 +34,10 @@ public class AdapterSignIn {
     }
 
 
-    public static void startActivityMainMenu(Context context) {
+    public static void startActivityLoad(Context context) {
         //  Intent intent_Main_Menu = new Intent(context, ActivityFriendList.class);
-        Intent intent_Main_Menu = new Intent(context, ActivityMainMenu.class);
-        context.startActivity(intent_Main_Menu);
+        Intent intent_Load = new Intent(context, AnimationLoad.class);
+        context.startActivity(intent_Load);
 
     }
 }

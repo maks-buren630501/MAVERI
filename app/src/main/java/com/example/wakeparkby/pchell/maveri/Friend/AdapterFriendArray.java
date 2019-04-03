@@ -42,7 +42,7 @@ public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
 
     @Override
     public void add( @Nullable ProfileFriend object) {
-        super.add(object);
+      //  super.add(object);
         profileList.add(object);
         notifyDataSetChanged();
     }
@@ -51,6 +51,8 @@ public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
     public void clear() {
         super.clear();
         profileList.clear();
+        notifyDataSetChanged();
+
     }
 
     @Override
@@ -78,5 +80,9 @@ public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
         name.setText(String.format("%s %s", currentProfile.getFirstName(), currentProfile.getLastName()));
 
         return listItem;
+    }
+
+    public void update() {
+        notifyDataSetChanged();
     }
 }

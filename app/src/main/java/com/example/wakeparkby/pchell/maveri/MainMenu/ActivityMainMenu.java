@@ -12,27 +12,34 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
+import com.example.wakeparkby.pchell.maveri.Profile.CircularImageView;
+import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
+
+import org.w3c.dom.Text;
 
 public class ActivityMainMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-    private ImageButton imageButton;
+    private TextView textViewNameProfile;
+
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
-        ImageButton headerButtonView = headerLayout.findViewById(R.id.profile);
+        CircularImageView headerButtonView = headerLayout.findViewById(R.id.profile);
         headerButtonView.setOnClickListener(this);
         navigationView.setNavigationItemSelectedListener(this);
+        textViewNameProfile = headerLayout.findViewById(R.id.TextViewNameProfile);
+        textViewNameProfile.setText(Profile.getInstance().getFirstName() + " " + Profile.getInstance().getLastName());
     }
 
     @Override
