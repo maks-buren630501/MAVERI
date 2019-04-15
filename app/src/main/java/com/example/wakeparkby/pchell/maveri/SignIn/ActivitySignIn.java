@@ -49,7 +49,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        etEmail = findViewById(R.id.editTextEmail);
+        etEmail = findViewById(R.id.editTextGroupName);
         etPassword = findViewById(R.id.editTextPassword);
         buttonEnter = findViewById(R.id.buttonEnterNew);
         textViewNewPassword = findViewById(R.id.textViewNewPassword);

@@ -33,6 +33,9 @@
         <activity android:name=".LocationSelection.ActivityMaps"/>
         <activity android:name=".CreateAccount.ActivityCreateProfile"></activity>
         <activity android:name=".AnimationLoad" />
+        <activity android:name=".Group.ActivityCreateGroup" />
+        <activity android:name=".Group.ActivityGroup" />
+        <activity android:name=".Group.ActivityGroupList" />
 
 
         <meta-data

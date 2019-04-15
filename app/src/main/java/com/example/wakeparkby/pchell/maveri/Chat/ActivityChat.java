@@ -93,8 +93,6 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);
         refreshChat();
-
-
     }
 
 

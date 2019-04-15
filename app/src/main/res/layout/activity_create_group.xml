@@ -21,27 +21,11 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true">
 
-            <RelativeLayout
-                android:id="@+id/animationHuman"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentEnd="false"
-                android:layout_alignParentBottom="false"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="215dp">
-
-                <ImageView
-                    android:id="@+id/imageViewHuman"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
-
             <TextView
                 android:id="@+id/textViewGroupName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Почта:"
+                android:hint="Название встречи:"
                 android:textColorHint="#000000"
                 android:textSize="18dp" />
 
@@ -52,81 +36,88 @@
                 android:layout_below="@id/textViewGroupName"
                 android:layout_centerInParent="true"
                 android:background="@drawable/rounded_edittext_focused"
-                android:hint="mail@mail.com"
                 android:inputType="textWebEmailAddress"
                 android:textColor="#000000"
                 android:textColorHint="#A9A9A9"
                 android:paddingStart="10dp"/>
 
             <TextView
-                android:id="@+id/textViewPassword"
+                android:id="@+id/textViewDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editTextGroupName"
                 android:layout_alignLeft="@+id/editTextPassword"
-                android:hint="Пароль:"
+                android:hint="Описание:"
                 android:textColorHint="#000000"
                 android:textSize="18dp"
 
                 />
 
             <EditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editTextDescription"
                 android:layout_width="250dp"
                 android:layout_height="30dp"
-                android:layout_below="@id/textViewPassword"
+                android:layout_below="@id/textViewDescription"
                 android:layout_centerInParent="true"
                 android:background="@drawable/rounded_edittext_focused"
-                android:hint="**********"
                 android:inputType="textPassword"
                 android:textColor="#000000"
                 android:textColorHint="#A9A9A9"
                 android:paddingStart="10dp"/>
 
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextDescription"
+                android:layout_centerHorizontal="true"
+                android:checked="false"
+                android:text="Откратая/закрытая"
+                android:textOff="Открытая"
+                android:textOn="Закрытая"
+                android:layout_marginTop="10dp"
+                android:layout_alignLeft="@+id/editTextDescription"/>
+
             <TextView
+                android:visibility="gone"
                 android:id="@+id/textViewNewPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editTextPassword"
-                android:layout_alignRight="@+id/editTextPassword"
-                android:clickable="true"
-                android:hint="Забыли пароль ?"
-                android:textColorHint="#111111"
-                android:textSize="10dp" />
-
-            <TextView
-                android:id="@+id/textViewCreateAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/editTextPassword"
+                android:layout_below="@id/switch1"
                 android:layout_alignLeft="@+id/editTextPassword"
-                android:clickable="true"
-                android:hint="Зарегистрироваться ?"
-                android:textColorHint="#111111"
-                android:textSize="10dp" />
+                android:hint="Пароль:"
+                android:textColorHint="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:visibility="gone"
+
+                android:id="@+id/editTextPassword"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/textViewNewPassword"
+                android:layout_centerInParent="true"
+                android:background="@drawable/rounded_edittext_focused"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textColorHint="#A9A9A9"
+                android:paddingStart="10dp"/>
+
+
 
             <Button
                 android:id="@+id/buttonEnterNew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewNewPassword"
+                android:layout_below="@id/editTextPassword"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="20dp"
-                android:hint="Войти"
+                android:hint="Создать"
                 android:textColorHint="#000000"
                 android:textSize="16dp"
                 android:background="@drawable/rounded_edittext"/>
-
-            <ImageView
-                android:id="@+id/imageViewEarth"
-                android:layout_width="157dp"
-                android:layout_height="157dp"
-                android:layout_alignWithParentIfMissing="false"
-                android:layout_alignTop="@+id/buttonEnterNew"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
-                app:srcCompat="@drawable/earth" />
 
         </RelativeLayout>
 

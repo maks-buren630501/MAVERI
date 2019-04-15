@@ -86,9 +86,10 @@ public class ActivityMainMenu extends AppCompatActivity
             //AdapterMainMenu.startActivityMaps(this);
         } else if (id == R.id.message) {
 
-
         } else if (id == R.id.settings) {
             System.out.println("GOGOGO");
+        } else if (id == R.id.group){
+            AdapterMainMenu.startActivityGroupList(this);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
