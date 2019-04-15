@@ -20,6 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
+/**
+ * класс для интерфейса создания профиля
+ */
 public class ActivityCreateProfile extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     AllDataProfile changeToArray=new AllDataProfile();
@@ -39,10 +42,18 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
     private String age;
     private static String userKey;
 
+    /**
+     * метод для установки номера пользователя
+     * @param userKey номер пользователя
+     */
     public static void setUserKey(String userKey) {
         ActivityCreateProfile.userKey = userKey;
     }
 
+    /**
+     * базовый android метод для старта объекта интерфейса
+     * @param savedInstanceState базовый параметр
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,16 +83,27 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
 
     }
 
+    /**
+     * получение списка интересов
+     */
     private void getInterestHighInterests(){
             highInterests=changeToArray.GetStringHighInterests();
     }
 
+    /**
+     * получение интереса по его позиции в списке
+     * @param position позиция в списке
+     */
     private void getInterestLowInterests(int position) {
         for (int i = 0; i <= changeToArray.GetStringLowInterests(position).length - 1; i++) {
             lowInterests.add(changeToArray.GetStringLowInterests(position)[i]);
         }
     }
 
+    /**
+     * метод для обработки нажатия в списке
+     * @param v состяние нажатия
+     */
     @Override
     public void onClick(View v) {
         firstName = String.valueOf(editTextName.getText());

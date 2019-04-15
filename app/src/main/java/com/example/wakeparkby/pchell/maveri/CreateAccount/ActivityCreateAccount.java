@@ -16,6 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * класс для интерфейса создания аккаунта
+ */
 public class ActivityCreateAccount extends AppCompatActivity implements View.OnClickListener {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference("Users");
@@ -24,6 +27,9 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
     private EditText etPassword;
 
     @Override
+    /**
+     * базовый android метод для старта объекта интерфейса
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
@@ -34,6 +40,10 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
 
     }
 
+    /**
+     * метод для обработки нажатия
+     * @param view состояние нажатия
+     */
     @Override
     public void onClick(View view) {
         if (etEmail.getText().toString().equals("")) {
@@ -47,7 +57,12 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
         }
     }
 
-    //-----Регистрация в базе данных нового пользователя
+    /**
+     * егистрация в базе данных нового пользователя
+     * @param email почта
+     * @param password парроль
+     */
+
     public void registration(final String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -73,6 +88,9 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
                 });
     }
 
+    /**
+     * метод для старта создания профиля
+     */
     private void startActivityCreateProfile() {
         AdapterCreateAccount.startActivityCreateProfile(this);
     }

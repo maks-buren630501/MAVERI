@@ -17,11 +17,19 @@ import com.example.wakeparkby.pchell.maveri.R;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * класс для связи интерфейса и логики списка друзей
+ */
 public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
 
     private Context mContext;
     private ArrayList<ProfileFriend> profileList = new ArrayList<>();
 
+    /**
+     * конструктор с параметрами
+     * @param context контекст окна
+     * @param profileArrayList список друзей для вывода
+     */
     public AdapterFriendArray(@NonNull Context context, ArrayList<ProfileFriend> profileArrayList) {
         super(context, 0, profileArrayList);
         mContext = context;
@@ -29,6 +37,10 @@ public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
     }
 
 
+    /**
+     * метод для вывода списка друзей на экран
+     * @param items список друзей
+     */
     public void addAll(ArrayList<ProfileFriend> items) {
         clear();
         for(ProfileFriend item :items)
@@ -40,6 +52,10 @@ public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
         notifyDataSetChanged();
     }
 
+    /**
+     * метод для вывода 1 друга на экран
+     * @param object профиль друга
+     */
     @Override
     public void add( @Nullable ProfileFriend object) {
       //  super.add(object);
@@ -47,6 +63,9 @@ public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
         notifyDataSetChanged();
     }
 
+    /**
+     * метод для очистки списка на экране
+     */
     @Override
     public void clear() {
         super.clear();
@@ -55,6 +74,10 @@ public class AdapterFriendArray extends ArrayAdapter<ProfileFriend> {
 
     }
 
+    /**
+     * метод для удаления 1 друга из списка
+     * @param object удаляемый друг
+     */
     @Override
     public void remove( @Nullable ProfileFriend object) {
         super.remove(object);
