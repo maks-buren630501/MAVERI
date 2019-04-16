@@ -3,6 +3,7 @@ package com.example.wakeparkby.pchell.maveri.Group;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,7 @@ import com.example.wakeparkby.pchell.maveri.Chat.AdapterChat;
 import com.example.wakeparkby.pchell.maveri.R;
 
 public class ActivityGroupList extends AppCompatActivity implements View.OnClickListener {
-    ImageButton addNewGroup;
+    FloatingActionButton addNewGroup;
     ImageButton searchGroup;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

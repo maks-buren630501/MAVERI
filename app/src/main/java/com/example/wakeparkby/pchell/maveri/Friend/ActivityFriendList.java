@@ -26,9 +26,7 @@ public class ActivityFriendList extends AppCompatActivity {
         searchButton=(ImageButton)findViewById(R.id.search_friend_button);
         searchRequest=(EditText)findViewById(R.id.search_textline);
         FriendListFragment friendListFragment = new FriendListFragment();
-
     }
-
 
     public void onClick(View view) {
 
