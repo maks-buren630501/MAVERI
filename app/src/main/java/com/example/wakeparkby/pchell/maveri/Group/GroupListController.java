@@ -5,7 +5,7 @@ import android.content.Intent;
 
 public class GroupListController {
     public static void startActivityCreateGroup(Context context) {
-        Intent intent_createGroup = new Intent(context, ActivityCreateGroup.class);
+        Intent intent_createGroup = new Intent(context, ActivityCreateInfoGroup.class);
         context.startActivity(intent_createGroup);
     }
 }

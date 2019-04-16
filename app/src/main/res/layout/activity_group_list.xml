@@ -47,12 +47,5 @@
 
     </LinearLayout>
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.example.wakeparkby.pchell.maveri.Friend.FriendListFragment"
-        tools:layout="@android:layout/list_content"
-        android:id="@+id/FriendList">
 
-    </fragment>
 </LinearLayout>

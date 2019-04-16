@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
-import com.example.wakeparkby.pchell.maveri.Group.ActivityCreateGroup;
 import com.example.wakeparkby.pchell.maveri.Group.ActivityGroupList;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 
