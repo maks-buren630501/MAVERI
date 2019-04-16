@@ -23,11 +23,18 @@ import com.example.wakeparkby.pchell.maveri.R;
 
 import org.w3c.dom.Text;
 
+/**
+ * класс для работы с объектом интерфейса главного меню
+ */
 public class ActivityMainMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private TextView textViewNameProfile;
 
 
+    /**
+     * стандартный android метод создания
+     * @param savedInstanceState стандартный android параметр
+     */
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,9 @@ public class ActivityMainMenu extends AppCompatActivity
         textViewNameProfile.setText(Profile.getInstance().getFirstName() + " " + Profile.getInstance().getLastName());
     }
 
+    /**
+     * метод для обработки нажатия клавиши назад
+     */
     @Override
     public void onBackPressed() {
 
@@ -53,6 +63,11 @@ public class ActivityMainMenu extends AppCompatActivity
         }
     }
 
+    /**
+     * метод для получения статуса создания доп меню
+     * @param menu меню
+     * @return статут
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -61,6 +76,11 @@ public class ActivityMainMenu extends AppCompatActivity
     }
 
 
+    /**
+     * метод для получения статуса
+     * @param item
+     * @return статус
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -74,6 +94,11 @@ public class ActivityMainMenu extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * метод для получения статуса
+     * @param item
+     * @return статус
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -96,7 +121,10 @@ public class ActivityMainMenu extends AppCompatActivity
         return true;
     }
 
-
+    /**
+     * метод для обработки нажатий
+     * @param v статус нажатия
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
