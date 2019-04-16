@@ -1,25 +1,13 @@
 package com.example.wakeparkby.pchell.maveri.Profile;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
-import com.example.wakeparkby.pchell.maveri.Chat.AdapterChat;
-import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.R;
-
-import java.util.ArrayList;
 
 public class ActivityProfileFriend extends AppCompatActivity implements View.OnClickListener {
 
