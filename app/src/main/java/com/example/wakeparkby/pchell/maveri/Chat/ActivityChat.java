@@ -34,6 +34,9 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * класс для обработки интерфейса чата
+ */
 public class ActivityChat extends AppCompatActivity implements View.OnClickListener {
     AdapterChat adapterChat = Profile.getInstance().getAdapterChat();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -53,8 +56,8 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     ObserverMessage observer = new ObserverMessage("Chat") {
 
         /**
-         * override method of Observer class with new reaction for notify observers
-
+         * перегруженный метод обновления для частного экземпляра класса наблюдатель
+         * в данном случае при обновлении обновляется либо основной чат, либо чат встреч
          */
 
         @Override
@@ -80,6 +83,10 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     };
 
 
+    /**
+     * метод создания объекта
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +103,9 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    /**
+     * метод обновляющий чат
+     */
     public void refreshChat() {
         chatList = Profile.getInstance().getAdapterChat().getListMessage().getMessages();
         ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
@@ -105,6 +115,9 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         // chatList.clear();
     }
 
+    /**
+     * метод обновляющий чат встреч
+     */
     public void refreshChatMeeting() {
         listMeetingChat = Profile.getInstance().getAdapterChat().getlistMeetingChat().getListMeetingChat();
         if (listMeetingChat.size() != 0) {
@@ -119,7 +132,10 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    /**
+     * метод для обработки нажатия на кнопку
+     * @param v сигнал нажатия
+     */
     @Override
     public void onClick(View v) {
 
@@ -139,6 +155,11 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * метод для обработки пришедшего предложения о встрече
+     * @param id код встречи
+     * @return
+     */
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
@@ -176,6 +197,10 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * метод создающий окно выбора встреч
+     * @param coordinates
+     */
     private void startActivityMaps(String coordinates) {
         AdapterChat.startActivityMeetingOnMaps(this, coordinates);
     }

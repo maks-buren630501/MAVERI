@@ -6,6 +6,9 @@ import android.content.Intent;
 
 import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
 
+/**
+ * класс для связи логики и интерфейса создания аккаунта
+ */
 public class AdapterCreateAccount {
     protected static void startActivityCreateProfile(Context context) {
         Intent intent_CreateAccountInfo = new Intent(context, ActivityCreateProfile.class);

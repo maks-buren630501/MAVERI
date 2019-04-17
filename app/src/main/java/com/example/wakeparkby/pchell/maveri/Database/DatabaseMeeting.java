@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * класс для связи базы данных со встречами
+ */
 public class DatabaseMeeting {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeeting;
@@ -28,10 +31,20 @@ public class DatabaseMeeting {
     HashMap<String, String> values;
     ObserverMessage observerMessage = new ObserverMessage("DataBaseMeeting");
 
+    /**
+     * метод устанавливающий статус наблюдателя в 5
+     */
     public DatabaseMeeting() {
         observerMessage.setStatus(5);
     }
 
+    /**
+     * метод добавляющий встречу в базу данныъх
+     * @param coordinates координаты
+     * @param date дата
+     * @param time время
+     * @param name название
+     */
     public void addNewMeetingChat(String coordinates, String date, String time, String name) {
         myRefMeeting = database.getReference("Messages/" + Profile.getInstance().getAdapterChat().getGroupId() + "/Meeting/" +
                 Profile.getInstance().getUserKey() + "/");
@@ -41,6 +54,10 @@ public class DatabaseMeeting {
         myRefMeeting.child("Name").setValue(name);
     }
 
+    /**
+     * метод загружающий встречу в чат
+     * @param groupId номер чата
+     */
     public void loadNewMeetingChat(final String groupId) {
         idUserMeeting = Profile.getInstance().getUserKey();
         myRefMeeting = database.getReference("Messages/" + groupId + "/Meeting/");

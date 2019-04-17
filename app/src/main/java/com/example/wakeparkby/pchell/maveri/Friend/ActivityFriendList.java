@@ -14,11 +14,17 @@ import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
 
+/**
+ * класс для объекта интерфейса списка друзей
+ */
 public class ActivityFriendList extends AppCompatActivity {
 
     ImageButton searchButton;
     EditText searchRequest;
     @Override
+    /**
+     * стандартный метод создания объекта интерфейса
+     */
     public void onCreate(Bundle savedInstanceState) {
          Bundle bundle = new Bundle();
         super.onCreate(savedInstanceState);
@@ -26,8 +32,14 @@ public class ActivityFriendList extends AppCompatActivity {
         searchButton=(ImageButton)findViewById(R.id.search_friend_button);
         searchRequest=(EditText)findViewById(R.id.search_textline);
         FriendListFragment friendListFragment = new FriendListFragment();
+
     }
 
+
+    /**
+     * метод для обработки нажатий
+     * @param view статус нажатия
+     */
     public void onClick(View view) {
 
         if(!this.searchRequest.getText().toString().isEmpty()) {
