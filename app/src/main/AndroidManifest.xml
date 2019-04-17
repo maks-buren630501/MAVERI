@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Group.ActivityGroupList">
+        <activity android:name=".SignIn.ActivitySignIn">
         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,9 +36,9 @@
         <activity android:name=".Group.ActivityCreateInfoGroup" />
         <activity android:name=".Group.ActivityCreateDateAndTimeGroup" />
         <activity android:name=".Group.ActivityGroup" />
-
-        <activity android:name=".SignIn.ActivitySignIn"/>
+        <activity android:name=".Group.ActivityGroupList"/>
         <activity android:name=".Group.ActivityCreateSelectPlaceGroup" />
+        <activity android:name=".CreateAccount.ActivityChooseLowInterests" />
 
 
         <meta-data
