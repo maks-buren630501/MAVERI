@@ -32,14 +32,20 @@ public class Profile {
     private AdapterFriendList adapterFriendList = new AdapterFriendList();
     AdapterChat adapterChat = new AdapterChat();
 
-
+    /**
+     * метод возврощающий единственный в системе объект класса пользователь(если объект еще не создан то создается)
+     * @return
+     */
     public static Profile getInstance() {
         if (instance == null) {        //если объект еще не создан
             instance = new Profile();    //создать новый пустой объект
         }
         return instance;
     }
-
+    /**
+     * метод возврощающий единственный в системе объект класса пользователь(если объект еще не создан то создается объект сс параметрами)
+     * @return единственный в системе объект класса пользователь
+     */
     public static Profile getInstanceWithParam(String id, String firstName, String lastName, String age, String sex, String listInterests) {
         if (instance == null) {        //если объект еще не создан
             instance = new Profile(id, firstName, lastName, age, sex, listInterests);    //создать новый объект
@@ -47,12 +53,22 @@ public class Profile {
         return instance;
     }
 
-
+    /**
+     * пустой конструктор по умолчанию
+     */
     private Profile() {
 
     }
 
-
+    /**
+     * конструктор с параметрами
+     * @param id номер пользователя
+     * @param firstName имя
+     * @param lastName фамилия
+     * @param age возрост
+     * @param sex пол
+     * @param listInterests список интересов
+     */
     public Profile(String id, String firstName, String lastName, String age, String sex, String listInterests) {
         this.userKey = id;
         this.firstName = firstName;
@@ -62,47 +78,83 @@ public class Profile {
         this.listInterests = listInterests;
     }
 
+    /**
+     * метод возврощающий имя
+     * @return имя
+     */
     public String getFirstName() {
         return firstName;
     }
-
+    /**
+     * метод возврощающий фамилию
+     * @return фамилия
+     */
     public String getLastName() {
         return lastName;
     }
-
+    /**
+     * метод возврощающий возрост
+     * @return возрост
+     */
     public String getAge() {
         return age;
     }
-
+    /**
+     * метод возврощающий пол
+     * @return пол
+     */
     public String getSex() {
         return sex;
     }
-
+    /**
+     * метод возврощающий список интересов
+     * @return список интересов
+     */
     public String getListInterests() {
         return listInterests;
     }
-
+    /**
+     * метод возврощающий ключ пользователя
+     * @return ключ пользователя
+     */
     public String getUserKey() {
         return userKey;
     }
-
+    /**
+     * метод возврощающий список встреч
+     * @return список встреч
+     */
     public ListMeeting getListMeeting() {
         return this.listMeeting;
     }
-
+    /**
+     * метод возврощающий список друзей
+     * @return список друзей
+     */
     public AdapterFriendList getAdapterFriendList() {
         return adapterFriendList;
     }
 
+    /**
+     * метод устанавливающий список друзей
+     * @param friends список друзей
+     */
     public void setFriendList(AdapterFriendList friends) {
         this.adapterFriendList = friends;
 //        FriendListFragment.getArrayAdapter().addAll(friends.getFriends());
     }
-
+    /**
+     * метод устанавливающий список сообщений
+     * @param chat список сообщений
+     */
     public void setAdapterChat(AdapterChat chat) {
         this.adapterChat = chat;
     }
 
+    /**
+     * метод возврощающий список сообщений
+     * @return список сообщений
+     */
     public AdapterChat getAdapterChat() {
         return this.adapterChat;
     }

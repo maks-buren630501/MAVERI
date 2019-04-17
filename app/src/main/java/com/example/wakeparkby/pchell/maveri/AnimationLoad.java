@@ -13,6 +13,9 @@ import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 
 import java.util.Vector;
 
+/**
+ * класс для обработки анимации
+ */
 public class AnimationLoad extends AppCompatActivity {
     private ImageView iMainPicture;
     private Animation aRotateEarth;

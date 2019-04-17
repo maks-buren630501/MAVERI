@@ -16,11 +16,18 @@ import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
 
+/**
+ * класс для работы с объектом интерфейса профиля друга
+ */
 public class ActivityProfileFriend extends AppCompatActivity implements View.OnClickListener {
     Button chat;
     TextView name;
     TextView interest;
 
+    /**
+     * стандартный метод создания android
+     * @param savedInstanceState стандартный параметр
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_info);
@@ -52,7 +59,10 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
 
         tabHostfriend.setCurrentTab(0);
     }
-
+    /**
+     * метод для обработки нажатий
+     * @param v статус нажатия
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

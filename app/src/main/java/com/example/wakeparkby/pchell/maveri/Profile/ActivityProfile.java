@@ -13,6 +13,9 @@ import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.ArrayList;
 
+/**
+ * класс для работы с объектом интерфейса профиля
+ */
 public class ActivityProfile extends AppCompatActivity implements View.OnClickListener {
 
     private TextView name;
@@ -21,6 +24,11 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
     private String profileName;
     private String listInterests;
 
+    /**
+     * стандартный метод создания android
+     * @param savedInstanceState стандартный параметр
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +63,10 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
         tabHostuser.setCurrentTab(0);
     }
 
-
+    /**
+     * метод для обработки нажатий
+     * @param v статус нажатия
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

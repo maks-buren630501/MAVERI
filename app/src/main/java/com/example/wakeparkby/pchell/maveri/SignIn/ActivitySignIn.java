@@ -24,6 +24,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Vector;
 
+/**
+ * класс для объекта интерфейса входа в приложения
+ */
 public class ActivitySignIn extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -45,6 +48,10 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
     private ImageView imageViewHuman;
     AnimationThread animationThread;
 
+    /**
+     * стандартный android метод создания
+     * @param savedInstanceState стандартный параметр
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +81,10 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    /**
+     * метод для обработки нажатий на клаиатуру
+     * @param view статус нажатия
+     */
     @Override
     public void onClick(View view) {
 
@@ -103,7 +114,12 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    //-----Проверка авторизации
+
+    /**
+     * метод для проверки авторизации
+     * @param email_S електронный адрес
+     * @param password_S пароль
+     */
     public void signIn(String email_S, String password_S) {
         mAuth.signInWithEmailAndPassword(email_S, password_S)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -126,10 +142,16 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                 });
     }
 
+    /**
+     * метод для создания объекта интефейса главного меню
+     */
     private void startActivityMainMenu() {
         AdapterSignIn.startActivityLoad(this);
     }
 
+    /**
+     * класс для работы анимации
+     */
     public class AnimationThread extends Thread {
 
 
