@@ -3,36 +3,26 @@ package com.example.wakeparkby.pchell.maveri.Chat;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.example.wakeparkby.pchell.maveri.Meeting.Meeting;
 import com.example.wakeparkby.pchell.maveri.ObserverMessage;
-import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * класс для обработки интерфейса чата
@@ -47,7 +37,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private ListView listViewChat;
     private List<String> chatList;
     private HashMap<Integer, HashMap<String, String>> listMeetingChat;
-    private String name;
+    private String placeName;
     private String date;
     private String coordinates;
     private final int IDD_THREE_BUTTONS = 0;
@@ -124,7 +114,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             for (Map.Entry entry : listMeetingChat.entrySet()) {
                 int key = (int) entry.getKey();
                 //values1.add((String[]) entry.getValue());
-                this.name = listMeetingChat.get(key).get("Name");
+                this.placeName = listMeetingChat.get(key).get("Name");
                 this.date = listMeetingChat.get(key).get("Date");
                 this.coordinates = listMeetingChat.get(key).get("LatLng");
                 showDialog(IDD_THREE_BUTTONS);
@@ -166,7 +156,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             case IDD_THREE_BUTTONS:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(Profile.getInstance().getFirstName() + " предложил встречу");
-                builder.setMessage("Дата: " + date + System.lineSeparator() + "Место: " + name)
+                builder.setMessage("Дата: " + date + System.lineSeparator() + "Место: " + placeName)
                         .setCancelable(false)
                         .setPositiveButton("Отмена",
                                 new DialogInterface.OnClickListener() {
@@ -186,6 +176,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,
                                                         int id) {
+                                        Profile.getInstance().getListMeeting().addMeeting(new Meeting(coordinates, placeName,date,""));
 
                                         dialog.cancel();
                                     }
