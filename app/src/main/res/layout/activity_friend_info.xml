@@ -36,13 +36,6 @@
                         app:civ_border_color="@color/colorAccent"
                         app:civ_border_width="3dp" />
 
-                    <Button
-                        android:id="@+id/changefriendinfo"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_toRightOf="@+id/iv_profilefriendinfo"
-                        android:background="@drawable/pencil" />
-
                 </RelativeLayout>
 
                 <LinearLayout

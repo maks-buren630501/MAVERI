@@ -1,25 +1,20 @@
 package com.example.wakeparkby.pchell.maveri.Profile;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
-import com.example.wakeparkby.pchell.maveri.Chat.AdapterChat;
-import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.R;
 
-import java.util.ArrayList;
-
 public class ActivityProfileFriend extends AppCompatActivity implements View.OnClickListener {
+
     Button chat;
     TextView name;
     TextView interest;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +47,6 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
 
         tabHostfriend.setCurrentTab(0);
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -62,6 +56,7 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
                         getIntent().getStringExtra("userAge"), getIntent().getStringExtra("userSex"), getIntent().getStringExtra("userListInterests"));
                 adapterProfileFriend.startActivityChat(this);
             }
+
         }
     }
 }
