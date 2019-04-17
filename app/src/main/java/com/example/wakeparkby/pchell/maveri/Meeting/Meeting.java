@@ -31,6 +31,20 @@ public class Meeting {
     }
 
     /**
+     * конструктор с параметрами
+     * @param coordinates координаты
+     * @param name имя
+     * @param date дата
+     * @param id номер встречи
+     */
+    public Meeting(String coordinates,String name,String date, String id){
+        this.coordinates = coordinates;
+        this.date = date;
+        this.name = name;
+        this.id = id;
+    }
+
+    /**
      * метод возвращающий координаты встречи
      * @return координаты встречи
      */

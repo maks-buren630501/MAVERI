@@ -43,15 +43,15 @@ public class DatabaseMeeting {
      * @param coordinates координаты
      * @param date дата
      * @param time время
-     * @param name название
+     * @param placeName название
      */
-    public void addNewMeetingChat(String coordinates, String date, String time, String name) {
+    public void addNewMeetingChat(String coordinates, String date, String time, String placeName) {
         myRefMeeting = database.getReference("Messages/" + Profile.getInstance().getAdapterChat().getGroupId() + "/Meeting/" +
                 Profile.getInstance().getUserKey() + "/");
 
         myRefMeeting.child("Date").setValue(date + " ("+time+")");
         myRefMeeting.child("LatLng").setValue(coordinates);
-        myRefMeeting.child("Name").setValue(name);
+        myRefMeeting.child("Name").setValue(placeName);
     }
 
     /**
@@ -93,6 +93,14 @@ public class DatabaseMeeting {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+    }
+
+    public void addNewMeetingUser(String userName, String coordinates, String date, String time, String placeName) {
+        myRefMeeting = database.getReference("User/" + Profile.getInstance().getUserKey()+ "/" + "/ListMeeting/").push();
+        myRefMeeting.child("Date").setValue(date + " ("+time+")");
+        myRefMeeting.child("LatLng").setValue(coordinates);
+        myRefMeeting.child("Name").setValue(placeName);
+        myRefMeeting.child("UserName").setValue(userName);
     }
 
 }
