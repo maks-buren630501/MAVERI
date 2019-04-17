@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
 import com.example.wakeparkby.pchell.maveri.Group.ActivityGroupList;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
+import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
 
 public class AdapterMainMenu {
 
@@ -23,5 +24,10 @@ public class AdapterMainMenu {
     public static void startActivityGroupList(Context context) {
         Intent intent_groupList = new Intent(context, ActivityGroupList.class);
         context.startActivity(intent_groupList);
+    }
+
+    public static void startActivitySignIn(Context context) {
+        Intent intent_signIn = new Intent(context, ActivitySignIn.class);
+        context.startActivity(intent_signIn);
     }
 }

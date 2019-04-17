@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wakeparkby.pchell.maveri.CreateAccount.ActivityCreateAccount;
+import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -66,7 +67,10 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
         iMainPicture = findViewById(R.id.imageViewEarth);
         aRotateEarth = AnimationUtils.loadAnimation(this, R.anim.move_earth);
         iMainPicture.startAnimation(aRotateEarth);
-
+        /*if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent intent_MainMenu = new Intent(this, ActivityMainMenu.class);
+            startActivity(intent_MainMenu);
+        }*/
         animationThread = new AnimationThread(animationHuman, imageViewHuman);
         animationThread.start();
 

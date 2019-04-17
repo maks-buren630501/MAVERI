@@ -20,6 +20,7 @@ import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.CircularImageView;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
@@ -91,6 +92,10 @@ public class ActivityMainMenu extends AppCompatActivity
         } else if (id == R.id.group){
             AdapterMainMenu.startActivityGroupList(this);
         }
+        /*else if (id == R.id.exit){
+            FirebaseAuth.getInstance().signOut();
+            AdapterMainMenu.startActivitySignIn(this);
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

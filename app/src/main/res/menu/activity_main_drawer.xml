@@ -23,12 +23,15 @@
 
     </group>
 
-    <item android:title=" ">
-        <menu></menu>
+    <item android:title="Системное">
+        <menu>
+            <item
+                android:id="@+id/settings"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Настройки" />
+            <item
+                android:id="@+id/exit"
+                android:title="Выход" />
+        </menu>
     </item>
-    <item
-        android:id="@+id/settings"
-        android:icon="@drawable/ic_menu_manage"
-        android:title="Настройки" />
-
 </menu>
