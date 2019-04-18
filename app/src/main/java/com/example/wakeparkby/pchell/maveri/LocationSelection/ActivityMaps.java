@@ -19,13 +19,19 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+/**
+ * класс для работы с объектом интерфейса карты
+ */
 public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback , View.OnClickListener{
     Button buttonAddCoordinates;
     private GoogleMap mMap;
     private Marker marker;
     private LatLng latLng;
     private String coordinates;
-
+    /**
+     * стандартный android метод создания
+     * @param savedInstanceState стандартный android параметр
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +51,10 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    /**
+     * стандартный метод google maps api
+     * @param googleMap карта google
+      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -79,6 +89,11 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
+    /**
+     * метод для обработки постановки маркера
+     * @param marker маркер на карте
+     * @return состояние постановки маркера (поставлен либо нет)
+     */
     public boolean onMarkerClick(Marker marker) {
         Integer clickCount = (Integer) marker.getTag();
 
@@ -93,7 +108,10 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
         }
         return false;
     }
-
+    /**
+     * метод для обработки нажатий
+     * @param v статус нажатия
+     */
     @Override
     public void onClick(View v) {
         if(latLng != null){
@@ -108,6 +126,10 @@ public class ActivityMaps extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    /**
+     * метод для задания координат
+     * @param latLng координаты
+     */
     public void setLatLng(LatLng latLng) {
         this.latLng = latLng;
     }

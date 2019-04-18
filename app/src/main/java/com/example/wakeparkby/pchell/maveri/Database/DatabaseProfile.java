@@ -20,6 +20,9 @@ import com.google.firebase.database.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * класс для работы с данными пользователя
+ */
 public class DatabaseProfile {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefProfile;
@@ -34,13 +37,23 @@ public class DatabaseProfile {
     private String searchRequest="";
     ObserverMessage observerMessage = new ObserverMessage("DatabaseProfile");
 
+    /**
+     * метод для получения найденных пользователей
+     * @return список найденных пользователей
+     */
     public static ArrayList<ProfileFriend> getSearchProfiles() {
         return searchProfiles;
     }
 
+    /**
+     * пустой конструктор
+     */
     public DatabaseProfile() {
     }
 
+    /**
+     * загрузка информации о профиле в базу данных
+     */
     private void SetProfileDatabase() {
         myRefProfile = database.getReference("/" + userId);
         myRefProfile.child("First name:").setValue(firstName);
@@ -78,6 +91,10 @@ public class DatabaseProfile {
         });
     }*/
 
+    /**
+     * метод для загрузки данных о пользователе из базы данных
+     * @param userId номер пользователя
+     */
     public void loadUserInfo(final String userId) {
         this.userId = userId;
         myRefProfile = database.getReference("Users" + "/" + userId);
@@ -102,6 +119,9 @@ public class DatabaseProfile {
         });
     }
 
+    /**
+     * метод для загрузки из базы данных списка друзей
+     */
     public void loadListFriends() {
 
         myRefProfile = database.getReference("Users" + "/" + userId + "/Friends");
@@ -146,6 +166,14 @@ public class DatabaseProfile {
         });
     }
 
+    /**
+     * метод для создания нового пользователся
+     * @param userKey номер пользователя
+     * @param firstName Имя
+     * @param lastName Фамиличя
+     * @param age возрост
+     * @param interests интересы
+     */
     public void newProfile(String userKey, String firstName, String lastName, String age, String interests) {
         myRefProfile = database.getReference("Users" + "/" + userKey);
         myRefProfile.child("FirstName").setValue(firstName);
@@ -156,6 +184,13 @@ public class DatabaseProfile {
     }
 
 
+    /**
+     * метод для получения информации о профиле друга
+     * @param getInfoFriendsDS
+     * @param profiles список друзей
+     * @param id номер друга
+     * @return
+     */
     private ProfileFriend setDataProfile(DataSnapshot getInfoFriendsDS,ArrayList<ProfileFriend> profiles,String id)
     {
         firstName = String.valueOf(getInfoFriendsDS.child("FirstName").getValue());
@@ -168,6 +203,11 @@ public class DatabaseProfile {
         return  profile;
 
     }
+
+    /**
+     * метод для поиска пользователей
+     * @param string Фамилия искомого
+     */
     public void SearchProfile(String string)
     {
         //здесь должен быть код на Scala в 3 трочки
@@ -186,6 +226,10 @@ public class DatabaseProfile {
     }
 
 
+    /**
+     * метод для получения списка искомых пользователей
+     * @param parametr параметр(строка) поиска
+     */
     private void getListSearchProfile(String parametr) {
         final ArrayList<ProfileFriend> searchProfile = new ArrayList<>();
         myRefProfile = database.getReference("Users");

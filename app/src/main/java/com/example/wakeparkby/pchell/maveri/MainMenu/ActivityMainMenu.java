@@ -20,14 +20,22 @@ import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.CircularImageView;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.w3c.dom.Text;
 
+/**
+ * класс для работы с объектом интерфейса главного меню
+ */
 public class ActivityMainMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private TextView textViewNameProfile;
 
 
+    /**
+     * стандартный android метод создания
+     * @param savedInstanceState стандартный android параметр
+     */
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,9 @@ public class ActivityMainMenu extends AppCompatActivity
         textViewNameProfile.setText(Profile.getInstance().getFirstName() + " " + Profile.getInstance().getLastName());
     }
 
+    /**
+     * метод для обработки нажатия клавиши назад
+     */
     @Override
     public void onBackPressed() {
 
@@ -53,6 +64,11 @@ public class ActivityMainMenu extends AppCompatActivity
         }
     }
 
+    /**
+     * метод для получения статуса создания доп меню
+     * @param menu меню
+     * @return статут
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -61,6 +77,11 @@ public class ActivityMainMenu extends AppCompatActivity
     }
 
 
+    /**
+     * метод для получения статуса
+     * @param item
+     * @return статус
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -74,6 +95,11 @@ public class ActivityMainMenu extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * метод для получения статуса
+     * @param item
+     * @return статус
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -86,17 +112,25 @@ public class ActivityMainMenu extends AppCompatActivity
             //AdapterMainMenu.startActivityMaps(this);
         } else if (id == R.id.message) {
 
-
         } else if (id == R.id.settings) {
             System.out.println("GOGOGO");
+        } else if (id == R.id.group){
+            AdapterMainMenu.startActivityGroupList(this);
         }
+        /*else if (id == R.id.exit){
+            FirebaseAuth.getInstance().signOut();
+            AdapterMainMenu.startActivitySignIn(this);
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-
+    /**
+     * метод для обработки нажатий
+     * @param v статус нажатия
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

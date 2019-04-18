@@ -1,34 +1,38 @@
 package com.example.wakeparkby.pchell.maveri.Profile;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.R;
 
+import java.util.ArrayList;
+
+/**
+ * класс для работы с объектом интерфейса профиля
+ */
 public class ActivityProfile extends AppCompatActivity implements View.OnClickListener {
 
     private TextView name;
     private TextView interest;
-    ImageView image;
-    Button change;
+
     private String profileName;
     private String listInterests;
-    public static final int PICK_IMAGE = 1;
 
+    /**
+     * стандартный метод создания android
+     * @param savedInstanceState стандартный параметр
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
-        image = findViewById(R.id.iv_profileuserinfo);
-        change = findViewById(R.id.changeuserinfo);
-        change.setOnClickListener(this);
         name = (TextView) findViewById(R.id.nameuserinfo);
         interest = (TextView) findViewById(R.id.infintuserinfo);
         AdapterProfile adapterProfile = new AdapterProfile();
@@ -59,28 +63,13 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
         tabHostuser.setCurrentTab(0);
     }
 
-
+    /**
+     * метод для обработки нажатий
+     * @param v статус нажатия
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.changeuserinfo: {
-                Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                getIntent.setType("image/*");
-
-                Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                pickIntent.setType("image/*");
-
-                Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
-                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {pickIntent});
-
-                startActivityForResult(chooserIntent, PICK_IMAGE);
-            }
-        }
-        }
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PICK_IMAGE) {
-            Uri fullPhotoUri = data.getData();
-            image.setImageURI(fullPhotoUri);
         }
     }
 }
