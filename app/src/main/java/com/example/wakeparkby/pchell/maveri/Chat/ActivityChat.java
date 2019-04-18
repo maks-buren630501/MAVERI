@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.example.wakeparkby.pchell.maveri.Database.DatabaseMeeting;
 import com.example.wakeparkby.pchell.maveri.Meeting.Meeting;
 import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
@@ -38,6 +39,8 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private List<String> chatList;
     private HashMap<Integer, HashMap<String, String>> listMeetingChat;
     private String placeName;
+    private String invateUserName;
+    private String invateUserKey;
     private String date;
     private String coordinates;
     private final int IDD_THREE_BUTTONS = 0;
@@ -114,9 +117,11 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
             for (Map.Entry entry : listMeetingChat.entrySet()) {
                 int key = (int) entry.getKey();
                 //values1.add((String[]) entry.getValue());
-                this.placeName = listMeetingChat.get(key).get("Name");
+                this.invateUserKey = listMeetingChat.get(key).get("UserKey");
+                this.placeName = listMeetingChat.get(key).get("PlaceName");
                 this.date = listMeetingChat.get(key).get("Date");
                 this.coordinates = listMeetingChat.get(key).get("LatLng");
+                this.invateUserName = listMeetingChat.get(key).get("UserName");
                 showDialog(IDD_THREE_BUTTONS);
             }
         }
@@ -155,7 +160,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         switch (id) {
             case IDD_THREE_BUTTONS:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle(Profile.getInstance().getFirstName() + " предложил встречу");
+                builder.setTitle(invateUserName + " предложил встречу");
                 builder.setMessage("Дата: " + date + System.lineSeparator() + "Место: " + placeName)
                         .setCancelable(false)
                         .setPositiveButton("Отмена",
@@ -176,9 +181,11 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,
                                                         int id) {
-                                        Profile.getInstance().getListMeeting().addMeeting(new Meeting(coordinates, placeName,date,""));
-
                                         dialog.cancel();
+                                        DatabaseMeeting databaseMeeting = new DatabaseMeeting();
+                                        databaseMeeting.addNewMeetingUser(invateUserKey,invateUserName,coordinates,date,placeName);
+                                        databaseMeeting.addNewMeetingInvateUser(invateUserKey,invateUserName,coordinates,date,placeName);
+                                        databaseMeeting.removeMeetingChat(invateUserKey);
                                     }
                                 });
 

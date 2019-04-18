@@ -2,6 +2,7 @@ package com.example.wakeparkby.pchell.maveri.Database;
 
 import android.support.annotation.NonNull;
 
+import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -12,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DatabaseGroup {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefGroup;
+
 
     public void addNewGroup(String status, String date, String time, String name, String description, String coordinates, String password) {
         myRefGroup = database.getReference("Group/").push();
