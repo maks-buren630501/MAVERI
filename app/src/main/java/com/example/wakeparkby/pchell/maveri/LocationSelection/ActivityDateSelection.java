@@ -11,12 +11,19 @@ import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.Calendar;
 
+/**
+ * класс для работы с объектом интерфейса выбора даты встречи
+ */
 public class ActivityDateSelection extends AppCompatActivity implements View.OnClickListener {
 
     Button continueButton;
     DatePicker datePicker;
     private String date;
 
+    /**
+     * стандартный android метод создания
+     * @param savedInstanceState стандартный android параметр
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +36,10 @@ public class ActivityDateSelection extends AppCompatActivity implements View.OnC
         datePicker.setMaxDate(now + (1000 * 60 * 60 * 24 * 13));
     }
 
+    /**
+     * метод для обработки нажатий
+     * @param v статус нажатия
+     */
     @Override
     public void onClick(View v) {
         String mMonth;

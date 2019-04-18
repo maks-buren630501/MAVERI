@@ -20,7 +20,9 @@ import com.example.wakeparkby.pchell.maveri.R;
 import static android.widget.ImageView.ScaleType.CENTER_CROP;
 import static android.widget.ImageView.ScaleType.CENTER_INSIDE;
 
-
+/**
+ * класс для преобразования прямоугольного изображения в круглое
+ */
 public class CircularImageView extends AppCompatImageView {
 
     // Default Values

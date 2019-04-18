@@ -20,6 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 
+/**
+ * класс для работы с сообщениями в базе данных
+ */
 public class DatabaseMessage extends Observable{
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
@@ -30,6 +33,10 @@ public class DatabaseMessage extends Observable{
         observerMessage.setStatus(5);
     }
 
+    /**
+     * метод для загрузки сообщений по номеру чата
+     * @param groupId номер чата
+     */
     public void loadGroupMessage(final String groupId) {
         String str;
         this.groupId = groupId;
@@ -54,7 +61,12 @@ public class DatabaseMessage extends Observable{
     }
 
 
-
+    /**
+     * метод для отправки сообщения в базу данных
+     * @param name имя
+     * @param time время
+     * @param message текст сообщения
+     */
     public void sendMessage(String name, String time, String message) {
         myRefMeessage = database.getReference("Messages");
         myRefMeessage.child(Profile.getInstance().getAdapterChat().getGroupId()).child("Message").push().setValue(name + "       " + time + System.lineSeparator() + message);

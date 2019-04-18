@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * класс для работы с встречей
+ */
 public class Meeting {
 
     private String coordinates;
@@ -14,6 +17,10 @@ public class Meeting {
     private String date;
     private String id;
 
+    /**
+     * конструктор с параметрами
+     * @param listMeetingChat спсок встреч из чата
+     */
     public Meeting(HashMap<Integer, HashMap<String, String>> listMeetingChat) {
         for (Map.Entry entry : listMeetingChat.entrySet()) {
              int key = (int) entry.getKey();
@@ -23,18 +30,45 @@ public class Meeting {
         }
     }
 
+    /**
+     * конструктор с параметрами
+     * @param coordinates координаты
+     * @param name имя
+     * @param date дата
+     * @param id номер встречи
+     */
+    public Meeting(String coordinates,String name,String date, String id){
+        this.coordinates = coordinates;
+        this.date = date;
+        this.name = name;
+        this.id = id;
+    }
+
+    /**
+     * метод возвращающий координаты встречи
+     * @return координаты встречи
+     */
     public String getCoordinates() {
         return coordinates;
     }
-
+    /**
+     * метод возвращающий название встречи
+     * @return координаты название
+     */
     public String getName() {
         return name;
     }
-
+    /**
+     * метод возвращающий дату встречи
+     * @return дату встречи
+     */
     public String getDate() {
         return date;
     }
-
+    /**
+     * метод возвращающий номер встречи
+     * @return номер встречи
+     */
     public String getId() {
         return id;
     }
