@@ -1,30 +1,25 @@
 package com.example.wakeparkby.pchell.maveri.Profile;
 
+/**
+ * класс для связи интерфейса и логики пользователя
+ */
 public class AdapterProfile {
+    Profile profile = Profile.getInstance();
 
-
-    private static String profileName;
-    private static String listInterests;
-    Profile profile = new Profile();
-
+    /**
+     * метод возврощающий имя пользователя
+     * @return имя пользователя
+     */
     public String getProfileName() {
-        return profileName;
+        return profile.getFirstName() + " " + profile.getLastName();
     }
 
+    /**
+     * метод возврощающий список интересов пользователся
+     * @return список интересов пользователся
+     */
     public String getListInterests() {
-        return listInterests;
-    }
+        return profile.getListInterests();
 
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
     }
-
-    public void setListInterests(String listInterests) {
-        this.listInterests = listInterests;
-    }
-
-    /*public void setUserInfo() {
-        ActivityProfile activityProfile = new ActivityProfile();
-        activityProfile.setUserInfo();
-    }*/
 }

@@ -38,7 +38,7 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/textViewEmail"
+                android:id="@+id/textViewGroupName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Почта:"
@@ -46,10 +46,10 @@
                 android:textSize="18dp" />
 
             <EditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextGroupName"
                 android:layout_width="250dp"
                 android:layout_height="30dp"
-                android:layout_below="@id/textViewEmail"
+                android:layout_below="@id/textViewGroupName"
                 android:layout_centerInParent="true"
                 android:background="@drawable/rounded_edittext_focused"
                 android:hint="mail@mail.com"
@@ -62,7 +62,7 @@
                 android:id="@+id/textViewPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editTextEmail"
+                android:layout_below="@id/editTextGroupName"
                 android:layout_alignLeft="@+id/editTextPassword"
                 android:hint="Пароль:"
                 android:textColorHint="#000000"

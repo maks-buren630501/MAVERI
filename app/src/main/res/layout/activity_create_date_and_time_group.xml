@@ -1,0 +1,37 @@
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background_singup"
+        >
+
+        <DatePicker
+            android:id="@+id/datePickerCreateGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:layout_gravity="center"
+             >
+        </DatePicker>
+        <TimePicker
+            android:id="@+id/timePickerCreateGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            android:layout_gravity="center"
+
+            >
+        </TimePicker>
+        <Button
+            android:id="@+id/buttonEnterCreateDateAndTimeGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:hint="Продолжить"
+            android:textColorHint="#000000"
+            android:textSize="16dp"
+            android:background="@drawable/rounded_edittext"/>
+
+    </LinearLayout>

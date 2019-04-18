@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.lang.String;
 
+/**
+ * класс для хранения списка интересов
+ */
 public class ListInterests {
 
     HashMap<String, String[]> hashMap;
     public static ArrayList<String> listInterests = new ArrayList<>();
+
+    /**
+     * метод возвращающий список интересов в виде hashmap
+     * @return список интересов в виде hashmap
+     */
     public static HashMap<String, String[]> getInterests() {
         HashMap<String, String[]> mapInterests = new HashMap<>();
         ArrayList<String[]> current = new ArrayList<>();
@@ -37,16 +45,25 @@ public class ListInterests {
         return mapInterests;
     }
 
-    ListInterests(){
-        this.hashMap= getInterests();
+    ListInterests() {
+        this.hashMap = getInterests();
     }
 
-    public static void setListInterests(ArrayList<String> qwe){
-        for (String z: qwe) {
+    /**
+     * метод устанавливающий список интересов
+     * @param qwe список интересов
+     */
+    public static void setListInterests(ArrayList<String> qwe) {
+        for (String z : qwe) {
             listInterests.add(z);
         }
     }
-    public static ArrayList<String> getListInterests(){
+
+    /**
+     * метод возвращающий список интересов
+     * @return список интересов
+     */
+    public static ArrayList<String> getListInterests() {
         return listInterests;
     }
 

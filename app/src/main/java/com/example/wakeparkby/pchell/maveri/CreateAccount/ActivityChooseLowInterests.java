@@ -11,6 +11,9 @@ import android.widget.ListView;
 import com.example.wakeparkby.pchell.maveri.R;
 import java.util.ArrayList;
 
+/**
+ * объект интерфейса для выбора интересов
+ */
 public class ActivityChooseLowInterests extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<String> lowInterests = new ArrayList<String>();
@@ -19,6 +22,11 @@ public class ActivityChooseLowInterests extends AppCompatActivity implements Vie
     AllDataProfile allDataProfile=new AllDataProfile();
 
     private String interestString;
+
+    /**
+     * базовый android метод для старта объекта интерфейса
+     * @param savedInstanceState базовый параметр
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,12 +58,20 @@ public class ActivityChooseLowInterests extends AppCompatActivity implements Vie
 
     }
 
+    /**
+     * метод возвращающий интерес по его позиции в списке
+     * @param position позиция в списке
+     */
     private void getInterestLowInterests(int position) {
         for (int i = 0; i <= allDataProfile.GetStringLowInterests(position).length - 1; i++) {
             lowInterests.add(allDataProfile.GetStringLowInterests(position)[i]);
         }
     }
 
+    /**
+     * пустой метод для обработки нажатия
+     * @param v
+     */
     @Override
     public void onClick(View v) {
 

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_singup"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/textViewGroupName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Название встречи:"
+                android:textColorHint="#000000"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/editTextGroupName"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/textViewGroupName"
+                android:layout_centerInParent="true"
+                android:background="@drawable/rounded_edittext_focused"
+                android:inputType="textWebEmailAddress"
+                android:textColor="#000000"
+                android:textColorHint="#A9A9A9"
+                android:paddingStart="10dp"/>
+
+            <TextView
+                android:id="@+id/textViewDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextGroupName"
+                android:layout_alignLeft="@+id/editTextPassword"
+                android:hint="Описание:"
+                android:textColorHint="#000000"
+                android:textSize="18dp"
+
+                />
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/textViewDescription"
+                android:layout_centerInParent="true"
+                android:background="@drawable/rounded_edittext_focused"
+                android:textColor="#000000"
+                android:textColorHint="#A9A9A9"
+                android:paddingStart="10dp"/>
+
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextDescription"
+                android:layout_centerHorizontal="true"
+                android:checked="false"
+                android:text="Открытая/закрытая"
+                android:textOff="Открытая"
+                android:textOn="Закрытая"
+                android:layout_marginTop="10dp"
+                android:layout_alignLeft="@+id/editTextDescription"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/textViewNewPasswordCreateGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/switch1"
+                android:layout_alignLeft="@+id/editTextPassword"
+                android:hint="Пароль:"
+                android:textColorHint="#000000"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:visibility="gone"
+
+                android:id="@+id/editTextPasswordCreateGroup"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/textViewNewPasswordCreateGroup"
+                android:layout_centerInParent="true"
+                android:background="@drawable/rounded_edittext_focused"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textColorHint="#A9A9A9"
+                android:paddingStart="10dp"/>
+
+
+
+            <Button
+                android:id="@+id/buttonEnterCreateGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextPasswordCreateGroup"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:hint="Продолжить"
+                android:textColorHint="#000000"
+                android:textSize="16dp"
+                android:background="@drawable/rounded_edittext"/>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

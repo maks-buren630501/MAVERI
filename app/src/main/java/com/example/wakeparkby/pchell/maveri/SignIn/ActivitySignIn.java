@@ -13,8 +13,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
+
 import com.example.wakeparkby.pchell.maveri.CreateAccount.ActivityCreateAccount;
+import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,9 +25,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Vector;
 
+/**
+ * класс для объекта интерфейса входа в приложения
+ */
 public class ActivitySignIn extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    AdapterSignIn adapterSignIn = new AdapterSignIn();
+
 
     private EditText etEmail;
     private EditText etPassword;
@@ -37,17 +43,21 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
 
     private ImageView iMainPicture;
     private Animation aRotateEarth;
-    boolean have= true;
+    boolean have = true;
 
     private RelativeLayout animationHuman;
     private ImageView imageViewHuman;
     AnimationThread animationThread;
 
+    /**
+     * стандартный android метод создания
+     * @param savedInstanceState стандартный параметр
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        etEmail = findViewById(R.id.editTextEmail);
+        etEmail = findViewById(R.id.editTextGroupName);
         etPassword = findViewById(R.id.editTextPassword);
         buttonEnter = findViewById(R.id.buttonEnterNew);
         textViewNewPassword = findViewById(R.id.textViewNewPassword);
@@ -55,23 +65,28 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
         textViewCreateAccount = findViewById(R.id.textViewCreateAccount);
         findViewById(R.id.textViewCreateAccount).setOnClickListener(this);
         findViewById(R.id.textViewNewPassword).setOnClickListener(this);
-
         animationHuman = findViewById(R.id.animationHuman);
-
         imageViewHuman = new ImageView(this);
         imageViewHuman.setImageResource(R.drawable.human_1);
         animationHuman.addView(imageViewHuman);
 
 
-       iMainPicture = findViewById(R.id.imageViewEarth);
-       aRotateEarth = AnimationUtils.loadAnimation(this, R.anim.move_earth);
-       iMainPicture.startAnimation(aRotateEarth);
-
+        iMainPicture = findViewById(R.id.imageViewEarth);
+        aRotateEarth = AnimationUtils.loadAnimation(this, R.anim.move_earth);
+        iMainPicture.startAnimation(aRotateEarth);
+        /*if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent intent_MainMenu = new Intent(this, ActivityMainMenu.class);
+            startActivity(intent_MainMenu);
+        }*/
         animationThread = new AnimationThread(animationHuman, imageViewHuman);
         animationThread.start();
 
     }
 
+    /**
+     * метод для обработки нажатий на клаиатуру
+     * @param view статус нажатия
+     */
     @Override
     public void onClick(View view) {
 
@@ -101,20 +116,25 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    //-----Проверка авторизации
+
+    /**
+     * метод для проверки авторизации
+     * @param email_S електронный адрес
+     * @param password_S пароль
+     */
     public void signIn(String email_S, String password_S) {
         mAuth.signInWithEmailAndPassword(email_S, password_S)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            if (user.isEmailVerified() == true) {
+                            if (user.isEmailVerified()) {
                                 Toast.makeText(ActivitySignIn.this, "Авторизация успешна", Toast.LENGTH_SHORT).show();
-                                Intent intent_Main_Menu = new Intent(ActivitySignIn.this, ActivityMainMenu.class);
-                                startActivity(intent_Main_Menu);
+                                adapterSignIn.loadUserInfo(mAuth.getUid());
+                                startActivityMainMenu();
                             }
                             //Проверка подтверждения аккаунта (почта Gmail)
-                            if (user.isEmailVerified() == false) {
+                            if (!user.isEmailVerified()) {
                                 Toast.makeText(ActivitySignIn.this, "Нет подтверждения", Toast.LENGTH_SHORT).show();
                             }
                         } else {
@@ -122,66 +142,130 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
+        }
+
+    /**
+     * метод для создания объекта интефейса главного меню
+     */
+    private void startActivityMainMenu() {
+        AdapterSignIn.startActivityLoad(this);
     }
 
+    /**
+     * класс для работы анимации
+     */
     public class AnimationThread extends Thread {
 
+
         private Vector<Integer> iconsHuman;
+
         RelativeLayout animationHuman;
+
         //ImageView imageViewHuman;
+
 
         private int count_of_cycles = 0;
 
+
         AnimationThread(RelativeLayout relativeLayout, ImageView imageViewHuman) {
+
             this.animationHuman = relativeLayout;
-          //  this.imageViewHuman = imageViewHuman;
+
+            //  this.imageViewHuman = imageViewHuman;
+
         }
+
 
         @Override
+
         public void run() {
+
             do {
+
                 runOnUiThread(new Runnable() {
-                                  @Override
-                                  public void run() {       // animationHuman.addView(imageViewHuman);
-                                      switch (count_of_cycles) {
-                                          case 1:
-                                              imageViewHuman.setImageResource(R.drawable.human_1);
-                                              break;
-                                          case 2:
-                                              imageViewHuman.setImageResource(R.drawable.human_2);
-                                              break;
-                                          case 3:
-                                              imageViewHuman.setImageResource(R.drawable.human_3);
-                                              break;
-                                          case 4:
-                                              imageViewHuman.setImageResource(R.drawable.human_4);
-                                              break;
-                                          case 5:
-                                              imageViewHuman.setImageResource(R.drawable.human_5);
-                                              break;
-                                          case 6:
-                                              imageViewHuman.setImageResource(R.drawable.human_6);
-                                              break;
-                                          case 7:
-                                              imageViewHuman.setImageResource(R.drawable.human_7);
-                                              break;
-                                          case 8:
-                                              imageViewHuman.setImageResource(R.drawable.human_8);
-                                              break;
-                                      }
-                                  }
-                              });
+
+                    @Override
+
+                    public void run() {       // animationHuman.addView(imageViewHuman);
+
+                        switch (count_of_cycles) {
+
+                            case 1:
+
+                                imageViewHuman.setImageResource(R.drawable.human_1);
+
+                                break;
+
+                            case 2:
+
+                                imageViewHuman.setImageResource(R.drawable.human_2);
+
+                                break;
+
+                            case 3:
+
+                                imageViewHuman.setImageResource(R.drawable.human_3);
+
+                                break;
+
+                            case 4:
+
+                                imageViewHuman.setImageResource(R.drawable.human_4);
+
+                                break;
+
+                            case 5:
+
+                                imageViewHuman.setImageResource(R.drawable.human_5);
+
+                                break;
+
+                            case 6:
+
+                                imageViewHuman.setImageResource(R.drawable.human_6);
+
+                                break;
+
+                            case 7:
+
+                                imageViewHuman.setImageResource(R.drawable.human_7);
+
+                                break;
+
+                            case 8:
+
+                                imageViewHuman.setImageResource(R.drawable.human_8);
+
+                                break;
+
+                        }
+
+                    }
+
+                });
+
 
                 count_of_cycles++;
+
                 if (count_of_cycles == 8)
+
                     count_of_cycles = 0;
 
+
                 try {
+
                     Thread.sleep(1000 / 7);
+
                 } catch (InterruptedException e) {
+
                     e.printStackTrace();
+
                 }
+
             } while (have);
+
         }
+
     }
+
 }

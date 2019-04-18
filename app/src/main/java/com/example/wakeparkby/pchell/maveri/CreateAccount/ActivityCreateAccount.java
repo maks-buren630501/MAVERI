@@ -1,5 +1,5 @@
 package com.example.wakeparkby.pchell.maveri.CreateAccount;
-import android.content.Intent;
+
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +15,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * класс для интерфейса создания аккаунта
+ */
 public class ActivityCreateAccount extends AppCompatActivity implements View.OnClickListener {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference("Users");
@@ -23,16 +26,23 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
     private EditText etPassword;
 
     @Override
+    /**
+     * базовый android метод для старта объекта интерфейса
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         mAuth = FirebaseAuth.getInstance();
-        etEmail = (EditText) findViewById(R.id.editTextEmail);
+        etEmail = (EditText) findViewById(R.id.editTextGroupName);
         etPassword = (EditText) findViewById(R.id.editTextPassword);
         findViewById(R.id.buttonEnterNew).setOnClickListener(this);
 
     }
 
+    /**
+     * метод для обработки нажатия
+     * @param view состояние нажатия
+     */
     @Override
     public void onClick(View view) {
         if (etEmail.getText().toString().equals("")) {
@@ -46,7 +56,12 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
         }
     }
 
-    //-----Регистрация в базе данных нового пользователя
+    /**
+     * егистрация в базе данных нового пользователя
+     * @param email почта
+     * @param password парроль
+     */
+
     public void registration(final String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -59,8 +74,7 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
                             String userKey = mAuth.getCurrentUser().getUid();
                             ActivityCreateProfile activityCreateProfile = new ActivityCreateProfile();
                             activityCreateProfile.setUserKey(userKey);
-                            Intent intent_CreateAccountInfo= new Intent(ActivityCreateAccount.this, ActivityCreateProfile.class);
-                            startActivity(intent_CreateAccountInfo);
+                            startActivityCreateProfile();
                         } else {
                             Toast.makeText(ActivityCreateAccount.this, "Регистрация провалена", Toast.LENGTH_SHORT).show();
                         }
@@ -71,6 +85,13 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
                     }
 
                 });
+    }
+
+    /**
+     * метод для старта создания профиля
+     */
+    private void startActivityCreateProfile() {
+        AdapterCreateAccount.startActivityCreateProfile(this);
     }
 }
 

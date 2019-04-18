@@ -11,11 +11,19 @@ import com.example.wakeparkby.pchell.maveri.R;
 
 import java.util.Calendar;
 
+/**
+ * класс для работы с объектом интерфейса выбора даты встречи
+ */
 public class ActivityDateSelection extends AppCompatActivity implements View.OnClickListener {
 
-    private Button continueButton;
-    private DatePicker datePicker;
+    Button continueButton;
+    DatePicker datePicker;
+    private String date;
 
+    /**
+     * стандартный android метод создания
+     * @param savedInstanceState стандартный android параметр
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,15 +31,30 @@ public class ActivityDateSelection extends AppCompatActivity implements View.OnC
         continueButton = (Button) findViewById(R.id.buttonSelectDate);
         continueButton.setOnClickListener((View.OnClickListener) this);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
-        Calendar cal=Calendar.getInstance();
         long now = System.currentTimeMillis() - 1000;
         datePicker.setMinDate(now);
-        datePicker.setMaxDate(now+(1000*60*60*24*13));
+        datePicker.setMaxDate(now + (1000 * 60 * 60 * 24 * 13));
     }
 
+    /**
+     * метод для обработки нажатий
+     * @param v статус нажатия
+     */
     @Override
     public void onClick(View v) {
-        Intent intent_TimeSelection = new Intent (this,ActivityTimeSelection.class);
-        startActivity(intent_TimeSelection);
+        String mMonth;
+        if (datePicker.getMonth() + 1 < 10) {
+            mMonth = "0" + String.valueOf(datePicker.getMonth());
+        } else {
+            mMonth = String.valueOf(datePicker.getMonth());
+        }
+        date = datePicker.getDayOfMonth() + "." + mMonth + "." + datePicker.getYear();
+
+        int mYear = datePicker.getYear();
+        Intent intent_Time = new Intent(this, ActivityTimeSelection.class);
+        intent_Time.putExtra("coordinates", getIntent().getStringExtra("coordinates"));
+        intent_Time.putExtra("name",getIntent().getStringExtra("name"));
+        intent_Time.putExtra("date",date);
+        AdapterMapsDataTime.startActivity(this, intent_Time);
     }
 }
