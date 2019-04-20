@@ -26,6 +26,11 @@ public class ObserverMessage {
         observers.add(this);
     }
 
+    public void removeFromList(ObserverMessage observerMessage) {
+        observers.remove(observerMessage);
+
+    }
+
 
     /**
      * метод для установки статуса

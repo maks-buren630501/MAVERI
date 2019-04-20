@@ -144,6 +144,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
 
             case R.id.placeButton: {
                 AdapterChat.startActivityMap(this);
+                observer.removeFromList(observer);
                 // showDialog(IDD_THREE_BUTTONS);
                 break;
             }
