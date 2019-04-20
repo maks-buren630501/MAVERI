@@ -28,6 +28,7 @@ public class DatabaseMeeting {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeeting;
     private String idUserMeeting;
+    private static int chatFl = 0 ;
     HashMap<Integer, HashMap<String, String>> listMeetingChat = new HashMap<>();
     HashMap<Integer, HashMap<String, String>> listMeetingUser = new HashMap<>();
     HashMap<String, String> values;
@@ -50,7 +51,7 @@ public class DatabaseMeeting {
      * @param placeName   название
      */
     public void addNewMeetingChat(String userKey, String userName, String coordinates, String date, String time, String placeName) {
-        myRefMeeting = database.getReference("Messages/" + Profile.getInstance().getAdapterChat().getGroupId() + "/Meeting/" +
+        myRefMeeting = database.getReference("ChatMeetings/" + Profile.getInstance().getAdapterChat().getGroupId() + "/Meeting/" +
                 Profile.getInstance().getUserKey() + "/");
         myRefMeeting.child("UserKey").setValue(userKey);
         myRefMeeting.child("Date").setValue(date + " (" + time + ")");
@@ -66,11 +67,15 @@ public class DatabaseMeeting {
      */
     public void loadNewMeetingChat(final String groupId) {
         idUserMeeting = Profile.getInstance().getUserKey();
-        myRefMeeting = database.getReference("Messages/" + groupId + "/Meeting/");
+        myRefMeeting = database.getReference("ChatMeetings/" + groupId + "/Meeting/");
         myRefMeeting.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot meetingChatDS) {
-
+                if (chatFl == 1){
+                    chatFl = 0;
+                    return;
+                }
+                else
                 listMeetingChat.clear();
                 int fl = 0;
                 for (DataSnapshot data : meetingChatDS.getChildren()) {
@@ -106,7 +111,7 @@ public class DatabaseMeeting {
     }
 
     public void addNewMeetingUser(String userKey ,String userName, String coordinates, String date, String placeName) {
-        myRefMeeting = database.getReference("Users/" + Profile.getInstance().getUserKey() + "/" + "/ListMeeting/").push();
+        myRefMeeting = database.getReference("UsersMeeting/" + Profile.getInstance().getUserKey() + "/").push();
         myRefMeeting.child("UserKey").setValue(userKey);
         myRefMeeting.child("Date").setValue(date);
         myRefMeeting.child("LatLng").setValue(coordinates);
@@ -115,7 +120,7 @@ public class DatabaseMeeting {
     }
 
     public void addNewMeetingInvateUser(String userKey ,String userName, String coordinates, String date, String placeName) {
-        myRefMeeting = database.getReference("Users/" + userKey + "/" + "/ListMeeting/").push();
+        myRefMeeting = database.getReference("UsersMeeting/" + userKey + "/").push();
         myRefMeeting.child("UserKey").setValue(userKey);
         myRefMeeting.child("Date").setValue(date);
         myRefMeeting.child("LatLng").setValue(coordinates);
@@ -126,7 +131,7 @@ public class DatabaseMeeting {
 
     public void loadMeetingUser(String userId) {
         idUserMeeting = Profile.getInstance().getUserKey();
-        myRefMeeting = database.getReference("Users/" + userId + "/ListMeeting/");
+        myRefMeeting = database.getReference("UsersMeeting/" + userId + "/");
         myRefMeeting.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot meetingChatDS) {
@@ -161,12 +166,13 @@ public class DatabaseMeeting {
     }
 
     public void removeMeetingChat(String invateUserKey) {
-        myRefMeeting = database.getReference("Messages/" + Profile.getInstance().getAdapterChat().getGroupId() + "/Meeting/" +
+        myRefMeeting = database.getReference("ChatMeetings/" + Profile.getInstance().getAdapterChat().getGroupId() + "/Meeting/" +
                 invateUserKey + "/");
         myRefMeeting.child("UserKey").removeValue();
         myRefMeeting.child("Date").removeValue();
         myRefMeeting.child("LatLng").removeValue();
         myRefMeeting.child("PlaceName").removeValue();
         myRefMeeting.child("UserName").removeValue();
+        chatFl = 1;
     }
 }
