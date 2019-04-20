@@ -93,8 +93,8 @@ public class DatabaseMeeting {
 
                     }
                 }
+                Profile.getInstance().getAdapterChat().addListMeetingUserOnChat(new ListMeetingUserOnChat(listMeetingChat));
                 //Profile.getInstance().setAdapterChat(new AdapterChat(groupId, new ListMeetingUserOnChat(listMeetingChat)));
-                //Profile.getInstance().getListMeeting().addMeeting(new Meeting(listMeetingChat));
                 observerMessage.notifyAllObservers(2);
             }
 
