@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignIn.ActivitySignIn">
+        <activity android:name=".Profile.ActivityProfile">
         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         <activity android:name=".MainMenu.ActivityMainMenu"/>
         <activity android:name=".Friend.ActivityFriendList"/>
         <activity android:name=".Profile.ActivityProfileFriend"/>
-        <activity android:name=".Profile.ActivityProfile"/>
+        <activity android:name=".SignIn.ActivitySignIn"/>
         <activity android:name=".LocationSelection.ActivityDateSelection"/>
         <activity android:name=".LocationSelection.ActivityTimeSelection"/>
         <activity android:name=".LocationSelection.ActivityMaps"/>
