@@ -146,7 +146,14 @@
                             android:layout_height="match_parent"
                             android:background="@drawable/background_info"
                             android:orientation="vertical">
-
+                        <ScrollView
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
                             <TextView
                                 android:id="@+id/telnumuserinfo"
                                 android:layout_width="match_parent"
@@ -211,20 +218,35 @@
                                 android:textColor="#FFFFFF"
                                 android:textSize="15dp" />
                         </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/tab3userinfo"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/background_meeting"
-                            android:orientation="vertical">
-                            <ListView
-                                android:id="@+id/infmeetuserinfo"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textColor="#000000"
-                                android:textSize="25dp" />
+                        </ScrollView>
                         </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/tab3userinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background_meeting"
+                                android:orientation="vertical">
+                                <ScrollView
+                                    xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+                                <ListView
+                                    android:id="@+id/infmeetuserinfo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp" />
+                                    </LinearLayout>
+                                </ScrollView>
+                            </LinearLayout>
+
+
                     </FrameLayout>
 
                 </LinearLayout>
