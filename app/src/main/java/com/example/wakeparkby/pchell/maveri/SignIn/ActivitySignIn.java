@@ -247,7 +247,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
 
                 count_of_cycles++;
 
-                if (count_of_cycles == 8)
+                if (count_of_cycles == 9)
 
                     count_of_cycles = 0;
 

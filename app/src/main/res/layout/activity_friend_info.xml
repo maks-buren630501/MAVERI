@@ -79,14 +79,14 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginRight="20dp"
-                        android:background="@drawable/friends"
+                        android:background="@drawable/buttonfriends"
                         android:layout_weight="1"/>
 
                     <Button
                         android:id="@+id/mesbutfriendinfo"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:background="@drawable/message"
+                        android:background="@drawable/buttonmessage"
                         android:layout_weight="1"/>
 
                     <Button
@@ -94,7 +94,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/meeting"
+                        android:background="@drawable/buttonmeeting"
                         android:layout_weight="1"/>
 
                 </LinearLayout>

@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_singup"
+        android:background="@drawable/background_city"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,9 +22,10 @@
 
             <TextView
                 android:id="@+id/textViewGroupName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="25dp"
                 android:hint="Название встречи:"
+                android:background="@drawable/background_text"
                 android:textColorHint="#000000"
                 android:textSize="18dp" />
 
@@ -42,11 +43,12 @@
 
             <TextView
                 android:id="@+id/textViewDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
                 android:layout_below="@id/editTextGroupName"
                 android:layout_alignLeft="@+id/editTextPassword"
                 android:hint="Описание:"
+                android:background="@drawable/background_text"
                 android:textColorHint="#000000"
                 android:textSize="18dp"
 
@@ -66,25 +68,28 @@
 
             <Switch
                 android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="10dp"
                 android:layout_below="@+id/editTextDescription"
                 android:layout_centerHorizontal="true"
                 android:checked="false"
                 android:text="Открытая/закрытая"
                 android:textOff="Открытая"
                 android:textOn="Закрытая"
+                android:background="@drawable/background_text"
+                android:textColor="#000000"
                 android:layout_marginTop="10dp"
                 android:layout_alignLeft="@+id/editTextDescription"/>
 
             <TextView
                 android:visibility="gone"
                 android:id="@+id/textViewNewPasswordCreateGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
                 android:layout_below="@id/switch1"
                 android:layout_alignLeft="@+id/editTextPassword"
                 android:hint="Пароль:"
+                android:background="@drawable/background_text"
                 android:textColorHint="#000000"
                 android:textSize="18dp"/>
 
@@ -113,7 +118,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="20dp"
                 android:hint="Продолжить"
-                android:textColorHint="#000000"
+                android:textColorHint="#FFFFFF"
                 android:textSize="16dp"
                 android:background="@drawable/rounded_edittext"/>
 
