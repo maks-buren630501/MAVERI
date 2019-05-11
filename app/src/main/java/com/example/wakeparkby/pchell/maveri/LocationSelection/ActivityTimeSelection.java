@@ -10,12 +10,19 @@ import android.widget.TimePicker;
 import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
 import com.example.wakeparkby.pchell.maveri.R;
 
+/**
+ * класс для работы с объектом интерфейса для выбора времени
+ */
 public class ActivityTimeSelection extends AppCompatActivity implements View.OnClickListener {
 
     Button continueButton;
     TimePicker timePicker;
     private String time;
 
+    /**
+     * стандартный android метод создания
+     * @param savedInstanceState стандартный android параметр
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +31,10 @@ public class ActivityTimeSelection extends AppCompatActivity implements View.OnC
         continueButton.setOnClickListener((View.OnClickListener) this);
         timePicker = findViewById(R.id.timePicker);
     }
-
+    /**
+     * метод для обработки нажатий
+     * @param v статус нажатия
+     */
     @Override
     public void onClick(View v) {
             time = String.valueOf(timePicker.getCurrentHour() +":" + timePicker.getCurrentMinute());

@@ -6,6 +6,7 @@ import com.example.wakeparkby.pchell.maveri.Chat.AdapterChat;
 
 import com.example.wakeparkby.pchell.maveri.Chat.ListMeetingUserOnChat;
 import com.example.wakeparkby.pchell.maveri.Chat.ListMessage;
+import com.example.wakeparkby.pchell.maveri.Meeting.ListMeeting;
 import com.example.wakeparkby.pchell.maveri.Meeting.Meeting;
 import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
@@ -20,54 +21,85 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * класс для связи базы данных со встречами
+ */
 public class DatabaseMeeting {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeeting;
     private String idUserMeeting;
+    private static int chatFl = 0 ;
     HashMap<Integer, HashMap<String, String>> listMeetingChat = new HashMap<>();
+    HashMap<Integer, HashMap<String, String>> listMeetingUser = new HashMap<>();
     HashMap<String, String> values;
     ObserverMessage observerMessage = new ObserverMessage("DataBaseMeeting");
 
-    public DatabaseMeeting() {
-        observerMessage.setStatus(5);
-    }
+    /**
+     * метод устанавливающий статус наблюдателя в 5
+     */
+    //public DatabaseMeeting() {
+    //    observerMessage.setStatus(5);
+    //}
 
-    public void addNewMeetingChat(String coordinates, String date, String time, String name) {
-        myRefMeeting = database.getReference("Messages/" + Profile.getInstance().getAdapterChat().getGroupId() + "/Meeting/" +
+    /**
+     * метод добавляющий встречу в базу данныъх
+     *
+     * @param userKey
+     * @param coordinates координаты
+     * @param date        дата
+     * @param time        время
+     * @param placeName   название
+     */
+    public void addNewMeetingChat(String userKey, String userName, String coordinates, String date, String time, String placeName) {
+        myRefMeeting = database.getReference("ChatMeetings/" + Profile.getInstance().getAdapterChat().getGroupId() + "/Meeting/" +
                 Profile.getInstance().getUserKey() + "/");
-
-        myRefMeeting.child("Date").setValue(date + " ("+time+")");
+        myRefMeeting.child("UserKey").setValue(userKey);
+        myRefMeeting.child("Date").setValue(date + " (" + time + ")");
         myRefMeeting.child("LatLng").setValue(coordinates);
-        myRefMeeting.child("Name").setValue(name);
+        myRefMeeting.child("PlaceName").setValue(placeName);
+        myRefMeeting.child("UserName").setValue(userName);
     }
 
+    /**
+     * метод загружающий встречу в чат
+     *
+     * @param groupId номер чата
+     */
     public void loadNewMeetingChat(final String groupId) {
         idUserMeeting = Profile.getInstance().getUserKey();
-        myRefMeeting = database.getReference("Messages/" + groupId + "/Meeting/");
+        myRefMeeting = database.getReference("ChatMeetings/" + groupId + "/Meeting/");
         myRefMeeting.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot meetingChatDS) {
-
+                if (chatFl == 1){
+                    chatFl = 0;
+                    return;
+                }
+                else
                 listMeetingChat.clear();
                 int fl = 0;
-                for (DataSnapshot data : meetingChatDS.getChildren()){
+                for (DataSnapshot data : meetingChatDS.getChildren()) {
                     String keyUserId = data.getKey();
-                    if(!idUserMeeting.equals(keyUserId)){
+                    if (!idUserMeeting.equals(keyUserId)) {
                         values = new HashMap<>();
-                            String date = String.valueOf(meetingChatDS.child(keyUserId).child("Date").getValue());
-                            String coordinates = String.valueOf(meetingChatDS.child(keyUserId).child("LatLng").getValue());
-                            String name = String.valueOf(meetingChatDS.child(keyUserId).child("Name").getValue());
-                            values.put("Date", date);
-                            values.put("LatLng", String.valueOf(coordinates));
-                            values.put("Name", name);
-                            listMeetingChat.put(fl, values);
-                            fl++;
+                        String date = String.valueOf(meetingChatDS.child(keyUserId).child("Date").getValue());
+                        String coordinates = String.valueOf(meetingChatDS.child(keyUserId).child("LatLng").getValue());
+                        String placeName = String.valueOf(meetingChatDS.child(keyUserId).child("PlaceName").getValue());
+                        String userName = String.valueOf(meetingChatDS.child(keyUserId).child("UserName").getValue());
+                        String userKey = String.valueOf(meetingChatDS.child(keyUserId).child("UserKey").getValue());
+                        values.put("UserKey",userKey);
+                        values.put("Date", date);
+                        values.put("LatLng", String.valueOf(coordinates));
+                        values.put("PlaceName", placeName);
+                        values.put("UserName", userName);
+                        listMeetingChat.put(fl, values);
+                        fl++;
                         // Profile.getInstance().setAdapterChat(new AdapterChat(new ListChatMeeting(listMeetingChat)));
 
                     }
                 }
-                Profile.getInstance().setAdapterChat(new AdapterChat(groupId, new ListMeetingUserOnChat(listMeetingChat)));
-                //Profile.getInstance().getListMeeting().addMeeting(new Meeting(listMeetingChat));
+                Profile.getInstance().getAdapterChat().addListMeetingUserOnChat(new ListMeetingUserOnChat(listMeetingChat));
+                //Profile.getInstance().setAdapterChat(new AdapterChat(groupId, new ListMeetingUserOnChat(listMeetingChat)));
                 observerMessage.notifyAllObservers(2);
             }
 
@@ -78,4 +110,69 @@ public class DatabaseMeeting {
         });
     }
 
+    public void addNewMeetingUser(String userKey ,String userName, String coordinates, String date, String placeName) {
+        myRefMeeting = database.getReference("UsersMeeting/" + Profile.getInstance().getUserKey() + "/").push();
+        myRefMeeting.child("UserKey").setValue(userKey);
+        myRefMeeting.child("Date").setValue(date);
+        myRefMeeting.child("LatLng").setValue(coordinates);
+        myRefMeeting.child("PlaceName").setValue(placeName);
+        myRefMeeting.child("UserName").setValue(userName);
+    }
+
+    public void addNewMeetingInvateUser(String userKey ,String userName, String coordinates, String date, String placeName) {
+        myRefMeeting = database.getReference("UsersMeeting/" + userKey + "/").push();
+        myRefMeeting.child("UserKey").setValue(userKey);
+        myRefMeeting.child("Date").setValue(date);
+        myRefMeeting.child("LatLng").setValue(coordinates);
+        myRefMeeting.child("PlaceName").setValue(placeName);
+        myRefMeeting.child("UserName").setValue(userName);
+    }
+
+
+    public void loadMeetingUser(String userId) {
+        idUserMeeting = Profile.getInstance().getUserKey();
+        myRefMeeting = database.getReference("UsersMeeting/" + userId + "/");
+        myRefMeeting.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot meetingChatDS) {
+                listMeetingUser.clear();
+                int fl = 0;
+                for (DataSnapshot data : meetingChatDS.getChildren()) {
+                    String keyUserId = data.getKey();
+                    if (!idUserMeeting.equals(keyUserId)) {
+                        values = new HashMap<>();
+                        String date = String.valueOf(meetingChatDS.child(keyUserId).child("Date").getValue());
+                        String coordinates = String.valueOf(meetingChatDS.child(keyUserId).child("LatLng").getValue());
+                        String placeName = String.valueOf(meetingChatDS.child(keyUserId).child("PlaceName").getValue());
+                        String userName = String.valueOf(meetingChatDS.child(keyUserId).child("UserName").getValue());
+                        values.put("Date", date);
+                        values.put("LatLng", String.valueOf(coordinates));
+                        values.put("PlaceName", placeName);
+                        values.put("UserName", userName);
+                        listMeetingUser.put(fl, values);
+                        fl++;
+                        // Profile.getInstance().setAdapterChat(new AdapterChat(new ListChatMeeting(listMeetingChat)));
+                    }
+                }
+                Profile.getInstance().getListMeeting().setListMeeting(listMeetingUser);
+//                observerMessage.notifyAllObservers(5);
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    public void removeMeetingChat(String invateUserKey) {
+        myRefMeeting = database.getReference("ChatMeetings/" + Profile.getInstance().getAdapterChat().getGroupId() + "/Meeting/" +
+                invateUserKey + "/");
+        myRefMeeting.child("UserKey").removeValue();
+        myRefMeeting.child("Date").removeValue();
+        myRefMeeting.child("LatLng").removeValue();
+        myRefMeeting.child("PlaceName").removeValue();
+        myRefMeeting.child("UserName").removeValue();
+        chatFl = 1;
+    }
 }

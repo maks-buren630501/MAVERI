@@ -3,6 +3,9 @@ package com.example.wakeparkby.pchell.maveri;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * класс с реализацией наблюдателя для сообщений
+ */
 public class ObserverMessage {
 
     private static List<ObserverMessage> observers = new ArrayList<>();
@@ -14,9 +17,8 @@ public class ObserverMessage {
     int status = 10;
 
     /**
-     * this constructor with one par
-     *
-     * @param name name of observer
+     * конструктор с параметрами
+     * @param name имя наблюдателя
      */
 
     public ObserverMessage(String name) {
@@ -24,11 +26,15 @@ public class ObserverMessage {
         observers.add(this);
     }
 
+    public void removeFromList(ObserverMessage observerMessage) {
+        observers.remove(observerMessage);
+
+    }
+
 
     /**
-     * this setter for status
-     *
-     * @param status of observer
+     * метод для установки статуса
+     * @param status статус
      */
 
     public void setStatus(int status) {
@@ -40,9 +46,8 @@ public class ObserverMessage {
 
 
     /**
-     * his setter for id
-     *
-     * @param id is id
+     * метод для установки номера наблюдателя
+     * @param id номер наблюдателя
      */
 
     public void setId(int id) {
@@ -54,9 +59,8 @@ public class ObserverMessage {
 
 
     /**
-     * this is getter for id
-     *
-     * @return id of observer
+     * метод для получения номера
+     * @return номер наблюдателя
      */
 
     public int getId() {
@@ -66,13 +70,17 @@ public class ObserverMessage {
     }
 
 
+    /**
+     * метод для получений статуса наблюдателя
+     * @return статус наблюдателя
+     */
     public int getStatus() {
         return status;
     }
 
 
     /**
-     * this func notify all observers about changing
+     * метод для оповещения всех наблюдателей
      */
 
     public void notifyAllObservers() {
@@ -87,9 +95,8 @@ public class ObserverMessage {
 
 
     /**
-     * this func notify observers by id
-     *
-     * @param id id of notified observer
+     * метод для оповещения наблюдателей с номером
+     * @param id номера наблюдателей
      */
 
     public void notifyAllObservers(int id) {
@@ -106,7 +113,7 @@ public class ObserverMessage {
 
 
     /**
-     * is abstract method for update in observer
+     * абстрактный метод обновления
      */
 
     public void update() {

@@ -24,21 +24,39 @@ import com.example.wakeparkby.pchell.maveri.R;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
+/**
+ * интерфейс для вывода списка друзей
+ */
 public class FriendListFragment extends ListFragment {
     private static  AdapterFriendArray arrayAdapter;
     private ArrayList<ProfileFriend> profilesList;
 
+    /**
+     * стандартный меод создания активити
+     * @param savedInstanceState
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
     }
 
+    /**
+     * метод возвращающий экземпляр AdapterFriendArray этого класса
+     * @return экземпляр AdapterFriendArray
+     */
     public static  AdapterFriendArray getArrayAdapter() {
         return arrayAdapter;
 
     }
 
+    /**
+     * стандартный метод создания
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,9 +70,14 @@ public class FriendListFragment extends ListFragment {
     }
 
 
+    /**
+     * обработка нажатия на профиль
+     * @param l стандартный android параметр
+     * @param v стандартный android параметр
+     * @param position позиция в списке
+     * @param id номер
+     */
 
-
-    //обработка нажатия на профиль
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         ProfileFriend friend = profilesList.get(position);
@@ -66,8 +89,6 @@ public class FriendListFragment extends ListFragment {
         intent_friendProfile.putExtra("userId", adapterProfileFriend.getUserId());
         intent_friendProfile.putExtra("userAge", adapterProfileFriend.getUserAge());
         intent_friendProfile.putExtra("userSex", adapterProfileFriend.getUserSex());
-
-
         startActivity(intent_friendProfile);
 
     }

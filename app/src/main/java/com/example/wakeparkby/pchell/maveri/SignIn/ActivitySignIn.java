@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wakeparkby.pchell.maveri.CreateAccount.ActivityCreateAccount;
+import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +25,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Vector;
 
+/**
+ * класс для объекта интерфейса входа в приложения
+ */
 public class ActivitySignIn extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -39,17 +43,21 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
 
     private ImageView iMainPicture;
     private Animation aRotateEarth;
-    boolean have= true;
+    boolean have = true;
 
     private RelativeLayout animationHuman;
     private ImageView imageViewHuman;
     AnimationThread animationThread;
 
+    /**
+     * стандартный android метод создания
+     * @param savedInstanceState стандартный параметр
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        etEmail = findViewById(R.id.editTextEmail);
+        etEmail = findViewById(R.id.editTextGroupName);
         etPassword = findViewById(R.id.editTextPassword);
         buttonEnter = findViewById(R.id.buttonEnterNew);
         textViewNewPassword = findViewById(R.id.textViewNewPassword);
@@ -57,23 +65,28 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
         textViewCreateAccount = findViewById(R.id.textViewCreateAccount);
         findViewById(R.id.textViewCreateAccount).setOnClickListener(this);
         findViewById(R.id.textViewNewPassword).setOnClickListener(this);
-
         animationHuman = findViewById(R.id.animationHuman);
-
         imageViewHuman = new ImageView(this);
         imageViewHuman.setImageResource(R.drawable.human_1);
         animationHuman.addView(imageViewHuman);
 
 
-       iMainPicture = findViewById(R.id.imageViewEarth);
-       aRotateEarth = AnimationUtils.loadAnimation(this, R.anim.move_earth);
-       iMainPicture.startAnimation(aRotateEarth);
-
+        iMainPicture = findViewById(R.id.imageViewEarth);
+        aRotateEarth = AnimationUtils.loadAnimation(this, R.anim.move_earth);
+        iMainPicture.startAnimation(aRotateEarth);
+        /*if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent intent_MainMenu = new Intent(this, ActivityMainMenu.class);
+            startActivity(intent_MainMenu);
+        }*/
         animationThread = new AnimationThread(animationHuman, imageViewHuman);
         animationThread.start();
 
     }
 
+    /**
+     * метод для обработки нажатий на клаиатуру
+     * @param view статус нажатия
+     */
     @Override
     public void onClick(View view) {
 
@@ -103,7 +116,12 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    //-----Проверка авторизации
+
+    /**
+     * метод для проверки авторизации
+     * @param email_S електронный адрес
+     * @param password_S пароль
+     */
     public void signIn(String email_S, String password_S) {
         mAuth.signInWithEmailAndPassword(email_S, password_S)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -124,14 +142,19 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
-    }
+        }
 
+    /**
+     * метод для создания объекта интефейса главного меню
+     */
     private void startActivityMainMenu() {
-        AdapterSignIn.startActivityMainMenu(this);
+        AdapterSignIn.startActivityLoad(this);
     }
 
+    /**
+     * класс для работы анимации
+     */
     public class AnimationThread extends Thread {
-
 
 
         private Vector<Integer> iconsHuman;
@@ -141,9 +164,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
         //ImageView imageViewHuman;
 
 
-
         private int count_of_cycles = 0;
-
 
 
         AnimationThread(RelativeLayout relativeLayout, ImageView imageViewHuman) {
@@ -153,7 +174,6 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
             //  this.imageViewHuman = imageViewHuman;
 
         }
-
 
 
         @Override
@@ -225,13 +245,11 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                 });
 
 
-
                 count_of_cycles++;
 
-                if (count_of_cycles == 8)
+                if (count_of_cycles == 9)
 
                     count_of_cycles = 0;
-
 
 
                 try {
