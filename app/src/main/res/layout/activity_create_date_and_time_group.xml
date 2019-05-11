@@ -11,6 +11,7 @@
             android:layout_height="wrap_content"
             android:calendarViewShown="false"
             android:datePickerMode="spinner"
+
             android:layout_gravity="center"
              >
         </DatePicker>
