@@ -31,6 +31,16 @@ public class FriendListFragment extends ListFragment {
     private static  AdapterFriendArray arrayAdapter;
     private ArrayList<ProfileFriend> profilesList;
 
+    public void setProfilesList(ArrayList<ProfileFriend> profilesList) {
+        this.profilesList = profilesList;
+        arrayAdapter.addAll(this.profilesList);
+        arrayAdapter.update();
+    }
+
+    public ArrayList<ProfileFriend> getProfilesList() {
+        return profilesList;
+    }
+
     /**
      * стандартный меод создания активити
      * @param savedInstanceState
