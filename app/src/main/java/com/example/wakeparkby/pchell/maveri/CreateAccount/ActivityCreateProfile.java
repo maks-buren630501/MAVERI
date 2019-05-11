@@ -14,6 +14,7 @@ import android.widget.Toast;
 import android.support.design.widget.FloatingActionButton;
 
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
+import com.example.wakeparkby.pchell.maveri.Onboarding.OnboardingActivity;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.example.wakeparkby.pchell.maveri.SignIn.ActivitySignIn;
 import com.google.firebase.auth.FirebaseAuth;
@@ -112,7 +113,7 @@ public class ActivityCreateProfile extends AppCompatActivity implements View.OnC
         DatabaseProfile databaseProfile = new DatabaseProfile();
         databaseProfile.newProfile(userKey ,firstName,lastName,age,interestString);
         Toast.makeText(ActivityCreateProfile.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
-        Intent intent_signIn = new Intent(this, ActivitySignIn.class);
-        startActivity(intent_signIn);
+        Intent intent_onboarding = new Intent(this, OnboardingActivity.class);
+        startActivity(intent_onboarding);
     }
 }
