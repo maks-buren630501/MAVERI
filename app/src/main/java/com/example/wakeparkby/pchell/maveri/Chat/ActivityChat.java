@@ -146,6 +146,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
                 AdapterChat.startActivityMap(this);
                 observer.removeFromList(observer);
                 // showDialog(IDD_THREE_BUTTONS);
+
                 break;
             }
         }
