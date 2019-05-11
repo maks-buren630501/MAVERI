@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_city"
+        android:background="@drawable/background_city_v2"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
         app:layout_constraintTop_toTopOf="parent"
