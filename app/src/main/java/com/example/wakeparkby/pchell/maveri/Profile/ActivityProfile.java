@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.example.wakeparkby.pchell.maveri.Bluetooth.ActivityMainBluetooth;
 import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
 import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.Meeting.Meeting;
@@ -25,7 +28,7 @@ import java.util.List;
 /**
  * класс для работы с объектом интерфейса профиля
  */
-public class ActivityProfile extends AppCompatActivity implements View.OnClickListener {
+public class ActivityProfile extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     TextView name;
     TextView interest;
@@ -74,6 +77,7 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
         name = (TextView) findViewById(R.id.nameuserinfo);
         interest = (TextView) findViewById(R.id.infintuserinfo);
         infmeetuserinfo = findViewById(R.id.infmeetuserinfo);
+        infmeetuserinfo.setOnItemClickListener(this);
         AdapterProfile adapterProfile = new AdapterProfile();
         profileName = adapterProfile.getProfileName();
         name.setText(profileName);
@@ -94,8 +98,12 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
         tabSpecuser.setIndicator("Встречи");
         tabHostuser.addTab(tabSpecuser);
         tabHostuser.setCurrentTab(0);
-
-        updateMeeting();
+        meetingList.add("ТЕСТ");
+        ArrayAdapter<String> profileMeetingAdapter = new ArrayAdapter<>(ActivityProfile.this,
+                android.R.layout.simple_list_item_1,
+                meetingList.toArray(new String[meetingList.size()]));
+        infmeetuserinfo.setAdapter(profileMeetingAdapter);
+    //    updateMeeting();
     }
 
     /**
@@ -138,5 +146,13 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
                 android.R.layout.simple_list_item_1,
                 meetingList.toArray(new String[meetingList.size()]));
                 infmeetuserinfo.setAdapter(profileMeetingAdapter);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+        String infoMeetingAtPosition = (String) adapterView.getItemAtPosition(position);
+        Intent intent_MainBluetooth = new Intent(this, ActivityMainBluetooth.class);
+        AdapterProfile.startActivity(this,intent_MainBluetooth);
     }
 }

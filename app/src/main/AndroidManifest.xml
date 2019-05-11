@@ -2,10 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wakeparkby.pchell.maveri"
     >
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"></uses-permission>
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
 
     <application
         android:allowBackup="true"
@@ -39,6 +44,9 @@
         <activity android:name=".Group.ActivityGroupList"/>
         <activity android:name=".Group.ActivityCreateSelectPlaceGroup" />
         <activity android:name=".CreateAccount.ActivityChooseLowInterests" />
+        <activity android:name=".Bluetooth.DeviceListActivity" />
+        <activity android:name=".Bluetooth.ActivityMainBluetooth" />
+        <activity android:name=".Bluetooth.SampleActivityBase" />
 
 
         <meta-data

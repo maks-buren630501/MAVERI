@@ -62,7 +62,7 @@ public class FriendListFragment extends ListFragment {
                              Bundle savedInstanceState) {
 
         Profile profile = Profile.getInstance();
-        profilesList = profile.getAdapterFriendList().getFriends();
+        profilesList = (ArrayList<ProfileFriend>) profile.getAdapterFriendList().getFriends().clone();
         arrayAdapter = new AdapterFriendArray(getActivity(), profilesList);
         setListAdapter(arrayAdapter);
         View view = inflater.inflate(R.layout.listfragment, container, false);
