@@ -12,11 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseMeeting;
 import com.example.wakeparkby.pchell.maveri.Meeting.Meeting;
 import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
+import com.example.wakeparkby.pchell.maveri.Profile.ProfileFriend;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseReference;
@@ -48,6 +50,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private final int IDD_THREE_BUTTONS = 0;
     private LatLng latLng = new LatLng(18.5259949, 109.3576236);
     protected MessageController messageController;
+
 
     ObserverMessage observer = new ObserverMessage("Chat") {
 
@@ -98,6 +101,10 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
         //groupId = adapterChat.getGroupId();
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);
+
+
+
+        System.out.print("");
         //refreshChat();
     }
 
@@ -134,11 +141,12 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
                 }
             }
             if (messageUserName.equals(Profile.getInstance().getFirstName())){
-                messageController.messageList.add(new Message(messageUserName ,messageUser, messageDate , true));
+                messageController.messageList.add(new Message(messageUser, messageDate , true));
             }else {
-                messageController.messageList.add(new Message(messageUserName ,messageUser, messageDate , false));
+                messageController.messageList.add(new Message(messageUser, messageDate , false));
             }
         }
+
 
         // chatList.clear();
     }

@@ -12,7 +12,7 @@ import java.util.List;
 public class ProfileFriend {
 
     private String userKey;
-    private String firstName;
+    private static String firstName;
     private String lastName;
     private String age;
     private String sex;
@@ -34,6 +34,10 @@ public class ProfileFriend {
         this.sex = sex;
         this.listInterests = listInterests;
         this.userKey = id;
+    }
+
+    public ProfileFriend() {
+
     }
 
     /**

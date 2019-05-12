@@ -49,6 +49,11 @@ public class MessageController extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
+        try {
+            Thread.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return messageList.size();
     }
 }
