@@ -5,6 +5,7 @@ import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendArray;
 import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
 import com.example.wakeparkby.pchell.maveri.Friend.FriendListFragment;
+import com.example.wakeparkby.pchell.maveri.Group.ListGroups;
 import com.example.wakeparkby.pchell.maveri.Meeting.ListMeeting;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -30,7 +31,9 @@ public class Profile {
     private String listInterests;
     private ListMeeting listMeeting = new ListMeeting();
     private AdapterFriendList adapterFriendList = new AdapterFriendList();
-    AdapterChat adapterChat = new AdapterChat();
+    private AdapterChat adapterChat = new AdapterChat();
+    private ListGroups groups = new ListGroups();
+
 
     /**
      * метод возврощающий единственный в системе объект класса пользователь(если объект еще не создан то создается)
@@ -157,5 +160,13 @@ public class Profile {
      */
     public AdapterChat getAdapterChat() {
         return this.adapterChat;
+    }
+
+    public ListGroups getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ListGroups groups) {
+        this.groups = groups;
     }
 }

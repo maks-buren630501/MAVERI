@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 
 import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
+import com.example.wakeparkby.pchell.maveri.Onboarding.OnboardingActivity;
 
 import java.util.Vector;
 
@@ -55,8 +56,8 @@ public class AnimationLoad extends AppCompatActivity {
     }
 
     private void startMainMenu() {
-        Intent intent_MainMenu = new Intent(this, ActivityMainMenu.class);
-        startActivity(intent_MainMenu);
+        Intent intent_onboarding = new Intent(this, OnboardingActivity.class);
+        startActivity(intent_onboarding);
     }
 
 }

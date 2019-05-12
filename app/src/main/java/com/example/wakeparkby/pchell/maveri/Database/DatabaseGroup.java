@@ -2,6 +2,8 @@ package com.example.wakeparkby.pchell.maveri.Database;
 
 import android.support.annotation.NonNull;
 
+import com.example.wakeparkby.pchell.maveri.Group.Group;
+import com.example.wakeparkby.pchell.maveri.Group.ListGroups;
 import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.google.firebase.database.DataSnapshot;
@@ -13,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DatabaseGroup {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefGroup;
+    ObserverMessage observerMessage = new ObserverMessage("group");
 
 
     public void addNewGroup(String status, String date, String time, String name, String description, String coordinates, String password) {
@@ -30,6 +33,7 @@ public class DatabaseGroup {
     }
 
     public void loadAllGroup() {
+        final ListGroups groups = new ListGroups();
         myRefGroup = database.getReference("Group/");
         myRefGroup.addValueEventListener(new ValueEventListener() {
             @Override
@@ -43,10 +47,14 @@ public class DatabaseGroup {
                     String coordinates = String.valueOf(groupDS.child(groupKey).child("LatLng"));
                     String time = String.valueOf(groupDS.child(groupKey).child("Time"));
                     String status = String.valueOf(groupDS.child(groupKey).child("Status"));
+                    String password = "0";
                     if (status.equals("1")) {
-                        String password = String.valueOf(groupDS.child(groupKey).child("Password"));
+                        password = String.valueOf(groupDS.child(groupKey).child("Password"));
                     }
+                    groups.addGroup(new Group(status,date,time,name,description,coordinates,password));
                 }
+                Profile.getInstance().setGroups(groups);
+                observerMessage.notifyAllObservers(15);
             }
 
             @Override
