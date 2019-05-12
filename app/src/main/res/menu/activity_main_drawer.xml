@@ -10,16 +10,12 @@
             android:title="Сообщения" />
         <item
             android:id="@+id/friends"
-            android:icon="@mipmap/ic_launcher_foreground"
+            android:icon="@mipmap/ic_profile_foreground"
             android:title="Друзья" />
         <item
             android:id="@+id/group"
-            android:icon="@mipmap/ic_launcher_foreground"
+            android:icon="@mipmap/ic_group_foreground"
             android:title="Группы" />
-        <item
-            android:id="@+id/calendar"
-            android:icon="@mipmap/ic_calendar_foreground"
-            android:title="Календарь" />
 
     </group>
 
@@ -27,10 +23,11 @@
         <menu>
             <item
                 android:id="@+id/settings"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@mipmap/ic_settings_foreground"
                 android:title="Настройки" />
             <item
                 android:id="@+id/exit"
+                android:icon="@mipmap/ic_exit_foreground"
                 android:title="Выход" />
         </menu>
     </item>
