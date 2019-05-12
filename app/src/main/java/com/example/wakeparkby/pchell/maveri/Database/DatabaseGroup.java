@@ -40,16 +40,16 @@ public class DatabaseGroup {
             public void onDataChange(@NonNull DataSnapshot groupDS) {
                 //chatList.clear();
                 for (DataSnapshot allGroup : groupDS.getChildren()) {
-                    String groupKey = String.valueOf(allGroup.getValue());
-                    String name = String.valueOf(groupDS.child(groupKey).child("Name"));
-                    String date = String.valueOf(groupDS.child(groupKey).child("Date"));
-                    String description = String.valueOf(groupDS.child(groupKey).child("Description"));
-                    String coordinates = String.valueOf(groupDS.child(groupKey).child("LatLng"));
-                    String time = String.valueOf(groupDS.child(groupKey).child("Time"));
-                    String status = String.valueOf(groupDS.child(groupKey).child("Status"));
+                    String groupKey = String.valueOf(allGroup.getKey());
+                    String name = String.valueOf(groupDS.child(groupKey).child("Name").getValue());
+                    String date = String.valueOf(groupDS.child(groupKey).child("Date").getValue());
+                    String description = String.valueOf(groupDS.child(groupKey).child("Description").getValue());
+                    String coordinates = String.valueOf(groupDS.child(groupKey).child("LatLng").getValue());
+                    String time = String.valueOf(groupDS.child(groupKey).child("Time").getValue());
+                    String status = String.valueOf(groupDS.child(groupKey).child("Status").getValue());
                     String password = "0";
                     if (status.equals("1")) {
-                        password = String.valueOf(groupDS.child(groupKey).child("Password"));
+                        password = String.valueOf(groupDS.child(groupKey).child("Password").getValue());
                     }
                     groups.addGroup(new Group(status,date,time,name,description,coordinates,password));
                 }
