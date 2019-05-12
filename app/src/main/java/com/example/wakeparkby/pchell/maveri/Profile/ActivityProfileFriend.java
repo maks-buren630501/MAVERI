@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
 import com.example.wakeparkby.pchell.maveri.Chat.AdapterChat;
@@ -23,6 +24,7 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
     Button chat;
     TextView name;
     TextView interest;
+    Button friend;
 
     /**
      * стандартный метод создания android
@@ -58,6 +60,22 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
         tabHostfriend.addTab(tabSpecfriend);
 
         tabHostfriend.setCurrentTab(0);
+
+        friend = findViewById(R.id.meetbutfriendinfo);
+        int fl = 0;
+        for (int i = 0; i < Profile.getInstance().getAdapterFriendList().getFriends().size(); i++ ){
+            if(Profile.getInstance().getAdapterFriendList().getFriends().get(i).getUserKey().equals(getIntent().getStringExtra("userId"))){
+                fl = 1 ;
+            }
+        }
+        if (fl == 1 ){
+            friend.setBackgroundResource(R.drawable.buttonmeeting_no);
+
+        }
+        else {
+            Toast.makeText(this, "НЕТ В ДРУЗЬЯХ", Toast.LENGTH_SHORT).show();
+            friend.setBackgroundResource(R.drawable.buttonmeeting);
+        }
     }
     /**
      * метод для обработки нажатий

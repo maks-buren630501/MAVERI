@@ -147,6 +147,7 @@ public class DatabaseProfile {
                         }
                         Profile profile = Profile.getInstance();
                         profile.setFriendList(friends);
+
                         observerMessage.notifyAllObservers(3);
                     }
 

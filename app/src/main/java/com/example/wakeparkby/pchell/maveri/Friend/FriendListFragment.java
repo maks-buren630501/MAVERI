@@ -31,6 +31,16 @@ public class FriendListFragment extends ListFragment {
     private static  AdapterFriendArray arrayAdapter;
     private ArrayList<ProfileFriend> profilesList;
 
+    public void setProfilesList(ArrayList<ProfileFriend> profilesList) {
+        this.profilesList = profilesList;
+        arrayAdapter.addAll(this.profilesList);
+        arrayAdapter.update();
+    }
+
+    public ArrayList<ProfileFriend> getProfilesList() {
+        return profilesList;
+    }
+
     /**
      * стандартный меод создания активити
      * @param savedInstanceState
@@ -62,7 +72,7 @@ public class FriendListFragment extends ListFragment {
                              Bundle savedInstanceState) {
 
         Profile profile = Profile.getInstance();
-        profilesList = profile.getAdapterFriendList().getFriends();
+        profilesList = (ArrayList<ProfileFriend>) profile.getAdapterFriendList().getFriends().clone();
         arrayAdapter = new AdapterFriendArray(getActivity(), profilesList);
         setListAdapter(arrayAdapter);
         View view = inflater.inflate(R.layout.listfragment, container, false);
@@ -89,8 +99,6 @@ public class FriendListFragment extends ListFragment {
         intent_friendProfile.putExtra("userId", adapterProfileFriend.getUserId());
         intent_friendProfile.putExtra("userAge", adapterProfileFriend.getUserAge());
         intent_friendProfile.putExtra("userSex", adapterProfileFriend.getUserSex());
-
-
         startActivity(intent_friendProfile);
 
     }

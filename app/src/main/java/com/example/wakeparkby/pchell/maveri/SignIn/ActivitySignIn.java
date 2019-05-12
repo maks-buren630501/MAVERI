@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wakeparkby.pchell.maveri.CreateAccount.ActivityCreateAccount;
+import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,7 +43,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
 
     private ImageView iMainPicture;
     private Animation aRotateEarth;
-    boolean have= true;
+    boolean have = true;
 
     private RelativeLayout animationHuman;
     private ImageView imageViewHuman;
@@ -56,7 +57,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        etEmail = findViewById(R.id.editTextEmail);
+        etEmail = findViewById(R.id.editTextGroupName);
         etPassword = findViewById(R.id.editTextPassword);
         buttonEnter = findViewById(R.id.buttonEnterNew);
         textViewNewPassword = findViewById(R.id.textViewNewPassword);
@@ -64,18 +65,19 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
         textViewCreateAccount = findViewById(R.id.textViewCreateAccount);
         findViewById(R.id.textViewCreateAccount).setOnClickListener(this);
         findViewById(R.id.textViewNewPassword).setOnClickListener(this);
-
         animationHuman = findViewById(R.id.animationHuman);
-
         imageViewHuman = new ImageView(this);
         imageViewHuman.setImageResource(R.drawable.human_1);
         animationHuman.addView(imageViewHuman);
 
 
-       iMainPicture = findViewById(R.id.imageViewEarth);
-       aRotateEarth = AnimationUtils.loadAnimation(this, R.anim.move_earth);
-       iMainPicture.startAnimation(aRotateEarth);
-
+        iMainPicture = findViewById(R.id.imageViewEarth);
+        aRotateEarth = AnimationUtils.loadAnimation(this, R.anim.move_earth);
+        iMainPicture.startAnimation(aRotateEarth);
+        /*if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent intent_MainMenu = new Intent(this, ActivityMainMenu.class);
+            startActivity(intent_MainMenu);
+        }*/
         animationThread = new AnimationThread(animationHuman, imageViewHuman);
         animationThread.start();
 
@@ -140,7 +142,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
-    }
+        }
 
     /**
      * метод для создания объекта интефейса главного меню
@@ -155,7 +157,6 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
     public class AnimationThread extends Thread {
 
 
-
         private Vector<Integer> iconsHuman;
 
         RelativeLayout animationHuman;
@@ -163,9 +164,7 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
         //ImageView imageViewHuman;
 
 
-
         private int count_of_cycles = 0;
-
 
 
         AnimationThread(RelativeLayout relativeLayout, ImageView imageViewHuman) {
@@ -175,7 +174,6 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
             //  this.imageViewHuman = imageViewHuman;
 
         }
-
 
 
         @Override
@@ -247,13 +245,11 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                 });
 
 
-
                 count_of_cycles++;
 
-                if (count_of_cycles == 8)
+                if (count_of_cycles == 9)
 
                     count_of_cycles = 0;
-
 
 
                 try {

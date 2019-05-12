@@ -1,6 +1,5 @@
 package com.example.wakeparkby.pchell.maveri.CreateAccount;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,7 +33,7 @@ public class ActivityCreateAccount extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         mAuth = FirebaseAuth.getInstance();
-        etEmail = (EditText) findViewById(R.id.editTextEmail);
+        etEmail = (EditText) findViewById(R.id.editTextGroupName);
         etPassword = (EditText) findViewById(R.id.editTextPassword);
         findViewById(R.id.buttonEnterNew).setOnClickListener(this);
 

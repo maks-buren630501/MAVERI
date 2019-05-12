@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FriendInformation"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.example.wakeparkby.pchell.maveri.Profile.CircularImageView
+                        android:id="@+id/iv_profilefriendinfo"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/imagefriend"
+                        app:civ_border="true"
+                        app:civ_border_color="@color/colorAccent"
+                        app:civ_border_width="3dp" />
+
+                    <Button
+                        android:id="@+id/changefriendinfo"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_toRightOf="@+id/iv_profilefriendinfo"
+                        android:background="@drawable/pencil" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/namefriendinfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="Рома Кашпир"
+                        android:textSize="30dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/statfriendinfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Умный. Дружит с интегралами с 7 класса"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/fributfriendinfo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/friends"
+                        android:layout_weight="1"/>
+
+                    <Button
+                        android:id="@+id/mesbutfriendinfo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/message"
+                        android:layout_weight="1"/>
+
+                    <Button
+                        android:id="@+id/meetbutfriendinfo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/meeting"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TabWidget
+                        android:id="@android:id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </TabWidget>
+
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/tab1friendinfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/background_money"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/moneyfriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Ваш баланс составляет 65 баллов!!!"
+                                android:textSize="25dp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tab2friendinfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/background_info"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/telnumfriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Телефон"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30dp" />
+
+                            <TextView
+                                android:id="@+id/inftelnumfriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="+375(29)***-**-**"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/emailfriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Email"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30dp" />
+
+                            <TextView
+                                android:id="@+id/infemailfriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="komarash@example.com"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/infriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Интересы"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30dp" />
+
+                            <TextView
+                                android:id="@+id/infintfriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Программирование"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/aboutfriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="О себе"
+                                android:textColor="#FFFFFF"
+                                android:textSize="30dp" />
+
+                            <TextView
+                                android:id="@+id/infaboutfriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="У меня ноутбук asus"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/tab3friendinfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/background_meeting"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/infmeetfriendinfo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Макс Бурень 15:00 25.03.2020"
+                                android:textColor="#000000"
+                                android:textSize="25dp" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</TabHost>

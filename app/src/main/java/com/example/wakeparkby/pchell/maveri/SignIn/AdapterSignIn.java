@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.wakeparkby.pchell.maveri.AnimationLoad;
 import com.example.wakeparkby.pchell.maveri.Chat.ActivityChat;
+import com.example.wakeparkby.pchell.maveri.Database.DatabaseMeeting;
 import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
 import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
@@ -49,6 +50,8 @@ public class AdapterSignIn {
     public void loadUserInfo(String userId) {
         DatabaseProfile databaseProfile = new DatabaseProfile();
         databaseProfile.loadUserInfo(userId);
+       // DatabaseMeeting databaseMeeting = new DatabaseMeeting();
+       // databaseMeeting.loadMeetingUser(userId);
     }
 
     /**

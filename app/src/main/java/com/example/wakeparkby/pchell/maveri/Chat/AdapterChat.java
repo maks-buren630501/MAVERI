@@ -134,4 +134,8 @@ public class AdapterChat {
         return listMeetingUserOnChat;
     }
 
+    public void addListMeetingUserOnChat(ListMeetingUserOnChat listMeetingUserOnChat) {
+        this.groupId = groupId;
+        this.listMeetingUserOnChat = listMeetingUserOnChat;
+    }
 }
