@@ -48,7 +48,7 @@ import com.example.wakeparkby.pchell.maveri.R;
 /**
  * This fragment controls Bluetooth to communicate with other devices.
  */
-public class BluetoothChatFragment extends Fragment {
+public class BluetoothChatFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "BluetoothChatFragment";
 
@@ -61,6 +61,9 @@ public class BluetoothChatFragment extends Fragment {
     private ListView mConversationView;
     private EditText mOutEditText;
     private Button mSendButton;
+    private Button mSecureBluetoothButton;
+    private Button mInSecureBluetoothButton;
+    private Button mDiscoverableBluetoothButton;
 
     /**
      * Name of the connected device
@@ -149,7 +152,14 @@ public class BluetoothChatFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mSendButton = (Button) view.findViewById(R.id.button_send);
+        mSendButton = (Button) view.findViewById(R.id.button_SendIdBluetooth);
+        mSendButton.setOnClickListener(this);
+        mSecureBluetoothButton = view.findViewById(R.id.button_SecureBluetooth);
+        mSecureBluetoothButton.setOnClickListener(this);
+        mInSecureBluetoothButton = view.findViewById(R.id.button_InSecureBluetooth);
+        mInSecureBluetoothButton.setOnClickListener(this);
+        mDiscoverableBluetoothButton = view.findViewById(R.id.button_DiscoverableBluettooth);
+        mDiscoverableBluetoothButton.setOnClickListener(this);
     }
 
     /**
@@ -161,22 +171,45 @@ public class BluetoothChatFragment extends Fragment {
        // mConversationArrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.message);
 
         // Initialize the send button with a listener that for click events
-        mSendButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Send a message using content of the edit text widget
-                View view = getView();
-                if (null != view) {
-                    String idGroup = "1398";
-                    sendMessage(idGroup);
-                }
-            }
-        });
+
 
         // Initialize the BluetoothChatService to perform bluetooth connections
         mChatService = new BluetoothChatService(getActivity(), mHandler);
 
         // Initialize the buffer for outgoing messages
         mOutStringBuffer = new StringBuffer("");
+    }
+
+    public void onClick(View v) {
+
+        // Send a message using content of the edit text widget
+
+        switch (v.getId()) {
+            case R.id.button_SendIdBluetooth: {
+                View view = getView();
+                if (null != view) {
+                    String idGroup = "1398";
+                    sendMessage(idGroup);
+                }
+                break;
+            }
+
+            case R.id.button_SecureBluetooth: {
+
+                Intent serverIntent = new Intent(getActivity(), DeviceListActivity.class);
+                startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_SECURE);
+                break;
+            }
+
+            case R.id.button_InSecureBluetooth: {
+                Intent serverIntent = new Intent(getActivity(), DeviceListActivity.class);
+                startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_INSECURE);
+                break;
+            }
+            case R.id.button_DiscoverableBluettooth:{
+                break;
+            }
+        }
     }
 
     /**
@@ -367,29 +400,4 @@ public class BluetoothChatFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.bluetooth_chat, menu);
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.secure_connect_scan: {
-                // Launch the DeviceListActivity to see devices and do scan
-                Intent serverIntent = new Intent(getActivity(), DeviceListActivity.class);
-                startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_SECURE);
-                return true;
-            }
-            case R.id.insecure_connect_scan: {
-                // Launch the DeviceListActivity to see devices and do scan
-                Intent serverIntent = new Intent(getActivity(), DeviceListActivity.class);
-                startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_INSECURE);
-                return true;
-            }
-            case R.id.discoverable: {
-                // Ensure this device is discoverable by others
-                ensureDiscoverable();
-                return true;
-            }
-        }
-        return false;
-    }
-
 }

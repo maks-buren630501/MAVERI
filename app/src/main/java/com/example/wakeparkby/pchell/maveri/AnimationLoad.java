@@ -56,8 +56,8 @@ public class AnimationLoad extends AppCompatActivity {
     }
 
     private void startMainMenu() {
-        Intent intent_onboarding = new Intent(this, OnboardingActivity.class);
-        startActivity(intent_onboarding);
+        Intent intent_main = new Intent(this, ActivityMainMenu.class);
+        startActivity(intent_main);
     }
 
 }
