@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">MAVERI</string>
     <string name="friends">Friends</string>
     <string name="empty" />
@@ -12,4 +12,27 @@
     <string name="second_name">Фамилия:</string>
     <string name="age">Возраст:</string>
     <string name="intrests">Выберите интересы:</string>
+
+    <!--  BluetoothChat -->
+    <string name="send">Send</string>
+    <string name="not_connected">Вы не подключены к устройству</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
+    <string name="title_connecting">подключение...</string>
+    <string name="title_connected_to">подключение к <xliff:g id="device_name">%1$s</xliff:g></string>
+    <string name="title_not_connected">не подключен</string>
+
+    <!--  DeviceListActivity -->
+    <string name="scanning">scanning for devices...</string>
+    <string name="select_device">Выберите устройство</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="none_found">Устройства не найдены</string>
+    <string name="title_paired_devices">Сопряженные устройства</string>
+    <string name="title_other_devices">Другие доступные устройства</string>
+    <string name="button_scan">Поиск устройств</string>
+
+    <!-- Options Menu -->
+    <string name="secure_connect">Подключить устройство - Secure</string>
+    <string name="insecure_connect">Подключить устройство - небезопасно</string>
+    <string name="discoverable">Сделать видимым</string>
+
 </resources>
