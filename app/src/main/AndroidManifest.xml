@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
 
-    <activity android:name=".MainMenu.ActivityMainMenu"/>
+    <activity android:name=".MainMenu.ActivityMainMenu" android:screenOrientation="portrait"/>
         <activity android:name=".CreateAccount.ActivityCreateAccount" android:screenOrientation="portrait"/>
         <activity android:name=".Chat.ActivityChat" android:screenOrientation="portrait"/>
         <activity android:name=".Friend.ActivityFriendList" android:screenOrientation="portrait"/>
