@@ -109,6 +109,7 @@ public class DatabaseProfile {
                 AdapterSignIn adapterSignIn = new AdapterSignIn(userId, firstName, lastName, age, sex, listInterests);
                 loadListFriends();
 
+
             }
 
 
@@ -149,12 +150,18 @@ public class DatabaseProfile {
                         profile.setFriendList(friends);
 
                         observerMessage.notifyAllObservers(3);
+                        DatabaseGroup databaseGroup = new DatabaseGroup();
+                        databaseGroup.loadAllGroup();
                     }
+
+
+
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
+
                 });
 
 
