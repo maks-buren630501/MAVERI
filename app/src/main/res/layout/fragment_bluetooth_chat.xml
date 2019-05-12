@@ -13,19 +13,46 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <Button
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button_send"
+        android:id="@+id/button_SecureBluetooth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="МЫ ВСТРЕТИЛИСЬ" />
-</RelativeLayout>
+        android:text="Безопасное подключение"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="300dp"/>
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button_InSecureBluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Обычное подключение"
+        android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button_DiscoverableBluettooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сделать видимым"
+        android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button_SendIdBluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="МЫ ВСТРЕТИЛИСЬ"
+        android:layout_gravity="center_horizontal"
+
+        />
+</LinearLayout>
 
 
