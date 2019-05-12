@@ -27,12 +27,12 @@
             </intent-filter>
         </activity>
 
-    <activity android:name=".Group.ActivityCreateDateAndTimeGroup"/>
+    <activity android:name=".MainMenu.ActivityMainMenu"/>
         <activity android:name=".CreateAccount.ActivityCreateAccount"/>
         <activity android:name=".Chat.ActivityChat"/>
         <activity android:name=".Friend.ActivityFriendList"/>
         <activity android:name=".Profile.ActivityProfileFriend"/>
-        <activity android:name=".MainMenu.ActivityMainMenu"/>
+        <activity android:name=".Group.ActivityCreateDateAndTimeGroup"/>
         <activity android:name=".LocationSelection.ActivityDateSelection"/>
         <activity android:name=".LocationSelection.ActivityTimeSelection"/>
         <activity android:name=".LocationSelection.ActivityMaps"/>

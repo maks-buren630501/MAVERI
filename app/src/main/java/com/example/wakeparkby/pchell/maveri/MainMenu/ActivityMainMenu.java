@@ -44,6 +44,7 @@ public class ActivityMainMenu extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         CircularImageView headerButtonView = headerLayout.findViewById(R.id.profile);
         headerButtonView.setOnClickListener(this);
@@ -110,8 +111,6 @@ public class ActivityMainMenu extends AppCompatActivity
 
         if (id == R.id.friends) {
             AdapterMainMenu.startActivityFriendList(this);
-        } else if (id == R.id.calendar) {
-            //AdapterMainMenu.startActivityMaps(this);
         } else if (id == R.id.message) {
             Intent intent_MainBluetooth = new Intent(this, ActivityMainBluetooth.class);
             AdapterProfile.startActivity(this,intent_MainBluetooth);
