@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -35,7 +37,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private ImageView sendButton;
     private ImageView selectPlaceButton;
     private EditText messageArea;
-    private ListView listViewChat;
+    private RecyclerView recyclerViewChat;
     private List<String> chatList;
     private HashMap<Integer, HashMap<String, String>> listMeetingChat;
     private String placeName;
@@ -45,6 +47,7 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     private String coordinates;
     private final int IDD_THREE_BUTTONS = 0;
     private LatLng latLng = new LatLng(18.5259949, 109.3576236);
+    protected MessageController messageController;
 
     ObserverMessage observer = new ObserverMessage("Chat") {
 
@@ -84,15 +87,18 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        listViewChat = findViewById(R.id.listViewChat);
+        recyclerViewChat = findViewById(R.id.chatWindow);
         sendButton = findViewById(R.id.sendButton);
         messageArea = findViewById(R.id.messageArea);
         sendButton.setOnClickListener(this);
+        messageController = new MessageController();
+        recyclerViewChat.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewChat.setAdapter(messageController);
         // adapterChat.getListMessage(profile.getUserKey(),);
         //groupId = adapterChat.getGroupId();
         selectPlaceButton = findViewById(R.id.placeButton);
         selectPlaceButton.setOnClickListener(this);
-        refreshChat();
+        //refreshChat();
     }
 
 
@@ -100,11 +106,40 @@ public class ActivityChat extends AppCompatActivity implements View.OnClickListe
      * метод обновляющий чат
      */
     public void refreshChat() {
+        String messageUserName = null;
+        String messageDate = null;
+        String messageUser = null;
         chatList = Profile.getInstance().getAdapterChat().getListMessage().getMessages();
-        ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ActivityChat.this,
-                android.R.layout.simple_list_item_1,
-                chatList.toArray(new String[chatList.size()]));
-        listViewChat.setAdapter(chatAdapter);
+        for (int i = 0; i < chatList.size(); i++){
+            String message = chatList.get(i);
+            int fl = 0;
+            int fl1 = 0;
+            for (int j = 0 ; j< message.length(); j++){
+
+                if (String.valueOf(message.charAt(j)).equals(" "))
+                {
+                    fl++;
+                    if (fl == 1) {
+                        messageUserName = message.substring(0, j);
+                    }
+                    if (fl == 1){
+                        fl1 = j;
+                    }
+                    if (fl == 3){
+                        messageDate = message.substring(fl1,j);
+                        messageUser = message.substring(j+1,message.length());
+                        System.out.print("");
+                    }
+
+                }
+            }
+            if (messageUserName.equals(Profile.getInstance().getFirstName())){
+                messageController.messageList.add(new Message(messageUserName ,messageUser, messageDate , true));
+            }else {
+                messageController.messageList.add(new Message(messageUserName ,messageUser, messageDate , false));
+            }
+        }
+
         // chatList.clear();
     }
 
