@@ -88,7 +88,7 @@ public class ActivityProfileFriend extends AppCompatActivity implements View.OnC
                 AdapterProfileFriend adapterProfileFriend = new AdapterProfileFriend(getIntent().getStringExtra("userId"),
                         getIntent().getStringExtra("userFirstName"), getIntent().getStringExtra("userLastName"),
                         getIntent().getStringExtra("userAge"), getIntent().getStringExtra("userSex"), getIntent().getStringExtra("userListInterests"));
-                adapterProfileFriend.startActivityChat(this);
+                adapterProfileFriend.startActivityChat(getIntent().getStringExtra("userFirstName") ,this);
             }
         }
     }

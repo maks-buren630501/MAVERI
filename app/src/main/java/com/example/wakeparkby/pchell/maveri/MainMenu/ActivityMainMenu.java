@@ -15,8 +15,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 
+import com.example.wakeparkby.pchell.maveri.Bluetooth.ActivityMainBluetooth;
 import com.example.wakeparkby.pchell.maveri.Friend.ActivityFriendList;
 import com.example.wakeparkby.pchell.maveri.Profile.ActivityProfile;
+import com.example.wakeparkby.pchell.maveri.Profile.AdapterProfile;
 import com.example.wakeparkby.pchell.maveri.Profile.CircularImageView;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.R;
@@ -42,6 +44,7 @@ public class ActivityMainMenu extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         CircularImageView headerButtonView = headerLayout.findViewById(R.id.profile);
         headerButtonView.setOnClickListener(this);
@@ -108,10 +111,9 @@ public class ActivityMainMenu extends AppCompatActivity
 
         if (id == R.id.friends) {
             AdapterMainMenu.startActivityFriendList(this);
-        } else if (id == R.id.calendar) {
-            //AdapterMainMenu.startActivityMaps(this);
         } else if (id == R.id.message) {
-
+            Intent intent_MainBluetooth = new Intent(this, ActivityMainBluetooth.class);
+            AdapterProfile.startActivity(this,intent_MainBluetooth);
         } else if (id == R.id.settings) {
             System.out.println("GOGOGO");
         } else if (id == R.id.group){

@@ -44,12 +44,14 @@ public class AdapterProfileFriend  {
 
     /**
      * метод создания объекта интерфейса чата
+     * @param userFirstName
      * @param context стандартнйы параметр
      */
-    protected void startActivityChat(Context context) {
+    protected void startActivityChat(String userFirstName, Context context) {
 
         AdapterChat adapterChat = new AdapterChat(this.profileFriend.getUserKey(), Profile.getInstance().getUserKey());
             Intent intent_Chat = new Intent(context, ActivityChat.class);
+            intent_Chat.putExtra("FriendName",userFirstName);
             context.startActivity(intent_Chat);
 
     }

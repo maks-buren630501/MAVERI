@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignIn.ActivitySignIn">
+        <activity android:name=".SignIn.ActivitySignIn" android:screenOrientation="portrait">
         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,27 +27,27 @@
             </intent-filter>
         </activity>
 
-    <activity android:name=".Group.ActivityCreateDateAndTimeGroup"/>
-        <activity android:name=".CreateAccount.ActivityCreateAccount"/>
-        <activity android:name=".Chat.ActivityChat"/>
-        <activity android:name=".Friend.ActivityFriendList"/>
-        <activity android:name=".Profile.ActivityProfileFriend"/>
-        <activity android:name=".MainMenu.ActivityMainMenu"/>
-        <activity android:name=".LocationSelection.ActivityDateSelection"/>
-        <activity android:name=".LocationSelection.ActivityTimeSelection"/>
-        <activity android:name=".LocationSelection.ActivityMaps"/>
-        <activity android:name=".CreateAccount.ActivityCreateProfile"></activity>
-        <activity android:name=".AnimationLoad" />
-        <activity android:name=".Group.ActivityCreateInfoGroup" />
-        <activity android:name=".Profile.ActivityProfile" />
-        <activity android:name=".Group.ActivityGroup" />
-        <activity android:name=".Group.ActivityGroupList"/>
-        <activity android:name=".Group.ActivityCreateSelectPlaceGroup" />
-        <activity android:name=".CreateAccount.ActivityChooseLowInterests" />
-        <activity android:name=".Bluetooth.DeviceListActivity" />
-        <activity android:name=".Bluetooth.ActivityMainBluetooth" />
-        <activity android:name=".Bluetooth.SampleActivityBase" />
-        <activity android:name=".Onboarding.OnboardingActivity" />
+    <activity android:name=".MainMenu.ActivityMainMenu" android:screenOrientation="portrait"/>
+        <activity android:name=".CreateAccount.ActivityCreateAccount" android:screenOrientation="portrait"/>
+        <activity android:name=".Chat.ActivityChat" android:screenOrientation="portrait"/>
+        <activity android:name=".Friend.ActivityFriendList" android:screenOrientation="portrait"/>
+        <activity android:name=".Profile.ActivityProfileFriend" android:screenOrientation="portrait"/>
+        <activity android:name=".Group.ActivityCreateDateAndTimeGroup" android:screenOrientation="portrait"/>
+        <activity android:name=".LocationSelection.ActivityDateSelection" android:screenOrientation="portrait"/>
+        <activity android:name=".LocationSelection.ActivityTimeSelection" android:screenOrientation="portrait"/>
+        <activity android:name=".LocationSelection.ActivityMaps" android:screenOrientation="portrait"/>
+        <activity android:name=".CreateAccount.ActivityCreateProfile" android:screenOrientation="portrait"/>
+        <activity android:name=".AnimationLoad" android:screenOrientation="portrait"/>
+        <activity android:name=".Group.ActivityCreateInfoGroup" android:screenOrientation="portrait"/>
+        <activity android:name=".Profile.ActivityProfile" android:screenOrientation="portrait"/>
+        <activity android:name=".Group.ActivityGroup" android:screenOrientation="portrait"/>
+        <activity android:name=".Group.ActivityGroupList" android:screenOrientation="portrait"/>
+        <activity android:name=".Group.ActivityCreateSelectPlaceGroup" android:screenOrientation="portrait"/>
+        <activity android:name=".CreateAccount.ActivityChooseLowInterests" android:screenOrientation="portrait"/>
+        <activity android:name=".Bluetooth.DeviceListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Bluetooth.ActivityMainBluetooth" android:screenOrientation="portrait"/>
+        <activity android:name=".Bluetooth.SampleActivityBase" android:screenOrientation="portrait"/>
+        <activity android:name=".Onboarding.OnboardingActivity" android:screenOrientation="portrait"/>
 
 
         <meta-data
