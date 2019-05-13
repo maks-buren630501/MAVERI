@@ -5,6 +5,7 @@ import com.example.wakeparkby.pchell.maveri.Database.DatabaseProfile;
 import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendArray;
 import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
 import com.example.wakeparkby.pchell.maveri.Friend.FriendListFragment;
+import com.example.wakeparkby.pchell.maveri.Friend.ReqestFriend.ListReqestUser;
 import com.example.wakeparkby.pchell.maveri.Group.ListGroups;
 import com.example.wakeparkby.pchell.maveri.Meeting.ListMeeting;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +34,7 @@ public class Profile {
     private AdapterFriendList adapterFriendList = new AdapterFriendList();
     private AdapterChat adapterChat = new AdapterChat();
     private ListGroups groups = new ListGroups();
+    private ListReqestUser reqestUser = new ListReqestUser();
 
 
     /**
@@ -169,4 +171,12 @@ public class Profile {
     public void setGroups(ListGroups groups) {
         this.groups = groups;
     }
+
+    public void setReqestFriend(ListReqestUser reqestUser) {
+        this.reqestUser = reqestUser;
+    }
+    public void getReqestFriend(ListReqestUser reqestUser) {
+        this.reqestUser = reqestUser;
+    }
+
 }

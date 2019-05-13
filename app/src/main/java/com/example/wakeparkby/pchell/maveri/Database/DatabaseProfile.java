@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 
 import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
 import com.example.wakeparkby.pchell.maveri.Friend.FriendListFragment;
+import com.example.wakeparkby.pchell.maveri.Friend.ReqestFriend.ListReqestUser;
+import com.example.wakeparkby.pchell.maveri.Friend.ReqestFriend.ReqestFriend;
 import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.Profile.ProfileFriend;
@@ -33,12 +35,13 @@ public class DatabaseProfile {
     private String sex;
     private String listInterests;
     private AdapterFriendList friends = new AdapterFriendList();
-    private static ArrayList<ProfileFriend> searchProfiles=new ArrayList<>();
-    private String searchRequest="";
+    private static ArrayList<ProfileFriend> searchProfiles = new ArrayList<>();
+    private String searchRequest = "";
     ObserverMessage observerMessage = new ObserverMessage("DatabaseProfile");
 
     /**
      * метод для получения найденных пользователей
+     *
      * @return список найденных пользователей
      */
     public static ArrayList<ProfileFriend> getSearchProfiles() {
@@ -93,6 +96,7 @@ public class DatabaseProfile {
 
     /**
      * метод для загрузки данных о пользователе из базы данных
+     *
      * @param userId номер пользователя
      */
     public void loadUserInfo(final String userId) {
@@ -155,8 +159,6 @@ public class DatabaseProfile {
                     }
 
 
-
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -176,10 +178,11 @@ public class DatabaseProfile {
 
     /**
      * метод для создания нового пользователся
-     * @param userKey номер пользователя
+     *
+     * @param userKey   номер пользователя
      * @param firstName Имя
-     * @param lastName Фамиличя
-     * @param age возрост
+     * @param lastName  Фамиличя
+     * @param age       возрост
      * @param interests интересы
      */
     public void newProfile(String userKey, String firstName, String lastName, String age, String interests) {
@@ -194,33 +197,33 @@ public class DatabaseProfile {
 
     /**
      * метод для получения информации о профиле друга
+     *
      * @param getInfoFriendsDS
-     * @param profiles список друзей
-     * @param id номер друга
+     * @param profiles         список друзей
+     * @param id               номер друга
      * @return
      */
-    private ProfileFriend setDataProfile(DataSnapshot getInfoFriendsDS,ArrayList<ProfileFriend> profiles,String id)
-    {
+    private ProfileFriend setDataProfile(DataSnapshot getInfoFriendsDS, ArrayList<ProfileFriend> profiles, String id) {
         firstName = String.valueOf(getInfoFriendsDS.child("FirstName").getValue());
         lastName = String.valueOf(getInfoFriendsDS.child("LastName").getValue());
         age = String.valueOf(getInfoFriendsDS.child("Age").getValue());
         sex = String.valueOf(getInfoFriendsDS.child("Sex").getValue());
         listInterests = String.valueOf(getInfoFriendsDS.child("Interests").getValue());
-        ProfileFriend profile=new ProfileFriend(id,firstName,lastName,age,sex,listInterests);
+        ProfileFriend profile = new ProfileFriend(id, firstName, lastName, age, sex, listInterests);
         profiles.add(profile);
-        return  profile;
+        return profile;
 
     }
 
     /**
      * метод для поиска пользователей
+     *
      * @param string Фамилия искомого
      */
-    public void SearchProfile(String string)
-    {
+    public void SearchProfile(String string) {
         //здесь должен быть код на Scala в 3 трочки
-        if (!string.isEmpty() && !searchRequest.isEmpty()){
-            if  (string.endsWith(searchRequest) || string.startsWith(searchRequest)) {
+        if (!string.isEmpty() && !searchRequest.isEmpty()) {
+            if (string.endsWith(searchRequest) || string.startsWith(searchRequest)) {
                 for (ProfileFriend profile : searchProfiles) {
                     if (!profile.getLastName().startsWith(string) && !profile.getLastName().endsWith(string))
                         searchProfiles.remove(profile);
@@ -236,6 +239,7 @@ public class DatabaseProfile {
 
     /**
      * метод для получения списка искомых пользователей
+     *
      * @param parametr параметр(строка) поиска
      */
     private void getListSearchProfile(String parametr) {
@@ -257,8 +261,9 @@ public class DatabaseProfile {
                         public void onDataChange(@NonNull DataSnapshot getInfoFriendsDS) {
 
 
-                            FriendListFragment.getArrayAdapter(). add(  setDataProfile(getInfoFriendsDS,searchProfiles,search));
+                            FriendListFragment.getArrayAdapter().add(setDataProfile(getInfoFriendsDS, searchProfiles, search));
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -266,6 +271,7 @@ public class DatabaseProfile {
                     });
                 }
             }
+
             @Override
             public void onChildChanged(@NonNull DataSnapshot getListSearchDS, @Nullable String s) {
             }
@@ -286,4 +292,28 @@ public class DatabaseProfile {
             }
         });
     }
+
+    public void loadReqestFriendUser(final String userId) {
+        final ListReqestUser listReqestUser = new ListReqestUser();
+        this.userId = userId;
+        myRefProfile = database.getReference("ReqestFriendUser" + "/" + userId);
+        myRefProfile.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot groupDS) {
+                for (DataSnapshot allReqest : groupDS.getChildren()) {
+                    String reqestUserKey = String.valueOf(allReqest.getKey());
+                    String name = String.valueOf(groupDS.child(reqestUserKey).child("Name").getValue());
+                    String lastName = String.valueOf(groupDS.child(reqestUserKey).child("LastName").getValue());
+                    listReqestUser.addReqest(new ReqestFriend(reqestUserKey, name, lastName));
+                }
+                Profile.getInstance().setReqestFriend(listReqestUser);
+                observerMessage.notifyAllObservers(17);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
 }
