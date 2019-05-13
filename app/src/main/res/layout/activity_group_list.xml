@@ -19,21 +19,21 @@
 
         <EditText
             android:id="@+id/search_textline"
-            android:layout_width="290dp"
+            android:layout_width="260dp"
             android:layout_height="match_parent"
             android:background="@drawable/rounded_edittext_focused"
-            android:paddingStart="10dp"/>
+            android:paddingStart="10dp" />
 
         <ImageButton
             android:id="@+id/search_group_button"
-            android:layout_width="60dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="right"
             android:layout_weight="1"
+            android:background="@drawable/rounded_edittext"
             android:onClick="onClick"
             android:src="@android:drawable/ic_search_category_default"
-            tools:ignore="RtlHardcoded"
-            android:background="@drawable/rounded_edittext"/>
+            tools:ignore="RtlHardcoded" />
 
 
     </LinearLayout>

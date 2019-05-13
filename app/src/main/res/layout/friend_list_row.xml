@@ -16,12 +16,13 @@
 
     <TextView
 
-        android:layout_marginHorizontal="10dp"
         android:id="@+id/name_list_friend_row"
         android:layout_width="286dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
         android:text="Слава GoldFish"
 
-        android:textSize="20sp" />
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="24sp" />
 </LinearLayout>
