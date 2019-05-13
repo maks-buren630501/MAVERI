@@ -41,6 +41,8 @@ public class AdapterSignIn {
      */
     public AdapterSignIn(String userId, String firstName, String lastName, String age, String sex, String listInterests) {
         profile.getInstanceWithParam(userId, firstName, lastName, age, sex, listInterests);
+        DatabaseMeeting databaseMeeting = new DatabaseMeeting();
+        databaseMeeting.loadMeetingUser(userId);
     }
 
     /**
@@ -51,7 +53,7 @@ public class AdapterSignIn {
         DatabaseProfile databaseProfile = new DatabaseProfile();
         databaseProfile.loadUserInfo(userId);
        // DatabaseMeeting databaseMeeting = new DatabaseMeeting();
-       // databaseMeeting.loadMeetingUser(userId);
+        //databaseMeeting.loadMeetingUser(userId);
     }
 
     /**

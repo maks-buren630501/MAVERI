@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import java.util.Observable;
  * класс для работы с сообщениями в базе данных
  */
 public class DatabaseMessage extends Observable{
+    FirebaseStorage storage = FirebaseStorage.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefMeessage;
     private String groupId;

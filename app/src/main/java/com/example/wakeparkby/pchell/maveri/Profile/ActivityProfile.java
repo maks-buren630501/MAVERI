@@ -1,6 +1,7 @@
 package com.example.wakeparkby.pchell.maveri.Profile;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +22,10 @@ import com.example.wakeparkby.pchell.maveri.MainMenu.ActivityMainMenu;
 import com.example.wakeparkby.pchell.maveri.Meeting.Meeting;
 import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.R;
+import com.example.wakeparkby.pchell.maveri.StorageDatabase.ImageDatabase;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,12 +102,23 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
         tabSpecuser.setIndicator("Встречи");
         tabHostuser.addTab(tabSpecuser);
         tabHostuser.setCurrentTab(0);
-        meetingList.add("ТЕСТ");
+       /* meetingList.add("ТЕСТ");
+        meetingList.add("1");
+        meetingList.add("2");*/
         ArrayAdapter<String> profileMeetingAdapter = new ArrayAdapter<>(ActivityProfile.this,
                 android.R.layout.simple_list_item_1,
                 meetingList.toArray(new String[meetingList.size()]));
         infmeetuserinfo.setAdapter(profileMeetingAdapter);
-    //    updateMeeting();
+       updateMeeting();
+
+       ImageDatabase imageDatabase = new ImageDatabase();
+        try {
+            File file = imageDatabase.loadImage();
+            Uri photo = Uri.fromFile(file);
+            this.image.setImageURI(photo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -130,8 +145,16 @@ public class ActivityProfile extends AppCompatActivity implements View.OnClickLi
         if (requestCode == PICK_IMAGE) {
             Uri fullPhotoUri = data.getData();
             image.setImageURI(fullPhotoUri);
+            ImageDatabase imageDatabase = new ImageDatabase();
+            final Cursor cursor = getContentResolver().query( fullPhotoUri, null, null, null, null );
+            cursor.moveToFirst();
+            final String filePath = cursor.getString(0);
+            cursor.close();
+            imageDatabase.upLoadImage(filePath);
         }
     }
+
+
 
 
     private void updateMeeting() {

@@ -130,7 +130,7 @@ public class DatabaseMeeting {
 
 
     public void loadMeetingUser(String userId) {
-        idUserMeeting = Profile.getInstance().getUserKey();
+        idUserMeeting = userId;
         myRefMeeting = database.getReference("UsersMeeting/" + userId + "/");
         myRefMeeting.addValueEventListener(new ValueEventListener() {
             @Override
@@ -155,7 +155,7 @@ public class DatabaseMeeting {
                     }
                 }
                 Profile.getInstance().getListMeeting().setListMeeting(listMeetingUser);
-//                observerMessage.notifyAllObservers(5);
+                observerMessage.notifyAllObservers(5);
             }
 
 
