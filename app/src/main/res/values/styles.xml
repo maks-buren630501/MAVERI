@@ -18,15 +18,14 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
-        <item name="android:headerBackground">#000000</item>
-        <item name="android:calendarTextColor">#ffff00</item>
-        <item name="android:dayOfWeekBackground">#000000</item>
+        <item name="android:calendarTextColor">#ffffff</item>
         <item name="android:datePickerMode">calendar</item>
         <item name="android:minDate">01/01/2019</item>
+        <item name="android:dayOfWeekBackground">#000000</item>
     </style>
 
     <style name="DayOfWeekPickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
-        <item name="colorControlActivated">#ffffff</item>
+        <item name="colorControlActivated">#303F9F</item>
     </style>
 
 </resources>

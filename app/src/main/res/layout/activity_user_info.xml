@@ -37,11 +37,19 @@
                         app:civ_border_width="3dp"/>
 
                     <Button
-                        android:id="@+id/changeuserinfo"
+                    android:id="@+id/changeuserinfo"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_toRightOf="@+id/iv_profileuserinfo"
+                    android:background="@drawable/pencil" />
+
+                    <Button
+                        android:id="@+id/changeuserinfofull"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:layout_toRightOf="@+id/iv_profileuserinfo"
-                        android:background="@drawable/pencil" />
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/settings_background_profile" />
 
                 </RelativeLayout>
 
