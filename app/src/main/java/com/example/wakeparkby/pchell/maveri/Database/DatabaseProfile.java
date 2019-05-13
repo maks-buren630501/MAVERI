@@ -4,8 +4,8 @@ import android.support.annotation.NonNull;
 
 import com.example.wakeparkby.pchell.maveri.Friend.AdapterFriendList;
 import com.example.wakeparkby.pchell.maveri.Friend.FriendListFragment;
-import com.example.wakeparkby.pchell.maveri.Friend.ReqestFriend.ListReqestUser;
-import com.example.wakeparkby.pchell.maveri.Friend.ReqestFriend.ReqestFriend;
+import com.example.wakeparkby.pchell.maveri.Friend.RequestFriend.ListReqestUser;
+import com.example.wakeparkby.pchell.maveri.Friend.RequestFriend.RequestFriend;
 import com.example.wakeparkby.pchell.maveri.ObserverMessage;
 import com.example.wakeparkby.pchell.maveri.Profile.Profile;
 import com.example.wakeparkby.pchell.maveri.Profile.ProfileFriend;
@@ -294,7 +294,7 @@ public class DatabaseProfile {
     }
 
     public void loadReqestFriendUser(final String userId) {
-        final ListReqestUser listReqestUser = new ListReqestUser();
+        final ListReqestUser listRequestUser = new ListReqestUser();
         this.userId = userId;
         myRefProfile = database.getReference("ReqestFriendUser" + "/" + userId);
         myRefProfile.addValueEventListener(new ValueEventListener() {
@@ -304,9 +304,9 @@ public class DatabaseProfile {
                     String reqestUserKey = String.valueOf(allReqest.getKey());
                     String name = String.valueOf(groupDS.child(reqestUserKey).child("Name").getValue());
                     String lastName = String.valueOf(groupDS.child(reqestUserKey).child("LastName").getValue());
-                    listReqestUser.addReqest(new ReqestFriend(reqestUserKey, name, lastName));
+                    listRequestUser.addReqest(new RequestFriend(reqestUserKey, name, lastName));
                 }
-                Profile.getInstance().setReqestFriend(listReqestUser);
+                Profile.getInstance().setReqestFriend(listRequestUser);
                 observerMessage.notifyAllObservers(17);
             }
 
