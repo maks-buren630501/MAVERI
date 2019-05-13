@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
@@ -7,42 +8,46 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
-        android:orientation="vertical">
-
-
+        android:background="@drawable/background_singup"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="48dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:id="@+id/justLayout"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/background_sticky"
             android:gravity="center"
-            >
+            android:rotation="10"
+            android:orientation="vertical">
+
             <DatePicker
                 android:id="@+id/datePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:layout_gravity="center_horizontal">
-
+                style="@style/MyDatePickerStyle"
+                android:layout_width="300dp"
+                android:layout_height="400dp"
+                android:layout_gravity="center_horizontal"
+                android:headerBackground="@color/design_default_color_primary_dark"
+                android:paddingTop="90dp"
+                android:theme="@style/DayOfWeekPickerStyle">
 
             </DatePicker>
-
-            <Button
-                android:id="@+id/buttonSelectDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Продолжить"
-                android:textColor="#000000"
-                android:textSize="16dp"
-                android:layout_weight="0"
-                android:layout_gravity="right"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-
-                />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonSelectDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/rounded_edittext"
+            android:hint="Продолжить"
+            android:textColorHint="#FFFFFF"
+            android:layout_below="@id/justLayout"
+            android:textSize="16dp"
+            android:layout_centerHorizontal="true"/>
 
 
     </RelativeLayout>

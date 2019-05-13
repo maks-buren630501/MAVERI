@@ -6,28 +6,27 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/main.appbar"
-
+        android:id="@+id/main.appbar_change"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <RelativeLayout
-            android:id="@+id/relativelayout"
+            android:id="@+id/relativelayout_change"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/design_default_color_primary">
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar2"
+                android:id="@+id/toolbar2_change"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
             <TextView
-                android:id="@+id/textViewAge"
+                android:id="@+id/textViewAge_change"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
@@ -39,7 +38,7 @@
                 android:text="@string/age" />
 
             <EditText
-                android:id="@+id/editTextAge"
+                android:id="@+id/editTextAge_change"
                 android:layout_width="340dp"
                 android:layout_height="37dp"
                 android:layout_alignParentStart="true"
@@ -56,7 +55,7 @@
                 android:textColor="#111111"/>
 
             <TextView
-                android:id="@+id/textViewSecond"
+                android:id="@+id/textViewSecond_change"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
@@ -68,7 +67,7 @@
                 android:text="@string/second_name" />
 
             <TextView
-                android:id="@+id/textViewName"
+                android:id="@+id/textViewName_change"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
@@ -80,7 +79,7 @@
                 android:text="@string/name" />
 
             <EditText
-                android:id="@+id/editTextSecond"
+                android:id="@+id/editTextSecond_change"
                 android:layout_width="340dp"
                 android:layout_height="37dp"
                 android:layout_alignParentStart="true"
@@ -96,7 +95,7 @@
                 android:textColor="#111111"/>
 
             <EditText
-                android:id="@+id/editTextName"
+                android:id="@+id/editTextName_change"
                 android:layout_width="340dp"
                 android:layout_height="37dp"
                 android:layout_alignParentStart="true"
@@ -112,7 +111,7 @@
                 android:textColor="#111111"/>
 
             <TextView
-                android:id="@+id/textViewInterests"
+                android:id="@+id/textViewInterests_change"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
@@ -127,7 +126,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView2_change"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_alignBottom="@+id/main.appbar"
@@ -143,7 +142,7 @@
             android:orientation="vertical">
 
             <ListView
-                android:id="@+id/list1"
+                android:id="@+id/list1_change"
                 style="@style/Widget.AppCompat.ListView"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
@@ -155,7 +154,7 @@
     </ScrollView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/countiusButton"
+        android:id="@+id/countiusButton_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/main.appbar"
