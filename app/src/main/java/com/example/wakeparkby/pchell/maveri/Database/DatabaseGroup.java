@@ -47,11 +47,12 @@ public class DatabaseGroup {
                     String coordinates = String.valueOf(groupDS.child(groupKey).child("LatLng").getValue());
                     String time = String.valueOf(groupDS.child(groupKey).child("Time").getValue());
                     String status = String.valueOf(groupDS.child(groupKey).child("Status").getValue());
+                    String numberOfUsers = String.valueOf(groupDS.child(groupKey).child("NumberOfUsers").getValue());
                     String password = "0";
                     if (status.equals("1")) {
                         password = String.valueOf(groupDS.child(groupKey).child("Password").getValue());
                     }
-                    groups.addGroup(new Group(status,date,time,name,description,coordinates,password));
+                    groups.addGroup(new Group(numberOfUsers,status,date,time,name,description,coordinates,password));
                 }
                 Profile.getInstance().setGroups(groups);
                 observerMessage.notifyAllObservers(15);

@@ -15,8 +15,8 @@
         tools:context=".SignIn"
         tools:layout_editor_absoluteX="0dp">
         <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="@drawable/background_sticky"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="70dp"
@@ -30,7 +30,7 @@
             android:gravity="center"
             android:paddingTop="30dp"
             android:text="Дата:"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textColor="#000000"/>
             <TextView
                 android:id="@+id/date_text"
@@ -39,7 +39,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="12dp"
                 android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
                 android:layout_centerVertical="true"
                 android:gravity="center"
                 android:text="Время:"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textColor="#000000"/>
             <TextView
                 android:id="@+id/time_text"
@@ -57,12 +57,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="12dp"
                 android:textColor="#000000"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="@drawable/background_sticky"
             android:layout_marginLeft="220dp"
             android:layout_marginTop="210dp"
@@ -77,7 +77,7 @@
                 android:paddingTop="30dp"
                 android:paddingLeft="20dp"
                 android:text="Количество"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
                 android:gravity="center"
                 android:paddingLeft="20dp"
                 android:text="участников"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textColor="#000000"/>
             <TextView
                 android:id="@+id/how_many_people__text"
@@ -96,14 +96,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="12dp"
                 android:textColor="#000000"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="@drawable/background_sticky"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="390dp"
@@ -118,7 +118,7 @@
                 android:paddingTop="30dp"
                 android:paddingLeft="20dp"
                 android:text="Описание"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textColor="#000000"/>
             <TextView
                 android:id="@+id/afisha__text"
@@ -127,13 +127,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="10dp"
                 android:textColor="#000000"/>
         </LinearLayout>
         <Button
             android:id="@+id/map_button_sticky"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginLeft="230dp"
             android:layout_marginTop="510dp"
             android:rotation="380"

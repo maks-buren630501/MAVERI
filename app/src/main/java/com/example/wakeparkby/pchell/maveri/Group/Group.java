@@ -8,6 +8,19 @@ public class Group {
     String description;
     String coordinates;
     String password;
+    String numberOfUsers;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getNumberOfUsers() {
+        return numberOfUsers;
+    }
+
+    public void setNumberOfUsers(String numberOfUsers) {
+        this.numberOfUsers = numberOfUsers;
+    }
 
     public String getStatus() {
         return status;
@@ -61,7 +74,8 @@ public class Group {
         return password;
     }
 
-    public Group(String status, String date, String time, String name, String description, String coordinates, String password){
+    public Group(String numberOfUsers, String status, String date, String time, String name, String description, String coordinates, String password) {
+        this.numberOfUsers = numberOfUsers;
         this.coordinates = coordinates;
         this.date = date;
         this.time = time;

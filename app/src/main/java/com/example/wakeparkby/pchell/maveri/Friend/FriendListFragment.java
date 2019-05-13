@@ -100,7 +100,6 @@ public class FriendListFragment extends ListFragment {
         intent_friendProfile.putExtra("userAge", adapterProfileFriend.getUserAge());
         intent_friendProfile.putExtra("userSex", adapterProfileFriend.getUserSex());
         startActivity(intent_friendProfile);
-
     }
 
 
